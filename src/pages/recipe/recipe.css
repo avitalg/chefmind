@@ -1,0 +1,17 @@
+span {
+  padding: 5px;
+}
+
+h1,
+h2 {
+  font-weight: 700;
+}
+
+h2 {
+  font-size: 24px;
+}
+
+ol,
+ul {
+  list-style: auto;
+}
