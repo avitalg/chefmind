@@ -15,10 +15,12 @@ interface Recipe {
   instructions: string[]
   url?: string
   _id?: string
+  direction: string
 }
 
 interface EditRecipeProps {
   recipe: Recipe
+  onNavigateHome: () => void
 }
 
 export default function EditRecipe({ recipe: initialRecipe }: EditRecipeProps) {

@@ -408,7 +408,7 @@ export default function HomePage({ user }: HomePageProps) {
                         </svg>
                       </button>
                       <button
-                        onClick={() => handleDelete(id, recipe.id, recipe.title)}
+                        onClick={() => handleDelete(parseInt(id), recipe.id, recipe.title)}
                         className="p-2 text-red-500 hover:text-red-700 hover:bg-red-50 rounded-lg transition-colors"
                         title="Delete recipe"
                       >
