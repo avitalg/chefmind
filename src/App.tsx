@@ -25,7 +25,7 @@ function App() {
 
   useEffect(() => {
     // Load current user
-    fetch(`${API_BASE_URL}/api/me`, { credentials: 'include' })
+    fetch(`${API_BASE_URL}/api/me`, { method: 'GET', credentials: 'include' })
       .then((r) => r.json())
       .then(setUser)
       .catch(() => setUser(null))
