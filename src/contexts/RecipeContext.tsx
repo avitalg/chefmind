@@ -1,7 +1,7 @@
 import type React from 'react'
 import { createContext, type ReactNode, useCallback, useContext, useEffect, useState } from 'react'
 
-const API_BASE_URL = 'http://localhost:3001/api'
+const API_BASE_URL = import.meta.env.VITE_API_URL;
 
 interface Ingredient {
   amount: number
@@ -56,7 +56,7 @@ export const RecipeProvider: React.FC<RecipeProviderProps> = ({ children, user }
     setError('')
 
     try {
-      const response = await fetch(`${API_BASE_URL}/recipes`, { credentials: 'include' })
+      const response = await fetch(`${API_BASE_URL}/api/recipes`, { credentials: 'include' })
       if (response.status === 401) {
         setRecipes({})
         return
@@ -76,7 +76,7 @@ export const RecipeProvider: React.FC<RecipeProviderProps> = ({ children, user }
 
   const saveRecipe = async (recipe: Recipe) => {
     try {
-      const response = await fetch(`${API_BASE_URL}/recipes/${encodeURIComponent(recipe.title)}`, {
+      const response = await fetch(`${API_BASE_URL}/api/recipes/${encodeURIComponent(recipe.title)}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         credentials: 'include',
@@ -104,7 +104,7 @@ export const RecipeProvider: React.FC<RecipeProviderProps> = ({ children, user }
 
   const deleteRecipe = async (id: string, place: number) => {
     try {
-      const response = await fetch(`${API_BASE_URL}/recipes/${encodeURIComponent(id)}`, {
+      const response = await fetch(`${API_BASE_URL}/api/recipes/${encodeURIComponent(id)}`, {
         method: 'DELETE',
         credentials: 'include',
       })

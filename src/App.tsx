@@ -13,7 +13,7 @@ import HomePage from './homepage'
 import Recipe from './pages/recipe/recipe'
 import './App.css'
 
-const API_BASE_URL = 'http://localhost:3001'
+const API_BASE_URL = import.meta.env.VITE_API_URL;
 
 interface User {
   displayName: string

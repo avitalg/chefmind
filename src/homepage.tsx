@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { useRecipes } from './contexts/RecipeContext'
 
-const API_BASE_URL = 'http://localhost:3001/api'
+const API_BASE_URL = import.meta.env.VITE_API_URL;
 
 interface User {
   displayName: string
@@ -37,7 +37,7 @@ export default function HomePage({ user }: HomePageProps) {
     clearError()
 
     try {
-      const response = await fetch(`${API_BASE_URL}/recipes/import`, {
+      const response = await fetch(`${API_BASE_URL}/api/recipes/import`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         credentials: 'include',
