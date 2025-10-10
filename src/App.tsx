@@ -23,12 +23,27 @@ interface User {
 function App() {
   const [user, setUser] = useState<User | null>(null)
 
+  const checkAuthStatus = async () => {
+    try {
+      const response = await fetch(`${API_BASE_URL}/api/me`, { 
+        method: 'GET', 
+        credentials: 'include' 
+      })
+      
+      if (response.ok) {
+        const userData = await response.json()
+        setUser(userData)
+      } else {
+        setUser(null)
+      }
+    } catch (error) {
+      console.error('Auth check failed:', error)
+      setUser(null)
+    }
+  }
+
   useEffect(() => {
-    // Load current user
-    fetch(`${API_BASE_URL}/api/me`, { method: 'GET', credentials: 'include' })
-      .then((r) => r.json())
-      .then(setUser)
-      .catch(() => setUser(null))
+    checkAuthStatus()
   }, [])
 
   const handleSignIn = () => {
@@ -45,8 +60,8 @@ function App() {
       
       if (response.ok) {
         setUser(null)
-        // Optionally reload the page to clear any cached state
-        window.location.reload()
+        // Double-check auth status to ensure UI updates correctly
+        await checkAuthStatus()
       } else {
         console.error('Logout failed:', response.statusText)
         // Still clear user state even if server request fails
