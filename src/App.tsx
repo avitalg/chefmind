@@ -29,7 +29,6 @@ function App() {
         method: 'GET', 
         credentials: 'include' 
       })
-      
       if (response.ok) {
         const userData = await response.json()
         setUser(userData)
