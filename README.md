@@ -4,7 +4,7 @@ ChefMind is a modern web application that allows users to import, organize, and 
 
 ## Features
 
-- 🔐 **Google OAuth Authentication** - Secure sign-in with Google accounts
+- 🔐 **JWT Authentication** - Secure sign-in with Google OAuth and JWT tokens
 - 📥 **Recipe Import** - Import recipes from any website by simply pasting the URL
 - ✏️ **Recipe Editing** - Customize and edit imported recipes
 - 📚 **Recipe Management** - Organize and manage your personal recipe collection
@@ -23,7 +23,8 @@ ChefMind is a modern web application that allows users to import, organize, and 
 ### Backend
 - **Node.js** with Express
 - **MongoDB** with Mongoose for data persistence
-- **Passport.js** for Google OAuth authentication
+- **JWT** for secure authentication
+- **Passport.js** for Google OAuth integration
 - **Cheerio** for web scraping
 - **Anthropic API** for AI-powered recipe parsing
 
@@ -54,6 +55,7 @@ javascript/
 - MongoDB (local or cloud instance)
 - Google OAuth credentials
 - Anthropic API key
+- JWT secret key
 
 ### Installation
 
@@ -84,7 +86,8 @@ javascript/
    GOOGLE_CLIENT_SECRET=your_google_client_secret
    GOOGLE_CALLBACK_URL=http://localhost:3001/auth/google/callback
    ANTHROPIC_API_KEY=your_anthropic_api_key
-   SESSION_SECRET=your_session_secret
+   JWT_SECRET=your_jwt_secret_key
+   JWT_EXPIRES_IN=7d
    FRONTEND_ORIGIN=http://localhost:5173
    ```
 

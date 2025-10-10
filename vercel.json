@@ -1,7 +1,0 @@
-{
-    "rewrites": [
-      { "source": "/api/(.*)", "destination": "https://chefmind-f117c84f28b9.herokuapp.com/api/$1" },
-      { "source": "/auth/(.*)", "destination": "https://chefmind-f117c84f28b9.herokuapp.com/auth/$1" }
-    ]
-  }
-  
