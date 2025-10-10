@@ -13,7 +13,7 @@ import HomePage from './homepage'
 import Recipe from './pages/recipe/recipe'
 import './App.css'
 
-const API_BASE_URL = import.meta.env.VITE_API_URL;
+const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:3001';
 
 interface User {
   displayName: string
@@ -37,11 +37,26 @@ function App() {
   }
 
   const handleSignOut = async () => {
-    await fetch(`${API_BASE_URL}/auth/logout`, {
-      method: 'POST',
-      credentials: 'include',
-    })
-    setUser(null)
+    try {
+      const response = await fetch(`${API_BASE_URL}/auth/logout`, {
+        method: 'POST',
+        credentials: 'include',
+      })
+      
+      if (response.ok) {
+        setUser(null)
+        // Optionally reload the page to clear any cached state
+        window.location.reload()
+      } else {
+        console.error('Logout failed:', response.statusText)
+        // Still clear user state even if server request fails
+        setUser(null)
+      }
+    } catch (error) {
+      console.error('Logout error:', error)
+      // Still clear user state even if request fails
+      setUser(null)
+    }
   }
 
   return (
