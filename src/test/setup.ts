@@ -1,7 +1,11 @@
 import '@testing-library/jest-dom'
+import { vi } from 'vitest'
 
 // Mock fetch globally
-global.fetch = vi.fn()
+Object.defineProperty(globalThis, 'fetch', {
+  value: vi.fn(),
+  writable: true,
+})
 
 // Mock window.location
 Object.defineProperty(window, 'location', {
