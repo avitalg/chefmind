@@ -270,9 +270,9 @@ export default function HomePage({ user }: HomePageProps) {
             </div>
             <h2 className="text-2xl font-bold text-gray-800">Your Recipes</h2>
           </div>
-          {user && Object.keys(recipes).length > 0 && (
+          {user && recipes.length > 0 && (
             <span className="bg-blue-100 text-blue-800 text-sm font-medium px-3 py-1 rounded-full">
-              {Object.keys(recipes).length} recipe{Object.keys(recipes).length !== 1 ? 's' : ''}
+              {recipes.length} recipe{recipes.length !== 1 ? 's' : ''}
             </span>
           )}
         </div>
@@ -337,7 +337,7 @@ export default function HomePage({ user }: HomePageProps) {
                 <span className="text-lg text-gray-600">Loading your recipes...</span>
               </div>
             </div>
-          ) : Object.keys(recipes).length === 0 ? (
+          ) : recipes.length === 0 ? (
             <div className="text-center py-12">
               <div className="w-24 h-24 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
                 <svg
@@ -370,14 +370,14 @@ export default function HomePage({ user }: HomePageProps) {
             </div>
           ) : (
             <div className="grid gap-4">
-              {Object.entries(recipes).map(([id, recipe]) => (
+              {recipes.map((recipe) => (
                 <div
-                  key={id}
+                  key={recipe.id}
                   className="group bg-gray-50 hover:bg-gray-100 rounded-xl p-6 transition-all duration-200 border border-gray-200 hover:border-gray-300 hover:shadow-md"
                 >
                   <div className="flex items-center justify-between">
                     <Link
-                      to={`/recipe/${id}`}
+                      to={`/recipe/${recipe.id}`}
                       className="flex-1 group-hover:text-blue-600 transition-colors"
                     >
                       <h3 className="text-lg font-semibold text-gray-800 mb-1">{recipe.title}</h3>
@@ -389,7 +389,7 @@ export default function HomePage({ user }: HomePageProps) {
                     </Link>
                     <div className="flex gap-2 ml-4">
                       <button
-                        onClick={() => navigate(`/edit/${id}`)}
+                        onClick={() => navigate(`/edit/${recipe.id}`)}
                         className="p-2 text-blue-500 hover:text-blue-700 hover:bg-blue-50 rounded-lg transition-colors"
                         title="Edit recipe"
                       >
@@ -408,7 +408,7 @@ export default function HomePage({ user }: HomePageProps) {
                         </svg>
                       </button>
                       <button
-                        onClick={() => handleDelete(parseInt(id), recipe.id, recipe.title)}
+                        onClick={() => handleDelete(recipes.indexOf(recipe), recipe.id, recipe.title)}
                         className="p-2 text-red-500 hover:text-red-700 hover:bg-red-50 rounded-lg transition-colors"
                         title="Delete recipe"
                       >

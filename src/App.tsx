@@ -11,6 +11,8 @@ import { RecipeProvider, useRecipes } from './contexts/RecipeContext'
 import EditRecipe from './editRecipe'
 import HomePage from './homepage'
 import Recipe from './pages/recipe/recipe'
+import About from './pages/About'
+import Company from './pages/Company'
 import './App.css'
 
 const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:3001';
@@ -80,11 +82,17 @@ function App() {
           <nav className="bg-white shadow-lg">
             <div className="max-w-6xl mx-auto px-4">
               <div className="flex justify-between h-16">
-                <div className="flex">
-                  <Link to="/" className="flex items-center">
-                    <span className="text-xl font-bold text-gray-800">ChefMind</span>
-                  </Link>
-                </div>
+                    <div className="flex items-center space-x-6">
+                      <Link to="/" className="flex items-center">
+                        <span className="text-xl font-bold text-gray-800">ChefMind</span>
+                      </Link>
+                      <Link to="/about" className="text-gray-600 hover:text-gray-800 transition-colors">
+                        About
+                      </Link>
+                      <Link to="/company" className="text-gray-600 hover:text-gray-800 transition-colors">
+                        Company
+                      </Link>
+                    </div>
                 <div className="flex items-center gap-3">
                   {user ? (
                     <>
@@ -111,13 +119,15 @@ function App() {
             </div>
           </nav>
 
-          <main className="max-w-6xl mx-auto py-6 sm:px-6 lg:px-8">
-            <Routes>
-              <Route path="/" element={<HomePage user={user} />} />
-              <Route path="/edit/:id" element={<EditRecipeWrapper />} />
-              <Route path="/recipe/:id" element={<Recipe />} />
-            </Routes>
-          </main>
+              <main className="max-w-6xl mx-auto py-6 sm:px-6 lg:px-8">
+                <Routes>
+                  <Route path="/" element={<HomePage user={user} />} />
+                  <Route path="/about" element={<About />} />
+                  <Route path="/company" element={<Company />} />
+                  <Route path="/edit/:id" element={<EditRecipeWrapper />} />
+                  <Route path="/recipe/:id" element={<Recipe />} />
+                </Routes>
+              </main>
         </div>
       </Router>
     </RecipeProvider>
@@ -130,7 +140,7 @@ function EditRecipeWrapper() {
   const { recipes } = useRecipes()
   const navigate = useNavigate()
 
-  const recipe = id ? recipes[id] : null
+  const recipe = id ? recipes.find(r => r.id === id) : null
 
   if (!recipe) {
     return <div>Recipe not found</div>

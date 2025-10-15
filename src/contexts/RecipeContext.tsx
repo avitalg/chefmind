@@ -20,7 +20,7 @@ interface Recipe {
 }
 
 interface RecipeContextType {
-  recipes: { [key: string]: Recipe }
+  recipes: Recipe[]
   loading: boolean
   error: string
   fetchRecipes: () => Promise<void>
@@ -42,13 +42,13 @@ interface RecipeProviderProps {
 }
 
 export const RecipeProvider: React.FC<RecipeProviderProps> = ({ children, user }) => {
-  const [recipes, setRecipes] = useState<{ [key: string]: Recipe }>({})
+  const [recipes, setRecipes] = useState<Recipe[]>([])
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
 
   const fetchRecipes = useCallback(async () => {
     if (!user) {
-      setRecipes({})
+      setRecipes([])
       return
     }
 
@@ -58,7 +58,7 @@ export const RecipeProvider: React.FC<RecipeProviderProps> = ({ children, user }
     try {
       const response = await fetch(`${API_BASE_URL}/api/recipes`, { credentials: 'include' })
       if (response.status === 401) {
-        setRecipes({})
+        setRecipes([])
         return
       }
       if (!response.ok) {
@@ -76,7 +76,7 @@ export const RecipeProvider: React.FC<RecipeProviderProps> = ({ children, user }
 
   const saveRecipe = async (recipe: Recipe) => {
     try {
-      const response = await fetch(`${API_BASE_URL}/api/recipes/${encodeURIComponent(recipe.title)}`, {
+      const response = await fetch(`${API_BASE_URL}/api/recipes/${recipe.id}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         credentials: 'include',
@@ -91,10 +91,9 @@ export const RecipeProvider: React.FC<RecipeProviderProps> = ({ children, user }
       }
 
       // Update local state
-      setRecipes((prev) => ({
-        ...prev,
-        [recipe.id]: recipe,
-      }))
+      setRecipes((prev) =>
+        prev.map((r) => (r.id === recipe.id ? recipe : r))
+      );
     } catch (err) {
       const message = err instanceof Error ? err.message : 'Failed to save recipe'
       setError(message)
@@ -117,11 +116,7 @@ export const RecipeProvider: React.FC<RecipeProviderProps> = ({ children, user }
       }
 
       // Update local state
-      setRecipes((prev) => {
-        const newRecipes = { ...prev }
-        delete newRecipes[place]
-        return newRecipes
-      })
+      setRecipes((prev) => prev.filter((_, index) => index !== place))
     } catch (err) {
       const message = err instanceof Error ? err.message : 'Failed to delete recipe'
       setError(message)
