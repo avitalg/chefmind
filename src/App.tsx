@@ -7,7 +7,10 @@ import {
   useNavigate,
   useParams,
 } from 'react-router-dom'
+import { QueryClientProvider } from '@tanstack/react-query'
 import { RecipeProvider, useRecipes } from './contexts/RecipeContext'
+import { queryClient } from './lib/queryClient'
+import ReactQueryDevTools from './components/ReactQueryDevTools'
 import EditRecipe from './editRecipe'
 import HomePage from './homepage'
 import Recipe from './pages/recipe/recipe'
@@ -78,8 +81,9 @@ function App() {
   }
 
   return (
-    <RecipeProvider user={user}>
-      <Router>
+    <QueryClientProvider client={queryClient}>
+      <RecipeProvider user={user}>
+        <Router>
         <div className="min-h-screen bg-gray-100">
           <nav className="bg-white shadow-lg">
             <div className="max-w-6xl mx-auto px-4">
@@ -207,7 +211,9 @@ function App() {
               </main>
         </div>
       </Router>
+      <ReactQueryDevTools />
     </RecipeProvider>
+    </QueryClientProvider>
   )
 }
 

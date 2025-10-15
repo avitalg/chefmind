@@ -1,29 +1,19 @@
 import type React from 'react'
-import { createContext, type ReactNode, useCallback, useContext, useEffect, useState } from 'react'
-
-const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:3001';
-
-interface Ingredient {
-  amount: number
-  unit: string
-  name: string
-}
-
-interface Recipe {
-  id: string
-  title: string
-  ingredients: Ingredient[]
-  instructions: string[]
-  url?: string
-  _id?: string
-  direction: string
-}
+import { createContext, type ReactNode, useContext, useState } from 'react'
+import { 
+  useRecipesQuery, 
+  useImportRecipeMutation, 
+  useCreateRecipeMutation, 
+  useUpdateRecipeMutation, 
+  useDeleteRecipeMutation,
+  type Recipe
+} from '../hooks/useRecipes'
 
 interface RecipeContextType {
   recipes: Recipe[]
   loading: boolean
   error: string
-  fetchRecipes: () => Promise<void>
+  fetchRecipes: () => void
   addRecipe: (recipe: Recipe) => Promise<Recipe>
   createManualRecipe: (recipe: Recipe) => Promise<Recipe>
   updateRecipe: (recipe: Recipe) => Promise<void>
@@ -44,60 +34,31 @@ interface RecipeProviderProps {
 }
 
 export const RecipeProvider: React.FC<RecipeProviderProps> = ({ children, user }) => {
-  const [recipes, setRecipes] = useState<Recipe[]>([])
-  const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
 
-  const fetchRecipes = useCallback(async () => {
-    if (!user) {
-      setRecipes([])
-      return
-    }
+  // Use React Query hooks
+  const { data: recipes = [], isLoading, error: queryError } = useRecipesQuery(user)
+  const importRecipeMutation = useImportRecipeMutation()
+  const createRecipeMutation = useCreateRecipeMutation()
+  const updateRecipeMutation = useUpdateRecipeMutation()
+  const deleteRecipeMutation = useDeleteRecipeMutation()
 
-    setLoading(true)
-    setError('')
+  // Combine query error with local error state
+  const combinedError = queryError?.message || error
 
-    try {
-      const response = await fetch(`${API_BASE_URL}/api/recipes`, { credentials: 'include' })
-      if (response.status === 401) {
-        setRecipes([])
-        return
-      }
-      if (!response.ok) {
-        throw new Error('Failed to fetch recipes')
-      }
-      const data = await response.json()
-      setRecipes(data)
-    } catch (err) {
-      setError('Failed to load recipes')
-      console.error('Error fetching recipes:', err)
-    } finally {
-      setLoading(false)
-    }
-  }, [user])
+  const fetchRecipes = () => {
+    // React Query handles refetching automatically
+    // This is kept for backward compatibility
+  }
 
   const addRecipe = async (recipe: Recipe) => {
     try {
-      const response = await fetch(`${API_BASE_URL}/api/recipes/import`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        credentials: 'include',
-        body: JSON.stringify({ url: recipe.url }),
-      })
-
-      if (!response.ok) {
-        if (response.status === 401) {
-          throw new Error('Please sign in to add recipes.')
-        }
-        throw new Error('Failed to add recipe')
+      if (!recipe.url) {
+        throw new Error('URL is required for importing recipes')
       }
-
-      const newRecipe = await response.json()
       
-      // Add new recipe to local state
-      setRecipes((prev) => [...prev, newRecipe])
-      
-      return newRecipe
+      const result = await importRecipeMutation.mutateAsync(recipe.url)
+      return result
     } catch (err) {
       const message = err instanceof Error ? err.message : 'Failed to add recipe'
       setError(message)
@@ -107,25 +68,8 @@ export const RecipeProvider: React.FC<RecipeProviderProps> = ({ children, user }
 
   const createManualRecipe = async (recipe: Recipe) => {
     try {
-      // For manual recipes, we'll save them directly to the server using the same endpoint as updates
-      const response = await fetch(`${API_BASE_URL}/api/recipes/${recipe.id}`, {
-        method: 'PUT',
-        headers: { 'Content-Type': 'application/json' },
-        credentials: 'include',
-        body: JSON.stringify(recipe),
-      })
-
-      if (!response.ok) {
-        if (response.status === 401) {
-          throw new Error('Please sign in to create recipes.')
-        }
-        throw new Error('Failed to create recipe')
-      }
-
-      // Add new recipe to local state
-      setRecipes((prev) => [...prev, recipe])
-      
-      return recipe
+      const result = await createRecipeMutation.mutateAsync(recipe)
+      return result
     } catch (err) {
       const message = err instanceof Error ? err.message : 'Failed to create recipe'
       setError(message)
@@ -135,24 +79,7 @@ export const RecipeProvider: React.FC<RecipeProviderProps> = ({ children, user }
 
   const updateRecipe = async (recipe: Recipe) => {
     try {
-      const response = await fetch(`${API_BASE_URL}/api/recipes/${recipe.id}`, {
-        method: 'PUT',
-        headers: { 'Content-Type': 'application/json' },
-        credentials: 'include',
-        body: JSON.stringify(recipe),
-      })
-
-      if (!response.ok) {
-        if (response.status === 401) {
-          throw new Error('Please sign in to update recipes.')
-        }
-        throw new Error('Failed to update recipe')
-      }
-
-      // Update existing recipe in local state
-      setRecipes((prev) =>
-        prev.map((r) => (r.id === recipe.id ? recipe : r))
-      )
+      await updateRecipeMutation.mutateAsync(recipe)
     } catch (err) {
       const message = err instanceof Error ? err.message : 'Failed to update recipe'
       setError(message)
@@ -162,20 +89,7 @@ export const RecipeProvider: React.FC<RecipeProviderProps> = ({ children, user }
 
   const deleteRecipe = async (id: string, place: number) => {
     try {
-      const response = await fetch(`${API_BASE_URL}/api/recipes/${encodeURIComponent(id)}`, {
-        method: 'DELETE',
-        credentials: 'include',
-      })
-
-      if (!response.ok) {
-        if (response.status === 401) {
-          throw new Error('Please sign in to delete recipes.')
-        }
-        throw new Error('Failed to delete recipe')
-      }
-
-      // Update local state
-      setRecipes((prev) => prev.filter((_, index) => index !== place))
+      await deleteRecipeMutation.mutateAsync({ id, place })
     } catch (err) {
       const message = err instanceof Error ? err.message : 'Failed to delete recipe'
       setError(message)
@@ -185,15 +99,10 @@ export const RecipeProvider: React.FC<RecipeProviderProps> = ({ children, user }
 
   const clearError = () => setError('')
 
-  // Fetch recipes when user changes
-  useEffect(() => {
-    fetchRecipes()
-  }, [fetchRecipes])
-
   const value: RecipeContextType = {
     recipes,
-    loading,
-    error,
+    loading: isLoading,
+    error: combinedError,
     fetchRecipes,
     addRecipe,
     createManualRecipe,
