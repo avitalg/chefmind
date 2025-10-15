@@ -13,6 +13,7 @@ import HomePage from './homepage'
 import Recipe from './pages/recipe/recipe'
 import About from './pages/About'
 import Company from './pages/Company'
+import CreateRecipe from './pages/CreateRecipe'
 import './App.css'
 
 const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:3001';
@@ -199,6 +200,7 @@ function App() {
                   <Route path="/" element={<HomePage user={user} />} />
                   <Route path="/about" element={<About />} />
                   <Route path="/company" element={<Company />} />
+                  <Route path="/create" element={<CreateRecipe />} />
                   <Route path="/edit/:id" element={<EditRecipeWrapper />} />
                   <Route path="/recipe/:id" element={<Recipe />} />
                 </Routes>

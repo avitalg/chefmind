@@ -243,6 +243,52 @@ export default function HomePage({ user }: HomePageProps) {
         </form>
       </div>
 
+      {/* Create Recipe Section */}
+      {user && (
+        <div className="bg-white shadow-xl rounded-2xl p-8 border border-gray-100">
+          <div className="flex items-center mb-6">
+            <div className="p-3 bg-purple-100 rounded-full mr-4">
+              <svg
+                className="w-6 h-6 text-purple-600"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M12 6v6m0 0v6m0-6h6m-6 0H6"
+                />
+              </svg>
+            </div>
+            <h2 className="text-2xl font-bold text-gray-800">Create New Recipe</h2>
+          </div>
+          <p className="text-gray-600 mb-6">
+            Don't have a recipe URL? Create your own recipe from scratch with our easy-to-use form.
+          </p>
+          <Link
+            to="/create"
+            className="inline-flex items-center px-6 py-3 bg-purple-500 text-white rounded-xl hover:bg-purple-600 transition-colors font-semibold !text-white"
+          >
+            <svg
+              className="w-5 h-5 mr-2"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M12 6v6m0 0v6m0-6h6m-6 0H6"
+              />
+            </svg>
+            Create Recipe
+          </Link>
+        </div>
+      )}
+
       {/* Recipes Section */}
       <div className="bg-white shadow-xl rounded-2xl p-8 border border-gray-100">
         <div className="flex items-center justify-between mb-6">

@@ -1,12 +1,13 @@
 # ChefMind - Recipe Management Application
 
-ChefMind is a modern web application that allows users to import, organize, and manage their favorite recipes from any website. Built with React, TypeScript, and Node.js, it provides a seamless experience for recipe collection and customization.
+ChefMind is a modern web application that allows users to import, create, organize, and manage their favorite recipes. Built with React, TypeScript, and Node.js, it provides a seamless experience for recipe collection and customization.
 
 ## Features
 
 - 🔐 **JWT Authentication** - Secure sign-in with Google OAuth and JWT tokens
 - 📥 **Recipe Import** - Import recipes from any website by simply pasting the URL
-- ✏️ **Recipe Editing** - Customize and edit imported recipes
+- ✍️ **Manual Recipe Creation** - Create recipes from scratch with our intuitive form
+- ✏️ **Recipe Editing** - Customize and edit imported or manually created recipes
 - 📚 **Recipe Management** - Organize and manage your personal recipe collection
 - 🎨 **Modern UI** - Beautiful, responsive interface built with Tailwind CSS
 - 🔄 **Real-time Updates** - Instant synchronization between frontend and backend
@@ -112,17 +113,18 @@ javascript/
 
 1. **Sign In** - Click "Sign in with Google" to authenticate
 2. **Import Recipes** - Paste any recipe URL in the import form
-3. **View Recipes** - Browse your imported recipes on the homepage
-4. **Edit Recipes** - Click the edit button to customize recipes
-5. **Delete Recipes** - Remove recipes you no longer need
+3. **Create Recipes** - Use the "Create Recipe" button to add recipes manually
+4. **View Recipes** - Browse your imported and created recipes on the homepage
+5. **Edit Recipes** - Click the edit button to customize any recipe
+6. **Delete Recipes** - Remove recipes you no longer need
 
 ## API Endpoints
 
 - `GET /api/recipes` - Get all user recipes
 - `POST /api/recipes/import` - Import recipe from URL
-- `GET /api/recipes/:title` - Get specific recipe
-- `PUT /api/recipes/:title` - Update recipe
-- `DELETE /api/recipes/:id` - Delete recipe
+- `GET /api/recipes/:id` - Get specific recipe by ID
+- `PUT /api/recipes/:id` - Update recipe by ID
+- `DELETE /api/recipes/:id` - Delete recipe by ID
 - `GET /auth/google` - Google OAuth login
 - `POST /auth/logout` - Logout user
 

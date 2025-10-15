@@ -25,6 +25,7 @@ interface RecipeContextType {
   error: string
   fetchRecipes: () => Promise<void>
   addRecipe: (recipe: Recipe) => Promise<Recipe>
+  createManualRecipe: (recipe: Recipe) => Promise<Recipe>
   updateRecipe: (recipe: Recipe) => Promise<void>
   deleteRecipe: (id: string, place: number) => Promise<void>
   clearError: () => void
@@ -104,9 +105,37 @@ export const RecipeProvider: React.FC<RecipeProviderProps> = ({ children, user }
     }
   }
 
+  const createManualRecipe = async (recipe: Recipe) => {
+    try {
+      // For manual recipes, we'll save them directly to the server using the same endpoint as updates
+      const response = await fetch(`${API_BASE_URL}/api/recipes/${recipe.id}`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        credentials: 'include',
+        body: JSON.stringify(recipe),
+      })
+
+      if (!response.ok) {
+        if (response.status === 401) {
+          throw new Error('Please sign in to create recipes.')
+        }
+        throw new Error('Failed to create recipe')
+      }
+
+      // Add new recipe to local state
+      setRecipes((prev) => [...prev, recipe])
+      
+      return recipe
+    } catch (err) {
+      const message = err instanceof Error ? err.message : 'Failed to create recipe'
+      setError(message)
+      throw err
+    }
+  }
+
   const updateRecipe = async (recipe: Recipe) => {
     try {
-      const response = await fetch(`${API_BASE_URL}/api/recipes/${encodeURIComponent(recipe.title)}`, {
+      const response = await fetch(`${API_BASE_URL}/api/recipes/${recipe.id}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         credentials: 'include',
@@ -167,6 +196,7 @@ export const RecipeProvider: React.FC<RecipeProviderProps> = ({ children, user }
     error,
     fetchRecipes,
     addRecipe,
+    createManualRecipe,
     updateRecipe,
     deleteRecipe,
     clearError,
