@@ -26,7 +26,7 @@ interface EditRecipeProps {
 export default function EditRecipe({ recipe: initialRecipe }: EditRecipeProps) {
   const [recipe, setRecipe] = useState<Recipe>(initialRecipe)
   const [error, setError] = useState('')
-  const { saveRecipe } = useRecipes()
+  const { updateRecipe } = useRecipes()
   const navigate = useNavigate()
 
   const handleSave = async (e: { preventDefault: () => void }) => {
@@ -34,10 +34,10 @@ export default function EditRecipe({ recipe: initialRecipe }: EditRecipeProps) {
     setError('')
 
     try {
-      await saveRecipe(recipe)
+      await updateRecipe(recipe)
       navigate('/')
     } catch (err) {
-      const message = err instanceof Error ? err.message : 'Failed to save recipe'
+      const message = err instanceof Error ? err.message : 'Failed to update recipe'
       setError(message)
     }
   }

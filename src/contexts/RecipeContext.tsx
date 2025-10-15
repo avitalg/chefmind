@@ -24,7 +24,8 @@ interface RecipeContextType {
   loading: boolean
   error: string
   fetchRecipes: () => Promise<void>
-  saveRecipe: (recipe: Recipe) => Promise<void>
+  addRecipe: (recipe: Recipe) => Promise<Recipe>
+  updateRecipe: (recipe: Recipe) => Promise<void>
   deleteRecipe: (id: string, place: number) => Promise<void>
   clearError: () => void
 }
@@ -74,9 +75,38 @@ export const RecipeProvider: React.FC<RecipeProviderProps> = ({ children, user }
     }
   }, [user])
 
-  const saveRecipe = async (recipe: Recipe) => {
+  const addRecipe = async (recipe: Recipe) => {
     try {
-      const response = await fetch(`${API_BASE_URL}/api/recipes/${recipe.id}`, {
+      const response = await fetch(`${API_BASE_URL}/api/recipes/import`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        credentials: 'include',
+        body: JSON.stringify({ url: recipe.url }),
+      })
+
+      if (!response.ok) {
+        if (response.status === 401) {
+          throw new Error('Please sign in to add recipes.')
+        }
+        throw new Error('Failed to add recipe')
+      }
+
+      const newRecipe = await response.json()
+      
+      // Add new recipe to local state
+      setRecipes((prev) => [...prev, newRecipe])
+      
+      return newRecipe
+    } catch (err) {
+      const message = err instanceof Error ? err.message : 'Failed to add recipe'
+      setError(message)
+      throw err
+    }
+  }
+
+  const updateRecipe = async (recipe: Recipe) => {
+    try {
+      const response = await fetch(`${API_BASE_URL}/api/recipes/${encodeURIComponent(recipe.title)}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         credentials: 'include',
@@ -85,17 +115,17 @@ export const RecipeProvider: React.FC<RecipeProviderProps> = ({ children, user }
 
       if (!response.ok) {
         if (response.status === 401) {
-          throw new Error('Please sign in to save recipes.')
+          throw new Error('Please sign in to update recipes.')
         }
-        throw new Error('Failed to save recipe')
+        throw new Error('Failed to update recipe')
       }
 
-      // Update local state
+      // Update existing recipe in local state
       setRecipes((prev) =>
         prev.map((r) => (r.id === recipe.id ? recipe : r))
-      );
+      )
     } catch (err) {
-      const message = err instanceof Error ? err.message : 'Failed to save recipe'
+      const message = err instanceof Error ? err.message : 'Failed to update recipe'
       setError(message)
       throw err
     }
@@ -136,7 +166,8 @@ export const RecipeProvider: React.FC<RecipeProviderProps> = ({ children, user }
     loading,
     error,
     fetchRecipes,
-    saveRecipe,
+    addRecipe,
+    updateRecipe,
     deleteRecipe,
     clearError,
   }

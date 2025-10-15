@@ -2,7 +2,15 @@ import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { useRecipes } from './contexts/RecipeContext'
 
-const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:3001';
+interface Recipe {
+  id: string
+  title: string
+  ingredients: Array<{ amount: number; unit: string; name: string }>
+  instructions: string[]
+  url?: string
+  _id?: string
+  direction: string
+}
 
 interface User {
   displayName: string
@@ -15,7 +23,7 @@ interface HomePageProps {
 
 export default function HomePage({ user }: HomePageProps) {
   const navigate = useNavigate()
-  const { recipes, loading, error, clearError, deleteRecipe, saveRecipe } = useRecipes()
+  const { recipes, loading, error, clearError, deleteRecipe, addRecipe } = useRecipes()
   const [importUrl, setImportUrl] = useState('')
   const [isImporting, setIsImporting] = useState(false)
   const [importError, setImportError] = useState('')
@@ -37,23 +45,9 @@ export default function HomePage({ user }: HomePageProps) {
     clearError()
 
     try {
-      const response = await fetch(`${API_BASE_URL}/api/recipes/import`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        credentials: 'include',
-        body: JSON.stringify({ url: importUrl }),
-      })
-
-      if (!response.ok) {
-        if (response.status === 401) {
-          setImportError('Please sign in to import recipes.')
-          return
-        }
-        throw new Error('Import failed')
-      }
-
-      const recipe = await response.json()
-      saveRecipe(recipe)
+      // Use addRecipe which handles the import internally
+      const recipe = await addRecipe({ url: importUrl } as Recipe)
+      
       // Navigate to edit page with the recipe ID
       navigate(`/edit/${recipe.id}`)
       setImportUrl('') // Clear the input after successful import

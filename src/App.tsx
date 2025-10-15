@@ -85,6 +85,7 @@ function App() {
               <div className="flex justify-between items-center h-16">
                 {/* Logo */}
                 <Link to="/" className="flex items-center">
+                   <img src="/chefmind.png" alt="ChefMind" className="w-8 h-8 mr-2" />
                   <span className="text-xl font-bold text-gray-800">ChefMind</span>
                 </Link>
 
