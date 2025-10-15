@@ -7,7 +7,7 @@ export default function Recipe() {
   const { id } = useParams<{ id: string }>()
   const { recipes } = useRecipes()
   const navigate = useNavigate()
-  const recipe = id ? recipes[id] : null
+  const recipe = id ? recipes.find(r => r.id === id) : null
 
   if (!recipe) {
     return (
