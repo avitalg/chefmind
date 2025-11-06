@@ -78,10 +78,10 @@ const Company = () => {
               Have questions, feedback, or ideas? We'd love to hear from you. 
               Reach out to us and help shape the future of recipe management.
             </p>
-            <div className="flex flex-wrap gap-4">
+            <div>
               <a 
                 href="/" 
-                className="inline-block bg-blue-500 text-white px-6 py-3 rounded-lg hover:bg-blue-600 transition-colors !text-white"
+                className="inline-block bg-blue-500 px-6 py-3 rounded-lg hover:bg-blue-600 transition-colors !text-white"
               >
                 Try ChefMind →
               </a>
