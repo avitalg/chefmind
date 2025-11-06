@@ -85,12 +85,6 @@ const Company = () => {
               >
                 Try ChefMind →
               </a>
-              <a 
-                href="/about" 
-                className="inline-block bg-gray-500 text-white px-6 py-3 rounded-lg hover:bg-gray-600 transition-colors !text-white"
-              >
-                Learn More →
-              </a>
             </div>
           </div>
         </div>

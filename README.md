@@ -9,6 +9,7 @@ ChefMind is a modern web application that allows users to import, create, organi
 - ✍️ **Manual Recipe Creation** - Create recipes from scratch with our intuitive form
 - ✏️ **Recipe Editing** - Customize and edit imported or manually created recipes
 - 📚 **Recipe Management** - Organize and manage your personal recipe collection
+- ❓ **FAQ Page** - Comprehensive help and frequently asked questions
 - 🎨 **Modern UI** - Beautiful, responsive interface built with Tailwind CSS
 - 🔄 **Real-time Updates** - Instant synchronization between frontend and backend
 
@@ -117,6 +118,7 @@ javascript/
 4. **View Recipes** - Browse your imported and created recipes on the homepage
 5. **Edit Recipes** - Click the edit button to customize any recipe
 6. **Delete Recipes** - Remove recipes you no longer need
+7. **Get Help** - Visit the FAQ page for answers to common questions
 
 ## API Endpoints
 

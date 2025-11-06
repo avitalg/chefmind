@@ -16,6 +16,7 @@ import HomePage from './homepage'
 import Recipe from './pages/recipe/recipe'
 import About from './pages/About'
 import Company from './pages/Company'
+import FAQ from './pages/FAQ'
 import CreateRecipe from './pages/CreateRecipe'
 import './App.css'
 
@@ -84,9 +85,9 @@ function App() {
     <QueryClientProvider client={queryClient}>
       <RecipeProvider user={user}>
         <Router>
-        <div className="min-h-screen bg-gray-100">
+        <div className="min-h-screen bg-gray-100 w-full overflow-x-hidden">
           <nav className="bg-white shadow-lg">
-            <div className="max-w-6xl mx-auto px-4">
+            <div className="max-w-6xl mx-auto px-4 w-full min-w-0">
               <div className="flex justify-between items-center h-16">
                 {/* Logo */}
                 <Link to="/" className="flex items-center">
@@ -101,6 +102,9 @@ function App() {
                   </Link>
                   <Link to="/company" className="text-gray-600 hover:text-gray-800 transition-colors">
                     Company
+                  </Link>
+                  <Link to="/faq" className="text-gray-600 hover:text-gray-800 transition-colors">
+                    FAQ
                   </Link>
                 </div>
 
@@ -164,6 +168,13 @@ function App() {
                     >
                       Company
                     </Link>
+                    <Link
+                      to="/faq"
+                      className="block px-3 py-2 text-gray-600 hover:text-gray-800 hover:bg-gray-100 rounded-md"
+                      onClick={() => setIsMobileMenuOpen(false)}
+                    >
+                      FAQ
+                    </Link>
                     <div className="border-t border-gray-200 pt-3 mt-3">
                       {user ? (
                         <div className="px-3 py-2">
@@ -199,11 +210,12 @@ function App() {
             </div>
           </nav>
 
-              <main className="max-w-6xl mx-auto py-6 sm:px-6 lg:px-8">
+              <main className="max-w-6xl mx-auto py-6 sm:px-6 lg:px-8 w-full min-w-0">
                 <Routes>
                   <Route path="/" element={<HomePage user={user} />} />
                   <Route path="/about" element={<About />} />
                   <Route path="/company" element={<Company />} />
+                  <Route path="/faq" element={<FAQ />} />
                   <Route path="/create" element={<CreateRecipe />} />
                   <Route path="/edit/:id" element={<EditRecipeWrapper />} />
                   <Route path="/recipe/:id" element={<Recipe />} />
