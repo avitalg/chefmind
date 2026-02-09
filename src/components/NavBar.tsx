@@ -79,23 +79,25 @@ export default function NavBar({ user, onSignIn, onSignOut }: NavBarProps) {
                 </svg>
               </span>
               {isRecipesDropdownOpen && (
-                <div className="absolute left-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-50 border border-gray-200">
-                  <Link
-                    to="/recipe-ideas"
-                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                    onClick={() => setIsRecipesDropdownOpen(false)}
-                  >
-                    Recipe ideas
-                  </Link>
-                  {user && (
+                <div className="absolute left-0 top-full pt-2 w-48 z-50">
+                  <div className="bg-white rounded-md shadow-lg py-1 border border-gray-200">
                     <Link
-                      to="/find"
+                      to="/recipe-ideas"
                       className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
                       onClick={() => setIsRecipesDropdownOpen(false)}
                     >
-                      Find by ingredients
+                      Recipe ideas
                     </Link>
-                  )}
+                    {user && (
+                      <Link
+                        to="/find"
+                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                        onClick={() => setIsRecipesDropdownOpen(false)}
+                      >
+                        Find by ingredients
+                      </Link>
+                    )}
+                  </div>
                 </div>
               )}
             </div>
