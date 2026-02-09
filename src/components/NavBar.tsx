@@ -15,6 +15,8 @@ const mobileNavLinkClass =
 
 export default function NavBar({ user, onSignIn, onSignOut }: NavBarProps) {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isRecipesDropdownOpen, setIsRecipesDropdownOpen] = useState(false);
+  const [isMobileRecipesOpen, setIsMobileRecipesOpen] = useState(false);
 
   const toggleMobileMenu = useCallback(() => {
     setIsMobileMenuOpen((prev) => !prev);
@@ -22,6 +24,7 @@ export default function NavBar({ user, onSignIn, onSignOut }: NavBarProps) {
 
   const closeMobileMenu = useCallback(() => {
     setIsMobileMenuOpen(false);
+    setIsMobileRecipesOpen(false);
   }, [])
 
   const handleMobileSignIn = useCallback(() => {
@@ -56,14 +59,46 @@ export default function NavBar({ user, onSignIn, onSignOut }: NavBarProps) {
             <Link to="/faq" className={navLinkClass}>
               FAQ
             </Link>
-            <Link to="/recipe-ideas" className={navLinkClass}>
-              Recipe ideas
-            </Link>
-            {user && (
-              <Link to="/find" className={navLinkClass}>
-                Find by ingredients
-              </Link>
-            )}
+            <div 
+              className="relative"
+              onMouseEnter={() => setIsRecipesDropdownOpen(true)}
+              onMouseLeave={() => setIsRecipesDropdownOpen(false)}
+            >
+              <span
+                className={`${navLinkClass} flex items-center cursor-pointer`}
+                aria-expanded={isRecipesDropdownOpen}
+              >
+                Recipes
+                <svg 
+                  className={`ml-1 h-4 w-4 transition-transform ${isRecipesDropdownOpen ? 'rotate-180' : ''}`}
+                  fill="none" 
+                  stroke="currentColor" 
+                  viewBox="0 0 24 24"
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                </svg>
+              </span>
+              {isRecipesDropdownOpen && (
+                <div className="absolute left-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 z-50 border border-gray-200">
+                  <Link
+                    to="/recipe-ideas"
+                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                    onClick={() => setIsRecipesDropdownOpen(false)}
+                  >
+                    Recipe ideas
+                  </Link>
+                  {user && (
+                    <Link
+                      to="/find"
+                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                      onClick={() => setIsRecipesDropdownOpen(false)}
+                    >
+                      Find by ingredients
+                    </Link>
+                  )}
+                </div>
+              )}
+            </div>
           </div>
 
           <div className="hidden md:flex items-center gap-3">
@@ -122,14 +157,48 @@ export default function NavBar({ user, onSignIn, onSignOut }: NavBarProps) {
               <Link to="/faq" className={mobileNavLinkClass} onClick={closeMobileMenu}>
                 FAQ
               </Link>
-              <Link to="/recipe-ideas" className={mobileNavLinkClass} onClick={closeMobileMenu}>
-                Recipe ideas
-              </Link>
-              {user && (
-                <Link to="/find" className={mobileNavLinkClass} onClick={closeMobileMenu}>
-                  Find by ingredients
-                </Link>
-              )}
+              <div>
+                <span
+                  onClick={() => setIsMobileRecipesOpen(!isMobileRecipesOpen)}
+                  className={`${mobileNavLinkClass} w-full text-left flex items-center justify-between cursor-pointer`}
+                >
+                  <span>Recipes</span>
+                  <svg 
+                    className={`h-4 w-4 transition-transform ${isMobileRecipesOpen ? 'rotate-180' : ''}`}
+                    fill="none" 
+                    stroke="currentColor" 
+                    viewBox="0 0 24 24"
+                  >
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                  </svg>
+                </span>
+                {isMobileRecipesOpen && (
+                  <div className="pl-4 mt-1 space-y-1">
+                    <Link
+                      to="/recipe-ideas"
+                      className={mobileNavLinkClass}
+                      onClick={() => {
+                        closeMobileMenu();
+                        setIsMobileRecipesOpen(false);
+                      }}
+                    >
+                      Recipe ideas
+                    </Link>
+                    {user && (
+                      <Link
+                        to="/find"
+                        className={mobileNavLinkClass}
+                        onClick={() => {
+                          closeMobileMenu();
+                          setIsMobileRecipesOpen(false);
+                        }}
+                      >
+                        Find by ingredients
+                      </Link>
+                    )}
+                  </div>
+                )}
+              </div>
               <div className="border-t border-gray-200 pt-3 mt-3">
                 {user ? (
                   <div className="px-3 py-2">
