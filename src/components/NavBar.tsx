@@ -53,12 +53,6 @@ export default function NavBar({ user, onSignIn, onSignOut }: NavBarProps) {
             <Link to="/about" className={navLinkClass}>
               About
             </Link>
-            <Link to="/company" className={navLinkClass}>
-              Company
-            </Link>
-            <Link to="/faq" className={navLinkClass}>
-              FAQ
-            </Link>
             <div 
               className="relative"
               onMouseEnter={() => setIsRecipesDropdownOpen(true)}
@@ -101,6 +95,12 @@ export default function NavBar({ user, onSignIn, onSignOut }: NavBarProps) {
                 </div>
               )}
             </div>
+            <Link to="/company" className={navLinkClass}>
+              Company
+            </Link>
+            <Link to="/faq" className={navLinkClass}>
+              FAQ
+            </Link>
           </div>
 
           <div className="hidden md:flex items-center gap-3">
