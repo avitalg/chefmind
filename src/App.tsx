@@ -1,6 +1,7 @@
 import { useCallback } from 'react';
 import {
   BrowserRouter as Router,
+  Navigate,
   Route,
   Routes,
   useNavigate,
@@ -20,6 +21,7 @@ import About from './pages/About';
 import Company from './pages/Company';
 import FAQ from './pages/FAQ';
 import CreateRecipe from './pages/CreateRecipe';
+import FindByIngredients from './pages/FindByIngredients';
 import './App.css';
 
 function App() {
@@ -38,6 +40,7 @@ function App() {
                 <Route path="/company" element={<Company />} />
                 <Route path="/faq" element={<FAQ />} />
                 <Route path="/create" element={<CreateRecipe />} />
+                <Route path="/find" element={user ? <FindByIngredients /> : <Navigate to="/" replace />} />
                 <Route path="/edit/:id" element={<EditRecipeWrapper />} />
                 <Route path="/recipe/:id" element={<Recipe />} />
               </Routes>

@@ -44,6 +44,9 @@ export default function NavBar({ user, onSignIn, onSignOut }: NavBarProps) {
           </Link>
 
           <div className="hidden md:flex items-center space-x-6">
+            <Link to="/" className={navLinkClass}>
+              Home
+            </Link>
             <Link to="/about" className={navLinkClass}>
               About
             </Link>
@@ -53,6 +56,11 @@ export default function NavBar({ user, onSignIn, onSignOut }: NavBarProps) {
             <Link to="/faq" className={navLinkClass}>
               FAQ
             </Link>
+            {user && (
+              <Link to="/find" className={navLinkClass}>
+                Find by ingredients
+              </Link>
+            )}
           </div>
 
           <div className="hidden md:flex items-center gap-3">
@@ -99,6 +107,9 @@ export default function NavBar({ user, onSignIn, onSignOut }: NavBarProps) {
         {isMobileMenuOpen && (
           <div className="md:hidden">
             <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-gray-50">
+              <Link to="/" className={mobileNavLinkClass} onClick={closeMobileMenu}>
+                Home
+              </Link>
               <Link to="/about" className={mobileNavLinkClass} onClick={closeMobileMenu}>
                 About
               </Link>
@@ -108,6 +119,11 @@ export default function NavBar({ user, onSignIn, onSignOut }: NavBarProps) {
               <Link to="/faq" className={mobileNavLinkClass} onClick={closeMobileMenu}>
                 FAQ
               </Link>
+              {user && (
+                <Link to="/find" className={mobileNavLinkClass} onClick={closeMobileMenu}>
+                  Find by ingredients
+                </Link>
+              )}
               <div className="border-t border-gray-200 pt-3 mt-3">
                 {user ? (
                   <div className="px-3 py-2">
