@@ -56,6 +56,9 @@ export default function NavBar({ user, onSignIn, onSignOut }: NavBarProps) {
             <Link to="/faq" className={navLinkClass}>
               FAQ
             </Link>
+            <Link to="/recipe-ideas" className={navLinkClass}>
+              Recipe ideas
+            </Link>
             {user && (
               <Link to="/find" className={navLinkClass}>
                 Find by ingredients
@@ -118,6 +121,9 @@ export default function NavBar({ user, onSignIn, onSignOut }: NavBarProps) {
               </Link>
               <Link to="/faq" className={mobileNavLinkClass} onClick={closeMobileMenu}>
                 FAQ
+              </Link>
+              <Link to="/recipe-ideas" className={mobileNavLinkClass} onClick={closeMobileMenu}>
+                Recipe ideas
               </Link>
               {user && (
                 <Link to="/find" className={mobileNavLinkClass} onClick={closeMobileMenu}>

@@ -22,6 +22,7 @@ import Company from './pages/Company';
 import FAQ from './pages/FAQ';
 import CreateRecipe from './pages/CreateRecipe';
 import FindByIngredients from './pages/FindByIngredients';
+import RecipeIdeas from './pages/RecipeIdeas';
 import './App.css';
 
 function App() {
@@ -41,6 +42,7 @@ function App() {
                 <Route path="/faq" element={<FAQ />} />
                 <Route path="/create" element={<CreateRecipe />} />
                 <Route path="/find" element={user ? <FindByIngredients /> : <Navigate to="/" replace />} />
+                <Route path="/recipe-ideas" element={<RecipeIdeas />} />
                 <Route path="/edit/:id" element={<EditRecipeWrapper />} />
                 <Route path="/recipe/:id" element={<Recipe />} />
               </Routes>

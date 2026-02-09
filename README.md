@@ -10,6 +10,7 @@ ChefMind is a modern web application that allows users to import, create, organi
 - ✏️ **Recipe Editing** - Customize and edit imported or manually created recipes
 - 📚 **Recipe Management** - Organize and manage your personal recipe collection
 - ❓ **FAQ Page** - Comprehensive help and frequently asked questions
+- 🥗 **Recipe ideas** (logged-out) - Enter ingredients and get 5 recipe title suggestions via Spoonacular API
 - 🎨 **Modern UI** - Beautiful, responsive interface built with Tailwind CSS
 - 🔄 **Real-time Updates** - Instant synchronization between frontend and backend
 
@@ -79,7 +80,7 @@ javascript/
    npm install
    ```
 
-4. **Set up environment variables**
+4. **Set up backend environment variables**
 
    Create a `.env` file in the `server` directory:
    ```env
@@ -93,7 +94,16 @@ javascript/
    FRONTEND_ORIGIN=http://localhost:5173
    ```
 
-5. **Start the development servers**
+5. **Set up frontend environment (optional)**
+
+   In `vite-project/`, you can add a `.env` file. For the **Recipe ideas** page (logged-out users), add:
+   ```env
+   VITE_API_URL=http://localhost:3001
+   VITE_SPOONACULAR_API_KEY=your_spoonacular_api_key
+   ```
+   Get a free key at [spoonacular.com/food-api](https://spoonacular.com/food-api).
+
+6. **Start the development servers**
 
    **Backend (Terminal 1):**
    ```bash
@@ -107,7 +117,7 @@ javascript/
    npm run dev
    ```
 
-6. **Open your browser**
+7. **Open your browser**
    Navigate to `http://localhost:5173`
 
 ## Usage
