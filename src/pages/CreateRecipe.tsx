@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useRecipes } from '../contexts/RecipeContext'
+import { useSEO } from '../hooks/useSEO'
 
 interface Ingredient {
   amount: number
@@ -19,6 +20,13 @@ interface Recipe {
 }
 
 export default function CreateRecipe() {
+  useSEO({
+    title: 'Create Recipe',
+    description: 'Create a new recipe from scratch with ChefMind. Add ingredients, instructions, and customize your recipe to build your perfect recipe collection.',
+    keywords: 'create recipe, new recipe, recipe builder, custom recipe, recipe creator',
+    url: '/create',
+  });
+
   const [recipe, setRecipe] = useState<Recipe>({
     id: '',
     title: '',

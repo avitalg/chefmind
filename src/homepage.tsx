@@ -1,6 +1,7 @@
-import { useState } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
-import { useRecipes } from './contexts/RecipeContext'
+import { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom'; 
+import { useRecipes } from './contexts/RecipeContext';
+import { useSEO } from './hooks/useSEO';
 
 interface Recipe {
   id: string
@@ -22,42 +23,49 @@ interface HomePageProps {
 }
 
 export default function HomePage({ user }: HomePageProps) {
-  const navigate = useNavigate()
-  const { recipes, loading, error, clearError, deleteRecipe, addRecipe } = useRecipes()
-  const [importUrl, setImportUrl] = useState('')
-  const [isImporting, setIsImporting] = useState(false)
-  const [importError, setImportError] = useState('')
+  useSEO({
+    title: 'Home',
+    description: 'Manage your personal recipe collection with ChefMind. Import recipes from any website, create custom recipes, and organize your culinary favorites all in one place.',
+    keywords: 'recipe collection, recipe management, import recipes, cooking recipes, recipe organizer',
+    url: '/',
+  });
+
+  const navigate = useNavigate();
+  const { recipes, loading, error, clearError, deleteRecipe, addRecipe } = useRecipes();
+  const [importUrl, setImportUrl] = useState('');
+  const [isImporting, setIsImporting] = useState(false);
+  const [importError, setImportError] = useState('');
 
   const handleDelete = async (place: number, id: string, title: string) => {
     if (window.confirm(`Are you sure you want to delete "${title}"?`)) {
       try {
-        await deleteRecipe(id, place)
+        await deleteRecipe(id, place);
       } catch (err) {
-        console.error('Failed to delete recipe:', err)
+        console.error('Failed to delete recipe:', err);
       }
     }
-  }
+  };
 
   const handleImport = async (e: { preventDefault: () => void }) => {
-    e.preventDefault()
-    setIsImporting(true)
-    setImportError('')
-    clearError()
+    e.preventDefault();
+    setIsImporting(true);
+    setImportError('');
+    clearError();
 
     try {
       // Use addRecipe which handles the import internally
-      const recipe = await addRecipe({ url: importUrl } as Recipe)
+      const recipe = await addRecipe({ url: importUrl } as Recipe);
       
       // Navigate to edit page with the recipe ID
-      navigate(`/edit/${recipe.id}`)
-      setImportUrl('') // Clear the input after successful import
+      navigate(`/edit/${recipe.id}`);
+      setImportUrl(''); // Clear the input after successful import
     } catch (err: unknown) {
-      const message = err instanceof Error ? err.message : 'Failed to import recipe'
-      setImportError(message)
+      const message = err instanceof Error ? err.message : 'Failed to import recipe';
+      setImportError(message);
     } finally {
-      setIsImporting(false)
+      setIsImporting(false);
     }
-  }
+  };
 
   return (
     <div className="space-y-8">

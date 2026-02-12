@@ -1,6 +1,7 @@
 import { useCallback, useState, useMemo } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useRecipes } from '../contexts/RecipeContext';
+import { useSEO } from '../hooks/useSEO';
 import type { Recipe } from '../hooks/useRecipes';
 
 function normalizeIngredient(name: string): string {
@@ -27,6 +28,13 @@ function getMatchingRecipes(recipes: Recipe[], ingredients: string[]): Recipe[] 
 }
 
 export default function FindByIngredients() {
+  useSEO({
+    title: 'Find Recipes by Ingredients',
+    description: 'Search your recipe collection by ingredients. Find recipes that use specific ingredients you have available with ChefMind\'s ingredient-based search.',
+    keywords: 'find recipes by ingredients, ingredient search, recipe search, cooking with ingredients',
+    url: '/find',
+  });
+
   const navigate = useNavigate();
   const { recipes, loading, error } = useRecipes();
   const [ingredientInput, setIngredientInput] = useState('');

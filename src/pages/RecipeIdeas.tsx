@@ -1,4 +1,5 @@
 import { useCallback, useState } from 'react';
+import { useSEO } from '../hooks/useSEO';
 
 const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:3001';
 
@@ -22,6 +23,12 @@ async function fetchRecipeIdeas(ingredients: string[]): Promise<string[]> {
 }
 
 export default function RecipeIdeas() {
+  useSEO({
+    title: 'Recipe Ideas',
+    description: 'Get personalized recipe suggestions based on ingredients you have. Discover new recipes and cooking ideas with ChefMind\'s AI-powered recipe generator.',
+    keywords: 'recipe ideas, recipe suggestions, cooking ideas, ingredient-based recipes, recipe generator',
+    url: '/recipe-ideas',
+  });
   const [ingredientInput, setIngredientInput] = useState('');
   const [ingredients, setIngredients] = useState<string[]>([]);
   const [titles, setTitles] = useState<string[] | null>(null);

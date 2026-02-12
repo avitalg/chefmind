@@ -1,13 +1,44 @@
-import { Link, useNavigate, useParams } from 'react-router-dom'
-import { useRecipes } from '../../contexts/RecipeContext'
-import './recipe.css'
+import { Link, useNavigate, useParams } from 'react-router-dom';
+import { useRecipes } from '../../contexts/RecipeContext';
+import { useSEO } from '../../hooks/useSEO';
+import './recipe.css';
 
 
 export default function Recipe() {
   const { id } = useParams<{ id: string }>()
-  const { recipes } = useRecipes()
-  const navigate = useNavigate()
-  const recipe = id ? recipes.find(r => r.id === id) : null
+  const { recipes } = useRecipes();
+  const navigate = useNavigate();
+  const recipe = id ? recipes.find(r => r.id === id) : null;
+
+  // SEO with structured data for recipe
+  const siteUrl = typeof window !== 'undefined' ? window.location.origin : '';
+  useSEO({
+    title: recipe?.title || 'Recipe',
+    description: recipe 
+      ? `Recipe for ${recipe.title}. ${recipe.ingredients.length} ingredients. ${recipe.instructions.length} steps.`
+      : 'View recipe details',
+    keywords: recipe 
+      ? `${recipe.title}, recipe, cooking, ${recipe.ingredients.map(i => i.name).join(', ')}`
+      : 'recipe, cooking',
+    url: recipe ? `/recipe/${id}` : undefined,
+    image: '/chefmind.png',
+    type: 'article',
+    structuredData: recipe ? {
+      '@context': 'https://schema.org',
+      '@type': 'Recipe',
+      name: recipe.title,
+      description: `Recipe for ${recipe.title}`,
+      recipeIngredient: recipe.ingredients.map(ing => 
+        `${ing.amount} ${ing.unit} ${ing.name}`.trim()
+      ),
+      recipeInstructions: recipe.instructions.map((instruction, index) => ({
+        '@type': 'HowToStep',
+        position: index + 1,
+        text: instruction,
+      })),
+      ...(recipe.url ? { url: recipe.url } : {}),
+    } : undefined,
+  });
 
   if (!recipe) {
     return (
@@ -27,7 +58,7 @@ export default function Recipe() {
   return (
     <div className="max-w-4xl mx-auto p-6" dir={recipe.direction} style={{ textAlign }}>
       {/* Header */}
-      <div className="mb-8">
+      <header className="mb-8">
         <Link to="/" className="inline-flex items-center text-blue-500 hover:text-blue-700 mb-4">
           <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path
@@ -60,11 +91,11 @@ export default function Recipe() {
             View original recipe
           </a>
         )}
-      </div>
+      </header>
 
-      <div className="grid md:grid-cols-2 gap-8">
+      <article className="grid md:grid-cols-2 gap-8">
         {/* Ingredients */}
-        <div className="bg-white rounded-lg shadow-md p-6">
+        <section className="bg-white rounded-lg shadow-md p-6">
           <h2 className="text-2xl font-bold text-gray-800 mb-6 flex items-center">
             <svg
               className="w-6 h-6 mr-2 text-green-500"
@@ -81,25 +112,28 @@ export default function Recipe() {
             </svg>
             Ingredients
           </h2>
-          <div className="space-y-3">
+          <ul className="space-y-3" itemScope itemType="https://schema.org/ItemList">
             {recipe.ingredients.map((ingredient, index) => (
-              <div
+              <li
                 key={index}
                 className="flex items-center p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors"
+                itemProp="itemListElement"
+                itemScope
+                itemType="https://schema.org/ListItem"
               >
                 <div className="flex-1">
                   <span className="font-semibold text-gray-800">
                     {ingredient.amount} {ingredient.unit}
                   </span>
-                  <span className="ml-2 text-gray-600">{ingredient.name}</span>
+                  <span className="ml-2 text-gray-600" itemProp="name">{ingredient.name}</span>
                 </div>
-              </div>
+              </li>
             ))}
-          </div>
-        </div>
+          </ul>
+        </section>
 
         {/* Instructions */}
-        <div className="bg-white rounded-lg shadow-md p-6">
+        <section className="bg-white rounded-lg shadow-md p-6">
           <h2 className="text-2xl font-bold text-gray-800 mb-6 flex items-center">
             <svg
               className="w-6 h-6 mr-2 text-blue-500"
@@ -116,18 +150,18 @@ export default function Recipe() {
             </svg>
             Instructions
           </h2>
-          <ol className="space-y-4">
+          <ol className="space-y-4" itemScope itemType="https://schema.org/HowToSection">
             {recipe.instructions.map((instruction, index) => (
-              <li key={index} className="flex items-start">
-                <span className="flex-shrink-0 w-8 h-8 bg-blue-500 text-white rounded-full flex items-center justify-center text-sm font-bold mr-4 mt-1">
+              <li key={index} className="flex items-start" itemProp="itemListElement" itemScope itemType="https://schema.org/HowToStep">
+                <span className="flex-shrink-0 w-8 h-8 bg-blue-500 text-white rounded-full flex items-center justify-center text-sm font-bold mr-4 mt-1" itemProp="position">
                   {index + 1}
                 </span>
-                <p className="text-gray-700 leading-relaxed">{instruction}</p>
+                <p className="text-gray-700 leading-relaxed" itemProp="text">{instruction}</p>
               </li>
             ))}
           </ol>
-        </div>
-      </div>
+        </section>
+      </article>
 
       {/* Action Buttons */}
       <div className="mt-8 flex justify-center space-x-4">

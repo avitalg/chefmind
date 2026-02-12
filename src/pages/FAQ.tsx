@@ -1,6 +1,43 @@
-import { useState } from 'react'
+import { useState } from 'react';
+import { useSEO } from '../hooks/useSEO';
 
 const FAQ = () => {
+  useSEO({
+    title: 'Frequently Asked Questions',
+    description: 'Find answers to common questions about ChefMind, recipe import, editing, security, and how to get the most out of your recipe management experience.',
+    keywords: 'chefmind faq, recipe management faq, cooking app help, recipe import questions',
+    url: '/faq',
+    structuredData: {
+      '@context': 'https://schema.org',
+      '@type': 'FAQPage',
+      mainEntity: [
+        {
+          '@type': 'Question',
+          name: 'How do I import a recipe from a website?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'Simply paste the recipe URL into the import form on the homepage and click "Import Recipe". ChefMind will automatically extract the ingredients, instructions, and other details from the website.'
+          }
+        },
+        {
+          '@type': 'Question',
+          name: 'Can I create recipes manually without importing from a website?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'Yes! Click the "Create Recipe" button on the homepage to add recipes from scratch. You can enter the title, ingredients, and instructions manually.'
+          }
+        },
+        {
+          '@type': 'Question',
+          name: 'Is my recipe data secure and private?',
+          acceptedAnswer: {
+            '@type': 'Answer',
+            text: 'Absolutely! Your recipes are stored securely and are only accessible to you. We use JWT authentication and never share your personal data with third parties.'
+          }
+        }
+      ]
+    }
+  });
   const [openItems, setOpenItems] = useState<Set<number>>(new Set());
 
   const toggleItem = (index: number) => {

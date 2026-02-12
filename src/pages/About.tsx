@@ -1,4 +1,13 @@
+import { useSEO } from '../hooks/useSEO';
+
 const About = () => {
+  useSEO({
+    title: 'About ChefMind',
+    description: 'Learn about ChefMind, a modern recipe management application that makes it easy to collect, organize, and customize recipes from any website.',
+    keywords: 'about chefmind, recipe management, cooking app, recipe collection',
+    url: '/about',
+  });
+
   return (
     <div className="max-w-4xl mx-auto py-8 px-4">
       <div className="bg-white shadow-lg rounded-lg p-8">

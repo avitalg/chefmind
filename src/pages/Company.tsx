@@ -1,4 +1,13 @@
+import { useSEO } from '../hooks/useSEO';
+
 const Company = () => {
+  useSEO({
+    title: 'Our Company',
+    description: 'Learn about ChefMind\'s mission, vision, and values. Discover how we\'re building the future of recipe management through innovative technology.',
+    keywords: 'chefmind company, recipe management company, cooking app company, about us',
+    url: '/company',
+  });
+
   return (
     <div className="max-w-6xl mx-auto py-8 px-4">
       <div className="bg-white shadow-lg rounded-lg p-8">
