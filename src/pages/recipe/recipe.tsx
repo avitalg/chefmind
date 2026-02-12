@@ -11,7 +11,6 @@ export default function Recipe() {
   const recipe = id ? recipes.find(r => r.id === id) : null;
 
   // SEO with structured data for recipe
-  const siteUrl = typeof window !== 'undefined' ? window.location.origin : '';
   useSEO({
     title: recipe?.title || 'Recipe',
     description: recipe 
