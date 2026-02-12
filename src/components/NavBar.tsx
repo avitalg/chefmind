@@ -1,6 +1,6 @@
-import { useCallback, useState } from 'react'
-import { Link } from 'react-router-dom'
-import type { User } from '../hooks/useAuth'
+import { useCallback, useState } from 'react';
+import { Link } from 'react-router-dom';
+import type { User } from '../hooks/useAuth';
 
 interface NavBarProps {
   user: User | null
@@ -119,7 +119,7 @@ export default function NavBar({ user, onSignIn, onSignOut }: NavBarProps) {
               <button
                 type="button"
                 onClick={onSignIn}
-                className="px-3 py-1 rounded bg-blue-500 text-white hover:bg-blue-600"
+                className="px-3 py-1 rounded bg-blue-500 text-white hover:bg-blue-600 ml-3"
               >
                 Sign in with Google
               </button>
@@ -218,7 +218,7 @@ export default function NavBar({ user, onSignIn, onSignOut }: NavBarProps) {
                   <button
                     type="button"
                     onClick={handleMobileSignIn}
-                    className="w-full text-left px-3 py-2 text-gray-600 hover:text-gray-800 hover:bg-gray-100 rounded-md"
+                    className="w-full text-left px-3 py-2 text-gray-600 hover:text-gray-800 hover:bg-gray-100 rounded-md mt-2"
                   >
                     Sign in with Google
                   </button>

@@ -34,7 +34,7 @@ function App() {
         <Router>
           <div className="min-h-screen bg-gray-100 w-full overflow-x-hidden">
             <NavBar user={user} onSignIn={signIn} onSignOut={signOut} />
-            <main className="max-w-6xl mx-auto py-6 sm:px-6 lg:px-8 w-full min-w-0">
+            <main className="max-w-6xl mx-auto py-6 sm:px-6 lg:px-8 w-screen min-w-0">
               <Routes>
                 <Route path="/" element={<HomePage user={user} />} />
                 <Route path="/about" element={<About />} />
