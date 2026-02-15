@@ -11,70 +11,72 @@ const About = () => {
   return (
     <div className="max-w-4xl mx-auto py-8 px-4">
       <div className="bg-white shadow-lg rounded-lg p-8">
-        <h1 className="text-4xl font-bold text-gray-800 mb-8">About ChefMind</h1>
+        <h1 className="text-3xl sm:text-4xl font-bold text-gray-800 mb-6 sm:mb-8 leading-tight">About ChefMind</h1>
         
         <div className="prose prose-lg max-w-none">
           <p className="text-gray-600 mb-6 text-lg leading-relaxed">
-            ChefMind is a modern recipe management application that makes it easy to collect, 
-            organize, and customize recipes from any website. Whether you're a home cook 
-            looking to build your personal recipe collection or a professional chef managing 
-            multiple recipes, ChefMind provides the tools you need.
+            ChefMind is your intelligent recipe companion, designed to transform how you collect, 
+            organize, and personalize recipes. Whether you're discovering new dishes from your 
+            favorite food blogs, capturing recipes from images, or creating your own culinary 
+            masterpieces, ChefMind makes recipe management effortless and enjoyable.
           </p>
 
-          <h2 className="text-2xl font-semibold text-gray-800 mt-8 mb-4">Key Features</h2>
+          <h2 className="text-xl sm:text-2xl font-semibold text-gray-800 mt-6 sm:mt-8 mb-3 sm:mb-4 leading-tight">Why ChefMind?</h2>
           <ul className="list-disc list-inside space-y-3 text-gray-600">
-            <li><strong>Easy Recipe Import:</strong> Simply paste any recipe URL and let our AI-powered parser extract all the details</li>
-            <li><strong>Smart Organization:</strong> Automatically categorize and organize your recipes for easy browsing</li>
-            <li><strong>Customizable Recipes:</strong> Edit ingredients, instructions, and details to make recipes your own</li>
-            <li><strong>Secure Authentication:</strong> Sign in with Google for a secure, personalized experience</li>
-            <li><strong>Modern Interface:</strong> Clean, responsive design that works on all devices</li>
-            <li><strong>Real-time Updates:</strong> Changes sync instantly across all your devices</li>
+            <li><strong>AI-Powered Import:</strong> Instantly extract recipes from any website URL or upload an image - our advanced AI handles all the parsing</li>
+            <li><strong>Image-to-Recipe Magic:</strong> Simply snap a photo of a recipe and watch it transform into a structured, editable format</li>
+            <li><strong>Complete Customization:</strong> Edit ingredients, adjust quantities, modify instructions, and personalize every detail to match your preferences</li>
+            <li><strong>Recipe Ideas Generator:</strong> Discover new recipes based on ingredients you have, sparking creativity in your kitchen</li>
+            <li><strong>Find by Ingredients:</strong> Search your collection by available ingredients to make the most of what's in your pantry</li>
+            <li><strong>Secure & Private:</strong> Your recipes are yours alone - secure Google authentication ensures your collection stays private</li>
+            <li><strong>Accessible Everywhere:</strong> Beautiful, responsive design that works seamlessly on desktop, tablet, and mobile devices</li>
           </ul>
 
-          <h2 className="text-2xl font-semibold text-gray-800 mt-8 mb-4">How It Works</h2>
+          <h2 className="text-xl sm:text-2xl font-semibold text-gray-800 mt-6 sm:mt-8 mb-3 sm:mb-4 leading-tight">How It Works</h2>
           <div className="grid md:grid-cols-3 gap-6 mt-6">
             <div className="text-center">
               <div className="bg-[#EBF4F6] rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
                 <span className="text-2xl font-bold text-[#088395]">1</span>
               </div>
-              <h3 className="font-semibold text-gray-800 mb-2">Import</h3>
-              <p className="text-gray-600 text-sm">Paste any recipe URL and our AI will extract all the details automatically</p>
+              <h3 className="font-semibold text-gray-800 mb-2">Import or Create</h3>
+              <p className="text-gray-600 text-sm">Import recipes from URLs, upload recipe images, or create your own from scratch</p>
             </div>
             <div className="text-center">
-              <div className="bg-green-100 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
-                <span className="text-2xl font-bold text-green-600">2</span>
+              <div className="bg-[#7AB2B2] rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+                <span className="text-2xl font-bold text-white">2</span>
               </div>
               <h3 className="font-semibold text-gray-800 mb-2">Customize</h3>
-              <p className="text-gray-600 text-sm">Edit ingredients, instructions, and details to make the recipe perfect for you</p>
+              <p className="text-gray-600 text-sm">Edit ingredients, adjust quantities, modify instructions, and make each recipe uniquely yours</p>
             </div>
             <div className="text-center">
               <div className="bg-[#EBF4F6] rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
                 <span className="text-2xl font-bold text-[#088395]">3</span>
               </div>
-              <h3 className="font-semibold text-gray-800 mb-2">Enjoy</h3>
-              <p className="text-gray-600 text-sm">Access your personalized recipe collection anytime, anywhere</p>
+              <h3 className="font-semibold text-gray-800 mb-2">Cook & Enjoy</h3>
+              <p className="text-gray-600 text-sm">Access your personalized recipe collection anytime, anywhere, and never lose a great recipe again</p>
             </div>
           </div>
 
-          <h2 className="text-2xl font-semibold text-gray-800 mt-8 mb-4">Privacy & Security</h2>
+          <h2 className="text-xl sm:text-2xl font-semibold text-gray-800 mt-6 sm:mt-8 mb-3 sm:mb-4 leading-tight">Privacy & Security</h2>
           <p className="text-gray-600 mb-4">
-            Your privacy is important to us. ChefMind uses secure authentication and 
-            encrypts your data. We don't share your personal information or recipes 
-            with third parties. All data is stored securely and you have full control 
-            over your recipe collection.
+            Your privacy and data security are our top priorities. ChefMind uses industry-standard 
+            Google authentication to ensure your account is secure. Your recipes and personal 
+            information are stored safely and never shared with third parties. You have complete 
+            control over your recipe collection - add, edit, or delete recipes whenever you want.
           </p>
 
-          <div className="bg-gray-50 rounded-lg p-6 mt-8">
-            <h3 className="font-semibold text-gray-800 mb-3">Get Started Today</h3>
-            <p className="text-gray-600 mb-4">
-              Ready to build your perfect recipe collection? Sign in with Google and 
-              start importing your favorite recipes in minutes.
+          <div className="bg-[#EBF4F6] rounded-lg p-6 mt-8">
+            <h3 className="font-semibold text-[#09637E] mb-3">Ready to Transform Your Cooking?</h3>
+            <p className="text-gray-700 mb-4">
+              Join thousands of home cooks and chefs who are already using ChefMind to organize 
+              their recipe collections. Sign in with Google and start building your personalized 
+              recipe library in minutes - it's free and easy!
             </p>
             <a 
               href="/" 
-              className="inline-block bg-[#088395] px-6 py-3 rounded-lg hover:bg-[#09637E] transition-colors !text-white"
+              className="inline-block bg-[#088395] px-6 py-3 rounded-lg hover:bg-[#09637E] transition-colors !text-white font-medium"
             >
-              Start Cooking →
+              Get Started Now →
             </a>
           </div>
         </div>

@@ -11,7 +11,7 @@ const Company = () => {
   return (
     <div className="max-w-6xl mx-auto py-8 px-4">
       <div className="bg-white shadow-lg rounded-lg p-8">
-        <h1 className="text-4xl font-bold text-gray-800 mb-8">Our Company</h1>
+        <h1 className="text-3xl sm:text-4xl font-bold text-gray-800 mb-6 sm:mb-8 leading-tight">Our Company</h1>
         
         <div className="prose prose-lg max-w-none">
           <p className="text-gray-600 mb-6 text-lg leading-relaxed">
@@ -20,21 +20,21 @@ const Company = () => {
             Our mission is to make recipe management effortless and intuitive.
           </p>
 
-          <h2 className="text-2xl font-semibold text-gray-800 mt-8 mb-4">Our Mission</h2>
+          <h2 className="text-xl sm:text-2xl font-semibold text-gray-800 mt-6 sm:mt-8 mb-3 sm:mb-4 leading-tight">Our Mission</h2>
           <p className="text-gray-600 mb-6">
             To empower home cooks and professional chefs by providing a seamless platform for collecting, 
             organizing, and customizing recipes from any source. We're building the future of recipe management 
             through innovative technology and user-centered design.
           </p>
 
-          <h2 className="text-2xl font-semibold text-gray-800 mt-8 mb-4">Our Vision</h2>
+          <h2 className="text-xl sm:text-2xl font-semibold text-gray-800 mt-6 sm:mt-8 mb-3 sm:mb-4 leading-tight">Our Vision</h2>
           <p className="text-gray-600 mb-6">
             A world where every cook has their perfect recipe collection at their fingertips, where inspiration 
             flows freely, and where cooking becomes more creative and less chaotic. We envision ChefMind as the 
             central hub for culinary creativity and knowledge sharing.
           </p>
 
-          <h2 className="text-2xl font-semibold text-gray-800 mt-8 mb-4">Our Values</h2>
+          <h2 className="text-xl sm:text-2xl font-semibold text-gray-800 mt-6 sm:mt-8 mb-3 sm:mb-4 leading-tight">Our Values</h2>
           <div className="grid md:grid-cols-2 gap-6">
             <div className="bg-[#EBF4F6] p-6 rounded-lg">
               <h3 className="font-semibold text-[#09637E] mb-3">Innovation</h3>
@@ -66,7 +66,7 @@ const Company = () => {
             </div>
           </div>
 
-          <h2 className="text-2xl font-semibold text-gray-800 mt-8 mb-4">Our Story</h2>
+          <h2 className="text-xl sm:text-2xl font-semibold text-gray-800 mt-6 sm:mt-8 mb-3 sm:mb-4 leading-tight">Our Story</h2>
           <div className="space-y-4 text-gray-600">
             <p>
               ChefMind started as a personal project when our founder struggled to keep track of recipes 

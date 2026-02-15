@@ -83,7 +83,7 @@ export default function RecipeIdeas() {
   return (
     <div className="space-y-8">
       <div className="bg-white shadow-xl rounded-2xl p-8 border border-gray-100">
-        <h1 className="text-2xl font-bold text-gray-800 mb-2">Recipe ideas</h1>
+        <h1 className="text-xl sm:text-2xl font-bold text-gray-800 mb-2 sm:mb-4 leading-tight">Recipe ideas</h1>
         <p className="text-gray-600 mb-6">
           Enter ingredients you have and we&apos;ll suggest 5 recipes you can make (titles only).
         </p>

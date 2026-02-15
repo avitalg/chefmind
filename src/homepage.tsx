@@ -131,14 +131,14 @@ export default function HomePage({ user, onSignIn }: HomePageProps) {
     <div className="space-y-8">
       {/* Hero Section */}
       <div className="text-center py-12 bg-gradient-to-r from-[#088395] to-[#09637E] rounded-2xl text-white">
-        <h1 className="text-4xl md:text-5xl font-bold mb-4">Welcome to ChefMind</h1>
-        <p className="text-xl md:text-2xl mb-8 opacity-90">
-          {user ? `Hello, ${user.displayName}!` : 'Your Personal Recipe Collection'}
+        <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 px-4 leading-tight">Welcome to ChefMind</h1>
+        <p className="text-lg sm:text-xl md:text-2xl mb-8 opacity-90 px-4">
+          {user ? `Hello, ${user.displayName}!` : 'Your Intelligent Recipe Companion'}
         </p>
-        <p className="text-lg opacity-80 max-w-2xl mx-auto">
+        <p className="text-base sm:text-lg opacity-80 max-w-2xl mx-auto px-4">
           {user
-            ? 'Import, organize, and manage your favorite recipes in one place.'
-            : 'Sign in to start building your personal recipe collection and never lose a great recipe again.'}
+            ? 'Import recipes from URLs or images, create your own, and discover new dishes - all in one beautiful, organized place.'
+            : 'Transform how you collect and organize recipes. Import from websites, upload images, or create your own - all with AI-powered intelligence.'}
         </p>
       </div>
 
@@ -160,8 +160,13 @@ export default function HomePage({ user, onSignIn }: HomePageProps) {
               />
             </svg>
           </div>
-          <h2 className="text-2xl font-bold text-gray-800">Import New Recipe</h2>
+          <h2 className="text-xl sm:text-2xl font-bold text-gray-800">Import Recipe</h2>
         </div>
+        <p className="text-gray-600 mb-6">
+          {user 
+            ? "Import recipes from any website URL or upload a recipe image. Our AI will automatically extract all the details for you."
+            : "Sign in to import recipes from websites or images. Our AI-powered system extracts ingredients, instructions, and all recipe details automatically."}
+        </p>
 
         {/* Import Mode Toggle */}
         <div className="mb-6">
@@ -433,12 +438,12 @@ export default function HomePage({ user, onSignIn }: HomePageProps) {
               />
             </svg>
           </div>
-          <h2 className="text-2xl font-bold text-gray-800">Create New Recipe</h2>
+          <h2 className="text-xl sm:text-2xl font-bold text-gray-800">Create Recipe</h2>
         </div>
         <p className="text-gray-600 mb-6">
           {user 
-            ? "Don't have a recipe URL? Create your own recipe from scratch with our easy-to-use form."
-            : "Sign in to create your own recipes from scratch with our easy-to-use form."}
+            ? "Have a family recipe or want to create something new? Build your own recipe from scratch with our intuitive form."
+            : "Sign in to create your own recipes from scratch. Perfect for family recipes, experiments, or documenting your culinary creations."}
         </p>
         {user ? (
           <Link
@@ -504,7 +509,7 @@ export default function HomePage({ user, onSignIn }: HomePageProps) {
                 />
               </svg>
             </div>
-            <h2 className="text-2xl font-bold text-gray-800">Your Recipes</h2>
+            <h2 className="text-xl sm:text-2xl font-bold text-gray-800">Your Recipes</h2>
           </div>
           {user && recipes.length > 0 && (
             <span className="bg-[#EBF4F6] text-[#09637E] text-sm font-medium px-3 py-1 rounded-full">

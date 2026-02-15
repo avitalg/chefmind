@@ -43,7 +43,7 @@ export default function Recipe() {
     return (
       <div className="min-h-screen flex items-center justify-center">
         <div className="text-center">
-          <h1 className="text-2xl font-bold text-gray-800 mb-4">Recipe not found</h1>
+          <h1 className="text-xl sm:text-2xl font-bold text-gray-800 mb-4 leading-tight">Recipe not found</h1>
           <Link to="/" className="text-[#088395] hover:text-[#09637E]">
             ← Back to Recipes
           </Link>
@@ -70,7 +70,7 @@ export default function Recipe() {
           Back to Recipes
         </Link>
 
-        <h1 className="text-4xl font-bold text-gray-800 mb-2">{recipe.title}</h1>
+        <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-800 mb-2 sm:mb-4 leading-tight break-words">{recipe.title}</h1>
 
         {recipe.url && (
           <a
@@ -95,7 +95,7 @@ export default function Recipe() {
       <article className="grid md:grid-cols-2 gap-8">
         {/* Ingredients */}
         <section className="bg-white rounded-lg shadow-md p-6">
-          <h2 className="text-2xl font-bold text-gray-800 mb-6 flex items-center">
+          <h2 className="text-xl sm:text-2xl font-bold text-gray-800 mb-4 sm:mb-6 flex items-center leading-tight">
             <svg
               className="w-6 h-6 mr-2 text-green-500"
               fill="none"
@@ -133,7 +133,7 @@ export default function Recipe() {
 
         {/* Instructions */}
         <section className="bg-white rounded-lg shadow-md p-6">
-          <h2 className="text-2xl font-bold text-gray-800 mb-6 flex items-center">
+          <h2 className="text-xl sm:text-2xl font-bold text-gray-800 mb-4 sm:mb-6 flex items-center leading-tight">
             <svg
               className="w-6 h-6 mr-2 text-[#088395]"
               fill="none"

@@ -92,7 +92,7 @@ export default function CreateRecipe() {
         </button>
       </div>
 
-      <h1 className="text-2xl font-bold mb-6">Create New Recipe</h1>
+      <h1 className="text-xl sm:text-2xl font-bold mb-4 sm:mb-6 leading-tight">Create New Recipe</h1>
 
       <form onSubmit={handleSave} className="space-y-6">
         <div>

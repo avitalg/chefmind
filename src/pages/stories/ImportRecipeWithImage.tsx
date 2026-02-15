@@ -29,7 +29,7 @@ export default function ImportRecipeWithImage() {
     <div className="max-w-4xl mx-auto py-8 px-4">
       <article className="bg-white shadow-lg rounded-lg p-8">
         <header className="mb-8">
-          <h1 className="text-4xl font-bold text-gray-800 mb-4">
+          <h1 className="text-3xl sm:text-4xl font-bold text-gray-800 mb-4 sm:mb-6 leading-tight">
             How to Import Recipes from Images
           </h1>
           <p className="text-lg text-gray-600">
@@ -39,7 +39,7 @@ export default function ImportRecipeWithImage() {
 
         <div className="prose prose-lg max-w-none">
           <section className="mb-8">
-            <h2 className="text-2xl font-semibold text-gray-800 mt-8 mb-4">
+            <h2 className="text-xl sm:text-2xl font-semibold text-gray-800 mt-6 sm:mt-8 mb-3 sm:mb-4 leading-tight">
               Why Import Recipes from Images?
             </h2>
             <p className="text-gray-600 mb-4 leading-relaxed">
@@ -57,7 +57,7 @@ export default function ImportRecipeWithImage() {
           </section>
 
           <section className="mb-8">
-            <h2 className="text-2xl font-semibold text-gray-800 mt-8 mb-4">
+            <h2 className="text-xl sm:text-2xl font-semibold text-gray-800 mt-6 sm:mt-8 mb-3 sm:mb-4 leading-tight">
               Step-by-Step Guide
             </h2>
             
@@ -175,7 +175,7 @@ export default function ImportRecipeWithImage() {
           </section>
 
           <section className="mb-8">
-            <h2 className="text-2xl font-semibold text-gray-800 mt-8 mb-4">
+            <h2 className="text-xl sm:text-2xl font-semibold text-gray-800 mt-6 sm:mt-8 mb-3 sm:mb-4 leading-tight">
               Best Practices for Image Import
             </h2>
             <div className="bg-gray-50 rounded-lg p-6 space-y-4">
@@ -220,7 +220,7 @@ export default function ImportRecipeWithImage() {
           </section>
 
           <section className="mb-8">
-            <h2 className="text-2xl font-semibold text-gray-800 mt-8 mb-4">
+            <h2 className="text-xl sm:text-2xl font-semibold text-gray-800 mt-6 sm:mt-8 mb-3 sm:mb-4 leading-tight">
               Common Use Cases
             </h2>
             <div className="grid md:grid-cols-2 gap-4">
@@ -252,7 +252,7 @@ export default function ImportRecipeWithImage() {
           </section>
 
           <section className="mb-8">
-            <h2 className="text-2xl font-semibold text-gray-800 mt-8 mb-4">
+            <h2 className="text-xl sm:text-2xl font-semibold text-gray-800 mt-6 sm:mt-8 mb-3 sm:mb-4 leading-tight">
               Troubleshooting
             </h2>
             <div className="space-y-4">

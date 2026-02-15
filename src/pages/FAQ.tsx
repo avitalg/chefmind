@@ -104,7 +104,7 @@ const FAQ = () => {
   return (
     <div className="max-w-4xl mx-auto py-8 px-4 w-full min-w-0">
       <div className="text-center mb-12">
-        <h1 className="text-4xl font-bold text-gray-800 mb-4">Frequently Asked Questions</h1>
+        <h1 className="text-3xl sm:text-4xl font-bold text-gray-800 mb-4 sm:mb-6 leading-tight px-2">Frequently Asked Questions</h1>
         <p className="text-lg text-gray-600 max-w-2xl mx-auto">
           Find answers to common questions about ChefMind and how to get the most out of your recipe management experience.
         </p>
