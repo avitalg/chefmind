@@ -9,9 +9,9 @@ interface NavBarProps {
 }
 
 const navLinkClass =
-  'text-gray-600 hover:text-gray-800 transition-colors';
+  'text-xs text-gray-600 hover:text-gray-800 transition-colors';
 const activeNavLinkClass =
-  'text-blue-600 font-semibold hover:text-blue-700 transition-colors';
+  'text-xs text-blue-600 font-semibold hover:text-blue-700 transition-colors';
 const mobileNavLinkClass =
   'block px-3 py-2 text-gray-600 hover:text-gray-800 hover:bg-gray-100 rounded-md';
 const activeMobileNavLinkClass =
@@ -24,6 +24,8 @@ export default function NavBar({ user, onSignIn, onSignOut }: NavBarProps) {
   const [isMobileRecipesOpen, setIsMobileRecipesOpen] = useState(false);
   const [isStoriesDropdownOpen, setIsStoriesDropdownOpen] = useState(false);
   const [isMobileStoriesOpen, setIsMobileStoriesOpen] = useState(false);
+  const [isCompanyDropdownOpen, setIsCompanyDropdownOpen] = useState(false);
+  const [isMobileCompanyOpen, setIsMobileCompanyOpen] = useState(false);
 
   const isActive = useCallback((path: string) => {
     if (path === '/') {
@@ -40,6 +42,7 @@ export default function NavBar({ user, onSignIn, onSignOut }: NavBarProps) {
     setIsMobileMenuOpen(false);
     setIsMobileRecipesOpen(false);
     setIsMobileStoriesOpen(false);
+    setIsMobileCompanyOpen(false);
   }, [])
 
   const handleMobileSignIn = useCallback(() => {
@@ -64,9 +67,6 @@ export default function NavBar({ user, onSignIn, onSignOut }: NavBarProps) {
           <div className="hidden md:flex items-center space-x-6">
             <Link to="/" className={isActive('/') ? activeNavLinkClass : navLinkClass}>
               Home
-            </Link>
-            <Link to="/about" className={isActive('/about') ? activeNavLinkClass : navLinkClass}>
-              About
             </Link>
             <div 
               className="relative"
@@ -143,9 +143,46 @@ export default function NavBar({ user, onSignIn, onSignOut }: NavBarProps) {
                 </div>
               )}
             </div>
-            <Link to="/company" className={isActive('/company') ? activeNavLinkClass : navLinkClass}>
-              Company
-            </Link>
+            <div 
+              className="relative"
+              onMouseEnter={() => setIsCompanyDropdownOpen(true)}
+              onMouseLeave={() => setIsCompanyDropdownOpen(false)}
+            >
+              <span
+                className={`${isActive('/company') || isActive('/about') ? activeNavLinkClass : navLinkClass} flex items-center cursor-pointer`}
+                aria-expanded={isCompanyDropdownOpen}
+              >
+                Company
+                <svg 
+                  className={`ml-1 h-4 w-4 transition-transform ${isCompanyDropdownOpen ? 'rotate-180' : ''}`}
+                  fill="none" 
+                  stroke="currentColor" 
+                  viewBox="0 0 24 24"
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                </svg>
+              </span>
+              {isCompanyDropdownOpen && (
+                <div className="absolute left-0 top-full pt-2 w-48 z-50">
+                  <div className="bg-white rounded-md shadow-lg py-1 border border-gray-200">
+                    <Link
+                      to="/company"
+                      className={`block px-4 py-2 text-sm hover:bg-gray-100 ${isActive('/company') ? 'text-blue-600 font-semibold bg-blue-50' : 'text-gray-700'}`}
+                      onClick={() => setIsCompanyDropdownOpen(false)}
+                    >
+                      Company
+                    </Link>
+                    <Link
+                      to="/about"
+                      className={`block px-4 py-2 text-sm hover:bg-gray-100 ${isActive('/about') ? 'text-blue-600 font-semibold bg-blue-50' : 'text-gray-700'}`}
+                      onClick={() => setIsCompanyDropdownOpen(false)}
+                    >
+                      About
+                    </Link>
+                  </div>
+                </div>
+              )}
+            </div>
             <Link to="/faq" className={isActive('/faq') ? activeNavLinkClass : navLinkClass}>
               FAQ
             </Link>
@@ -154,7 +191,7 @@ export default function NavBar({ user, onSignIn, onSignOut }: NavBarProps) {
           <div className="hidden md:flex items-center gap-3">
             {user ? (
               <>
-                <span className="text-gray-700">{user.displayName}</span>
+                <span className="text-gray-700 text-xs font-bold">{user.displayName}</span>
                 <button
                   type="button"
                   onClick={onSignOut}
@@ -202,20 +239,46 @@ export default function NavBar({ user, onSignIn, onSignOut }: NavBarProps) {
               >
                 Home
               </Link>
-              <Link 
-                to="/about" 
-                className={isActive('/about') ? activeMobileNavLinkClass : mobileNavLinkClass} 
-                onClick={closeMobileMenu}
-              >
-                About
-              </Link>
-              <Link 
-                to="/company" 
-                className={isActive('/company') ? activeMobileNavLinkClass : mobileNavLinkClass} 
-                onClick={closeMobileMenu}
-              >
-                Company
-              </Link>
+              <div>
+                <span
+                  onClick={() => setIsMobileCompanyOpen(!isMobileCompanyOpen)}
+                  className={`${isActive('/company') || isActive('/about') ? activeMobileNavLinkClass : mobileNavLinkClass} w-full text-left flex items-center justify-between cursor-pointer`}
+                >
+                  <span>Company</span>
+                  <svg 
+                    className={`h-4 w-4 transition-transform ${isMobileCompanyOpen ? 'rotate-180' : ''}`}
+                    fill="none" 
+                    stroke="currentColor" 
+                    viewBox="0 0 24 24"
+                  >
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                  </svg>
+                </span>
+                {isMobileCompanyOpen && (
+                  <div className="pl-4 mt-1 space-y-1">
+                    <Link
+                      to="/company"
+                      className={isActive('/company') ? activeMobileNavLinkClass : mobileNavLinkClass}
+                      onClick={() => {
+                        closeMobileMenu();
+                        setIsMobileCompanyOpen(false);
+                      }}
+                    >
+                      Company
+                    </Link>
+                    <Link
+                      to="/about"
+                      className={isActive('/about') ? activeMobileNavLinkClass : mobileNavLinkClass}
+                      onClick={() => {
+                        closeMobileMenu();
+                        setIsMobileCompanyOpen(false);
+                      }}
+                    >
+                      About
+                    </Link>
+                  </div>
+                )}
+              </div>
               <Link 
                 to="/faq" 
                 className={isActive('/faq') ? activeMobileNavLinkClass : mobileNavLinkClass} 
@@ -299,7 +362,7 @@ export default function NavBar({ user, onSignIn, onSignOut }: NavBarProps) {
                 {user ? (
                   <div className="px-3 py-2">
                     <div className="text-sm text-gray-500 mb-2">Signed in as</div>
-                    <div className="text-gray-800 font-medium mb-3">{user.displayName}</div>
+                    <div className="text-gray-800 font-bold mb-3">{user.displayName}</div>
                     <button
                       type="button"
                       onClick={handleMobileSignOut}

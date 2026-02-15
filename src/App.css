@@ -1,3 +1,4 @@
+@import "modern-normalize";
 @import "tailwindcss";
 
 #root {
@@ -40,4 +41,45 @@
 
 .read-the-docs {
   color: #888;
+}
+
+/* Safari/iOS specific fixes - modern-normalize doesn't cover these quirks */
+@layer base {
+  /* Critical: Fix white text in Safari inputs (Safari bug) */
+  input[type="text"],
+  input[type="url"],
+  input[type="email"],
+  input[type="password"],
+  input[type="number"],
+  input[type="search"],
+  input[type="tel"],
+  textarea,
+  select {
+    color: #1f2937 !important; /* text-gray-800 - force visible text */
+  }
+
+  /* Critical: Fix Safari autofill white text bug */
+  input:-webkit-autofill,
+  input:-webkit-autofill:hover,
+  input:-webkit-autofill:focus,
+  input:-webkit-autofill:active {
+    -webkit-text-fill-color: #1f2937 !important;
+    -webkit-box-shadow: 0 0 0px 1000px #ffffff inset !important;
+    box-shadow: 0 0 0px 1000px #ffffff inset !important;
+  }
+
+  /* Critical: Prevent iOS zoom on input focus */
+  @media screen and (max-width: 768px) {
+    input[type="text"],
+    input[type="url"],
+    input[type="email"],
+    input[type="password"],
+    input[type="number"],
+    input[type="search"],
+    input[type="tel"],
+    textarea,
+    select {
+      font-size: 16px !important;
+    }
+  }
 }
