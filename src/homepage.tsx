@@ -421,11 +421,11 @@ export default function HomePage({ user, onSignIn }: HomePageProps) {
       </div>
 
       {/* Create Recipe Section */}
-      <div className="bg-white shadow-xl rounded-2xl p-8 border border-gray-100">
-        <div className="flex items-center mb-6">
-          <div className="p-3 bg-[#EBF4F6] rounded-full mr-4">
+      <div className="bg-white shadow-xl rounded-2xl p-4 sm:p-6 md:p-8 border border-gray-100">
+        <div className="flex items-center mb-4 sm:mb-6">
+          <div className="p-2 sm:p-2.5 md:p-3 bg-[#EBF4F6] rounded-full mr-3 sm:mr-4 flex-shrink-0">
             <svg
-              className="w-6 h-6 text-[#088395]"
+              className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 text-[#088395]"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -438,9 +438,9 @@ export default function HomePage({ user, onSignIn }: HomePageProps) {
               />
             </svg>
           </div>
-          <h2 className="text-xl sm:text-2xl font-bold text-gray-800">Create Recipe</h2>
+          <h2 className="text-lg sm:text-xl md:text-2xl font-bold text-gray-800 leading-tight">Create Recipe</h2>
         </div>
-        <p className="text-gray-600 mb-6">
+        <p className="text-sm sm:text-base text-gray-600 mb-4 sm:mb-6 leading-relaxed">
           {user 
             ? "Have a family recipe or want to create something new? Build your own recipe from scratch with our intuitive form."
             : "Sign in to create your own recipes from scratch. Perfect for family recipes, experiments, or documenting your culinary creations."}
@@ -448,10 +448,10 @@ export default function HomePage({ user, onSignIn }: HomePageProps) {
         {user ? (
           <Link
             to="/create"
-            className="inline-flex items-center px-6 py-3 bg-[#088395] text-white rounded-xl hover:bg-[#09637E] transition-colors font-semibold !text-white"
+            className="w-full sm:w-auto inline-flex items-center justify-center px-4 sm:px-6 py-2.5 sm:py-3 bg-[#088395] text-white rounded-xl hover:bg-[#09637E] transition-colors font-semibold text-sm sm:text-base !text-white shadow-sm hover:shadow-md"
           >
             <svg
-              className="w-5 h-5 mr-2"
+              className="w-4 h-4 sm:w-5 sm:h-5 mr-2 flex-shrink-0"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -463,17 +463,17 @@ export default function HomePage({ user, onSignIn }: HomePageProps) {
                 d="M12 6v6m0 0v6m0-6h6m-6 0H6"
               />
             </svg>
-            Create Recipe
+            <span>Create Recipe</span>
           </Link>
         ) : (
           <button
             type="button"
             onClick={onSignIn}
-            className="inline-flex items-center px-6 py-3 bg-[#FF6500] text-white rounded-[18px] hover:bg-[#E55A00] active:bg-[#CC5000] transition-all shadow-md hover:shadow-lg cursor-pointer font-semibold"
+            className="w-full sm:w-auto inline-flex items-center justify-center px-4 sm:px-6 py-2.5 sm:py-3 bg-[#FF6500] text-white rounded-[18px] hover:bg-[#E55A00] active:bg-[#CC5000] transition-all shadow-md hover:shadow-lg cursor-pointer font-semibold text-sm sm:text-base"
             style={{ fontSize: '15px' }}
           >
             <svg
-              className="w-5 h-5 mr-2"
+              className="w-4 h-4 sm:w-5 sm:h-5 mr-2 flex-shrink-0"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -485,19 +485,19 @@ export default function HomePage({ user, onSignIn }: HomePageProps) {
                 d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1"
               />
             </svg>
-            Sign in to Create Recipe
+            <span className="whitespace-nowrap">Sign in to Create Recipe</span>
           </button>
         )}
       </div>
 
       {/* Recipes Section */}
-      <div className="bg-white shadow-xl rounded-2xl p-6 sm:p-8 border border-gray-100">
-        <div className="mb-6">
-          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 sm:gap-4">
-            <div className="flex items-center gap-3 sm:gap-4">
-              <div className="p-2.5 sm:p-3 bg-[#EBF4F6] rounded-full flex-shrink-0">
+      <div className="bg-white shadow-xl rounded-2xl p-4 sm:p-6 md:p-8 border border-gray-100">
+        <div className="mb-4 sm:mb-6">
+          <div className="flex items-start sm:items-center justify-between gap-2 sm:gap-4">
+            <div className="flex items-center gap-2 sm:gap-3 md:gap-4 flex-1 min-w-0">
+              <div className="p-2 sm:p-2.5 md:p-3 bg-[#EBF4F6] rounded-full flex-shrink-0">
                 <svg
-                  className="w-5 h-5 sm:w-6 sm:h-6 text-[#088395]"
+                  className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 text-[#088395]"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -510,22 +510,22 @@ export default function HomePage({ user, onSignIn }: HomePageProps) {
                   />
                 </svg>
               </div>
-              <div>
-                <h2 className="text-xl sm:text-2xl font-bold text-gray-800 leading-tight">Your Recipes</h2>
+              <div className="flex-1 min-w-0">
+                <div className="flex items-center gap-2 flex-wrap">
+                  <h2 className="text-lg sm:text-xl md:text-2xl font-bold text-gray-800 leading-tight">Your Recipes</h2>
+                  {user && recipes.length > 0 && (
+                    <span className="bg-[#088395] text-white text-xs font-semibold px-2 sm:px-3 py-0.5 sm:py-1 rounded-full shadow-sm whitespace-nowrap">
+                      {recipes.length}
+                    </span>
+                  )}
+                </div>
                 {user && recipes.length > 0 && (
-                  <p className="text-sm text-gray-500 mt-1">
-                    {recipes.length} {recipes.length === 1 ? 'recipe' : 'recipes'} in your collection
+                  <p className="text-xs sm:text-sm text-gray-500 mt-0.5 sm:mt-1">
+                    {recipes.length === 1 ? 'recipe' : 'recipes'} in your collection
                   </p>
                 )}
               </div>
             </div>
-            {user && recipes.length > 0 && (
-              <div className="flex items-center gap-2">
-                <span className="bg-[#088395] text-white text-xs sm:text-sm font-semibold px-3 sm:px-4 py-1.5 sm:py-2 rounded-full shadow-sm">
-                  {recipes.length} {recipes.length === 1 ? 'Recipe' : 'Recipes'}
-                </span>
-              </div>
-            )}
           </div>
         </div>
 
