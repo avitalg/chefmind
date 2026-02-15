@@ -30,7 +30,7 @@ export default function RecipeList({ user }: RecipeListProps) {
   if (isLoading) {
     return (
       <div className="text-center py-12">
-        <div className="w-16 h-16 border-4 border-blue-200 border-t-blue-500 rounded-full animate-spin mx-auto mb-4"></div>
+        <div className="w-16 h-16 border-4 border-[#EBF4F6] border-t-[#088395] rounded-full animate-spin mx-auto mb-4"></div>
         <span className="text-lg text-gray-600">Loading your recipes...</span>
       </div>
     )
@@ -93,7 +93,7 @@ export default function RecipeList({ user }: RecipeListProps) {
           <div className="flex items-center justify-between">
             <button
               onClick={() => navigate(`/recipe/${recipe.id}`)}
-              className="flex-1 group-hover:text-blue-600 transition-colors text-left"
+              className="flex-1 group-hover:text-[#088395] transition-colors text-left"
             >
               <h3 className="text-lg font-semibold text-gray-800 mb-1">{recipe.title}</h3>
               {recipe.url && (
@@ -105,7 +105,7 @@ export default function RecipeList({ user }: RecipeListProps) {
             <div className="flex gap-2 ml-4">
               <button
                 onClick={() => navigate(`/edit/${recipe.id}`)}
-                className="p-2 text-blue-500 hover:text-blue-700 hover:bg-blue-50 rounded-lg transition-colors"
+                className="p-2 text-[#088395] hover:text-[#09637E] hover:bg-[#EBF4F6] rounded-lg transition-colors"
                 title="Edit recipe"
               >
                 <svg

@@ -44,7 +44,7 @@ export default function Recipe() {
       <div className="min-h-screen flex items-center justify-center">
         <div className="text-center">
           <h1 className="text-2xl font-bold text-gray-800 mb-4">Recipe not found</h1>
-          <Link to="/" className="text-blue-500 hover:text-blue-700">
+          <Link to="/" className="text-[#088395] hover:text-[#09637E]">
             ← Back to Recipes
           </Link>
         </div>
@@ -58,7 +58,7 @@ export default function Recipe() {
     <div className="max-w-4xl mx-auto p-6" dir={recipe.direction} style={{ textAlign }}>
       {/* Header */}
       <header className="mb-8">
-        <Link to="/" className="inline-flex items-center text-blue-500 hover:text-blue-700 mb-4">
+        <Link to="/" className="inline-flex items-center text-[#088395] hover:text-[#09637E] mb-4">
           <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path
               strokeLinecap="round"
@@ -135,7 +135,7 @@ export default function Recipe() {
         <section className="bg-white rounded-lg shadow-md p-6">
           <h2 className="text-2xl font-bold text-gray-800 mb-6 flex items-center">
             <svg
-              className="w-6 h-6 mr-2 text-blue-500"
+              className="w-6 h-6 mr-2 text-[#088395]"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -152,7 +152,7 @@ export default function Recipe() {
           <ol className="space-y-4" itemScope itemType="https://schema.org/HowToSection">
             {recipe.instructions.map((instruction, index) => (
               <li key={index} className="flex items-start" itemProp="itemListElement" itemScope itemType="https://schema.org/HowToStep">
-                <span className="flex-shrink-0 w-8 h-8 bg-blue-500 text-white rounded-full flex items-center justify-center text-sm font-bold mr-4 mt-1" itemProp="position">
+                <span className="flex-shrink-0 w-8 h-8 bg-[#088395] text-white rounded-full flex items-center justify-center text-sm font-bold mr-4 mt-1" itemProp="position">
                   {index + 1}
                 </span>
                 <p className="text-gray-700 leading-relaxed" itemProp="text">{instruction}</p>
@@ -167,7 +167,7 @@ export default function Recipe() {
         <button
           type="button"
           onClick={() => navigate(`/edit/${id}`)}
-          className="px-6 py-3 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors flex items-center"
+          className="px-6 py-3 bg-[#088395] text-white rounded-lg hover:bg-[#09637E] transition-colors flex items-center"
         >
           <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path

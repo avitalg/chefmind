@@ -81,7 +81,7 @@ export default function FindByIngredients() {
   if (loading) {
     return (
       <div className="text-center py-12">
-        <div className="w-16 h-16 border-4 border-blue-200 border-t-blue-500 rounded-full animate-spin mx-auto mb-4" />
+        <div className="w-16 h-16 border-4 border-[#EBF4F6] border-t-[#088395] rounded-full animate-spin mx-auto mb-4" />
         <span className="text-lg text-gray-600">Loading recipes...</span>
       </div>
     );
@@ -112,13 +112,13 @@ export default function FindByIngredients() {
             onChange={(e) => setIngredientInput(e.target.value)}
             onKeyDown={handleKeyDown}
             placeholder="e.g. chicken, garlic"
-            className="flex-1 min-w-[200px] px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+            className="flex-1 min-w-[200px] px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#088395] focus:border-[#088395]"
             aria-label="Add ingredient"
           />
           <button
             type="button"
             onClick={handleAddIngredient}
-            className="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors"
+            className="px-4 py-2 bg-[#088395] text-white rounded-lg hover:bg-[#09637E] transition-colors"
           >
             Add
           </button>
@@ -185,7 +185,7 @@ export default function FindByIngredients() {
                 <button
                   type="button"
                   onClick={() => handleRecipeClick(recipe.id)}
-                  className="w-full text-left group-hover:text-blue-600 transition-colors"
+                  className="w-full text-left group-hover:text-[#088395] transition-colors"
                 >
                   <h3 className="text-lg font-semibold text-gray-800 mb-1">
                     {recipe.title}
@@ -199,7 +199,7 @@ export default function FindByIngredients() {
                 <div className="mt-2 flex gap-2">
                   <Link
                     to={`/recipe/${recipe.id}`}
-                    className="text-sm text-blue-600 hover:underline"
+                    className="text-sm text-[#088395] hover:underline"
                   >
                     View recipe
                   </Link>

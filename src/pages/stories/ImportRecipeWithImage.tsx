@@ -62,9 +62,9 @@ export default function ImportRecipeWithImage() {
             </h2>
             
             <div className="space-y-6">
-              <div className="bg-blue-50 rounded-lg p-6">
-                <h3 className="text-xl font-semibold text-blue-800 mb-3 flex items-center">
-                  <span className="bg-blue-500 text-white rounded-full w-8 h-8 flex items-center justify-center mr-3 text-sm font-bold">1</span>
+              <div className="bg-[#EBF4F6] rounded-lg p-6">
+                <h3 className="text-xl font-semibold text-[#09637E] mb-3 flex items-center">
+                  <span className="bg-[#088395] text-white rounded-full w-8 h-8 flex items-center justify-center mr-3 text-sm font-bold">1</span>
                   Sign In to Your Account
                 </h3>
                 <p className="text-gray-700">
@@ -84,16 +84,16 @@ export default function ImportRecipeWithImage() {
                 </p>
               </div>
 
-              <div className="bg-purple-50 rounded-lg p-6">
-                <h3 className="text-xl font-semibold text-purple-800 mb-3 flex items-center">
-                  <span className="bg-purple-500 text-white rounded-full w-8 h-8 flex items-center justify-center mr-3 text-sm font-bold">3</span>
+              <div className="bg-[#EBF4F6] rounded-lg p-6">
+                <h3 className="text-xl font-semibold text-[#09637E] mb-3 flex items-center">
+                  <span className="bg-[#088395] text-white rounded-full w-8 h-8 flex items-center justify-center mr-3 text-sm font-bold">3</span>
                   Switch to Image Mode
                 </h3>
                 <p className="text-gray-700 mb-3">
                   Click on the "Import from Image" option to switch from URL mode to image upload mode. 
                   You'll see a drag-and-drop area appear.
                 </p>
-                <div className="bg-white rounded p-4 border border-purple-200">
+                <div className="bg-white rounded p-4 border border-[#7AB2B2]">
                   <p className="text-sm text-gray-600 italic">
                     💡 Tip: Make sure your image is clear and well-lit. The better the photo quality, 
                     the more accurate the recipe extraction will be.
@@ -101,9 +101,9 @@ export default function ImportRecipeWithImage() {
                 </div>
               </div>
 
-              <div className="bg-orange-50 rounded-lg p-6">
-                <h3 className="text-xl font-semibold text-orange-800 mb-3 flex items-center">
-                  <span className="bg-orange-500 text-white rounded-full w-8 h-8 flex items-center justify-center mr-3 text-sm font-bold">4</span>
+              <div className="bg-[#7AB2B2] rounded-lg p-6">
+                <h3 className="text-xl font-semibold text-[#09637E] mb-3 flex items-center">
+                  <span className="bg-[#088395] text-white rounded-full w-8 h-8 flex items-center justify-center mr-3 text-sm font-bold">4</span>
                   Upload Your Recipe Image
                 </h3>
                 <p className="text-gray-700 mb-3">
@@ -263,7 +263,7 @@ export default function ImportRecipeWithImage() {
                   Try taking a new photo with better lighting if extraction fails.
                 </p>
               </div>
-              <div className="border-l-4 border-blue-400 bg-blue-50 p-4">
+              <div className="border-l-4 border-[#088395] bg-[#EBF4F6] p-4">
                 <h3 className="font-semibold text-gray-800 mb-2">Incorrect Text Extraction?</h3>
                 <p className="text-gray-600 text-sm">
                   If the AI doesn't extract the recipe correctly, you can manually edit all fields before saving. 
@@ -273,21 +273,21 @@ export default function ImportRecipeWithImage() {
               <div className="border-l-4 border-green-400 bg-green-50 p-4">
                 <h3 className="font-semibold text-gray-800 mb-2">Need Help?</h3>
                 <p className="text-gray-600 text-sm">
-                  Check out our <a href="/faq" className="text-blue-600 hover:underline">FAQ page</a> for more 
+                  Check out our <a href="/faq" className="text-[#088395] hover:underline">FAQ page</a> for more 
                   information, or try the manual recipe creation option if image import doesn't work for your specific case.
                 </p>
               </div>
             </div>
           </section>
 
-          <div className="bg-blue-50 rounded-lg p-6 mt-8 text-center">
+          <div className="bg-[#EBF4F6] rounded-lg p-6 mt-8 text-center">
             <h3 className="text-xl font-semibold text-gray-800 mb-3">Ready to Try It?</h3>
             <p className="text-gray-700 mb-4">
               Start importing recipes from images today and build your digital recipe collection!
             </p>
             <a 
               href="/" 
-              className="inline-block bg-blue-500 px-6 py-3 rounded-lg hover:bg-blue-600 transition-colors !text-white font-medium"
+              className="inline-block bg-[#088395] px-6 py-3 rounded-lg hover:bg-[#09637E] transition-colors !text-white font-medium"
             >
               Go to Homepage →
             </a>

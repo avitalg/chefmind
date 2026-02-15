@@ -2,9 +2,9 @@
 @import "tailwindcss";
 
 #root {
-  max-width: 1280px;
-  margin: 0 auto;
-  text-align: center;
+  width: 100%;
+  margin: 0;
+  text-align: left;
 }
 
 .logo {
@@ -43,8 +43,17 @@
   color: #888;
 }
 
-/* Safari/iOS specific fixes - modern-normalize doesn't cover these quirks */
+/* Override global button styles from index.css to allow Tailwind classes to work */
 @layer base {
+  /* Reset button styles to allow Tailwind utility classes */
+  button {
+    background-color: unset;
+    border: unset;
+    padding: unset;
+    font-size: unset;
+    font-weight: unset;
+  }
+
   /* Critical: Fix white text in Safari inputs (Safari bug) */
   input[type="text"],
   input[type="url"],

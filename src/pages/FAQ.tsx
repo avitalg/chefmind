@@ -151,7 +151,7 @@ const FAQ = () => {
         ))}
       </div>
 
-      <div className="mt-12 bg-blue-50 rounded-lg p-6 text-center">
+      <div className="mt-12 bg-[#EBF4F6] rounded-lg p-6 text-center">
         <h3 className="text-xl font-semibold text-gray-800 mb-3">Still have questions?</h3>
         <p className="text-gray-700 mb-4">
           Can't find the answer you're looking for? We're here to help!
@@ -159,7 +159,7 @@ const FAQ = () => {
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <a
             href="/"
-            className="inline-flex items-center px-6 py-3 bg-blue-500 rounded-lg hover:bg-blue-600 transition-colors !text-white"
+            className="inline-flex items-center px-6 py-3 bg-[#088395] rounded-lg hover:bg-[#09637E] transition-colors !text-white"
           >
             <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path

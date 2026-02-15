@@ -11,11 +11,11 @@ interface NavBarProps {
 const navLinkClass =
   'text-xs text-gray-600 hover:text-gray-800 transition-colors';
 const activeNavLinkClass =
-  'text-xs text-blue-600 font-semibold hover:text-blue-700 transition-colors';
+  'text-xs text-[#088395] font-semibold hover:text-[#09637E] transition-colors';
 const mobileNavLinkClass =
   'block px-3 py-2 text-gray-600 hover:text-gray-800 hover:bg-gray-100 rounded-md';
 const activeMobileNavLinkClass =
-  'block px-3 py-2 text-blue-600 font-semibold hover:text-blue-700 hover:bg-blue-50 rounded-md bg-blue-50';
+  'block px-3 py-2 text-[#088395] font-semibold hover:text-[#09637E] hover:bg-[#EBF4F6] rounded-md bg-[#EBF4F6]';
 
 export default function NavBar({ user, onSignIn, onSignOut }: NavBarProps) {
   const location = useLocation();
@@ -45,15 +45,6 @@ export default function NavBar({ user, onSignIn, onSignOut }: NavBarProps) {
     setIsMobileCompanyOpen(false);
   }, [])
 
-  const handleMobileSignIn = useCallback(() => {
-    closeMobileMenu();
-    onSignIn();
-  }, [closeMobileMenu, onSignIn])
-
-  const handleMobileSignOut = useCallback(() => {
-    closeMobileMenu();
-    onSignOut();
-  }, [closeMobileMenu, onSignOut]);
 
   return (
     <nav className="bg-white shadow-lg">
@@ -92,7 +83,7 @@ export default function NavBar({ user, onSignIn, onSignOut }: NavBarProps) {
                   <div className="bg-white rounded-md shadow-lg py-1 border border-gray-200">
                     <Link
                       to="/recipe-ideas"
-                      className={`block px-4 py-2 text-sm hover:bg-gray-100 ${isActive('/recipe-ideas') ? 'text-blue-600 font-semibold bg-blue-50' : 'text-gray-700'}`}
+                      className={`block px-4 py-2 text-sm hover:bg-gray-100 ${isActive('/recipe-ideas') ? 'text-[#088395] font-semibold bg-[#EBF4F6]' : 'text-gray-700'}`}
                       onClick={() => setIsRecipesDropdownOpen(false)}
                     >
                       Recipe ideas
@@ -100,7 +91,7 @@ export default function NavBar({ user, onSignIn, onSignOut }: NavBarProps) {
                     {user && (
                       <Link
                         to="/find"
-                        className={`block px-4 py-2 text-sm hover:bg-gray-100 ${isActive('/find') ? 'text-blue-600 font-semibold bg-blue-50' : 'text-gray-700'}`}
+                        className={`block px-4 py-2 text-sm hover:bg-gray-100 ${isActive('/find') ? 'text-[#088395] font-semibold bg-[#EBF4F6]' : 'text-gray-700'}`}
                         onClick={() => setIsRecipesDropdownOpen(false)}
                       >
                         Find by ingredients
@@ -134,7 +125,7 @@ export default function NavBar({ user, onSignIn, onSignOut }: NavBarProps) {
                   <div className="bg-white rounded-md shadow-lg py-1 border border-gray-200">
                     <Link
                       to="/stories/import-recipe-with-image"
-                      className={`block px-4 py-2 text-sm hover:bg-gray-100 ${isActive('/stories/import-recipe-with-image') ? 'text-blue-600 font-semibold bg-blue-50' : 'text-gray-700'}`}
+                      className={`block px-4 py-2 text-sm hover:bg-gray-100 ${isActive('/stories/import-recipe-with-image') ? 'text-[#088395] font-semibold bg-[#EBF4F6]' : 'text-gray-700'}`}
                       onClick={() => setIsStoriesDropdownOpen(false)}
                     >
                       Import Recipe with Image
@@ -167,14 +158,14 @@ export default function NavBar({ user, onSignIn, onSignOut }: NavBarProps) {
                   <div className="bg-white rounded-md shadow-lg py-1 border border-gray-200">
                     <Link
                       to="/company"
-                      className={`block px-4 py-2 text-sm hover:bg-gray-100 ${isActive('/company') ? 'text-blue-600 font-semibold bg-blue-50' : 'text-gray-700'}`}
+                      className={`block px-4 py-2 text-sm hover:bg-gray-100 ${isActive('/company') ? 'text-[#088395] font-semibold bg-[#EBF4F6]' : 'text-gray-700'}`}
                       onClick={() => setIsCompanyDropdownOpen(false)}
                     >
                       Company
                     </Link>
                     <Link
                       to="/about"
-                      className={`block px-4 py-2 text-sm hover:bg-gray-100 ${isActive('/about') ? 'text-blue-600 font-semibold bg-blue-50' : 'text-gray-700'}`}
+                      className={`block px-4 py-2 text-sm hover:bg-gray-100 ${isActive('/about') ? 'text-[#088395] font-semibold bg-[#EBF4F6]' : 'text-gray-700'}`}
                       onClick={() => setIsCompanyDropdownOpen(false)}
                     >
                       About
@@ -204,14 +195,39 @@ export default function NavBar({ user, onSignIn, onSignOut }: NavBarProps) {
               <button
                 type="button"
                 onClick={onSignIn}
-                className="px-3 py-1 rounded bg-blue-500 text-white hover:bg-blue-600 ml-3"
+                className="rounded-[18px] !text-[15px] bg-[#FF6500] text-white hover:bg-[#E55A00] active:bg-[#CC5000] shadow-md hover:shadow-lg transition-all cursor-pointer ml-3 flex items-center gap-2"
+                style={{ fontSize: '15px', padding: '10px' }}
               >
-                Sign in with Google
+                Sign in
+                <svg width="18" height="18" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
+                  <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+                  <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/>
+                  <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
+                </svg>
               </button>
             )}
           </div>
 
-          <div className="md:hidden">
+          <div className="md:hidden flex items-center gap-2">
+            {user ? (
+              <button
+                type="button"
+                onClick={onSignOut}
+                className="px-3 py-1.5 text-xs rounded bg-gray-200 hover:bg-gray-300 text-gray-700"
+              >
+                Sign out
+              </button>
+            ) : (
+              <button
+                type="button"
+                onClick={onSignIn}
+                className="rounded-[18px] bg-[#FF6500] text-white hover:bg-[#E55A00] active:bg-[#CC5000] shadow-md hover:shadow-lg transition-all cursor-pointer font-semibold"
+                style={{ fontSize: '15px', padding: '10px' }}
+              >
+                Sign in
+              </button>
+            )}
             <button
               type="button"
               onClick={toggleMobileMenu}
@@ -358,29 +374,14 @@ export default function NavBar({ user, onSignIn, onSignOut }: NavBarProps) {
                   </div>
                 )}
               </div>
-              <div className="border-t border-gray-200 pt-3 mt-3">
-                {user ? (
+              {user && (
+                <div className="border-t border-gray-200 pt-3 mt-3">
                   <div className="px-3 py-2">
-                    <div className="text-sm text-gray-500 mb-2">Signed in as</div>
-                    <div className="text-gray-800 font-bold mb-3">{user.displayName}</div>
-                    <button
-                      type="button"
-                      onClick={handleMobileSignOut}
-                      className="w-full text-left px-3 py-2 text-gray-600 hover:text-gray-800 hover:bg-gray-100 rounded-md"
-                    >
-                      Sign out
-                    </button>
+                    <div className="text-sm text-gray-500 mb-1">Signed in as</div>
+                    <div className="text-gray-800 font-bold">{user.displayName}</div>
                   </div>
-                ) : (
-                  <button
-                    type="button"
-                    onClick={handleMobileSignIn}
-                    className="w-full text-left px-3 py-2 text-gray-600 hover:text-gray-800 hover:bg-gray-100 rounded-md mt-2"
-                  >
-                    Sign in with Google
-                  </button>
-                )}
-              </div>
+                </div>
+              )}
             </div>
           </div>
         )}

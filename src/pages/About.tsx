@@ -34,8 +34,8 @@ const About = () => {
           <h2 className="text-2xl font-semibold text-gray-800 mt-8 mb-4">How It Works</h2>
           <div className="grid md:grid-cols-3 gap-6 mt-6">
             <div className="text-center">
-              <div className="bg-blue-100 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
-                <span className="text-2xl font-bold text-blue-600">1</span>
+              <div className="bg-[#EBF4F6] rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+                <span className="text-2xl font-bold text-[#088395]">1</span>
               </div>
               <h3 className="font-semibold text-gray-800 mb-2">Import</h3>
               <p className="text-gray-600 text-sm">Paste any recipe URL and our AI will extract all the details automatically</p>
@@ -48,8 +48,8 @@ const About = () => {
               <p className="text-gray-600 text-sm">Edit ingredients, instructions, and details to make the recipe perfect for you</p>
             </div>
             <div className="text-center">
-              <div className="bg-purple-100 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
-                <span className="text-2xl font-bold text-purple-600">3</span>
+              <div className="bg-[#EBF4F6] rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+                <span className="text-2xl font-bold text-[#088395]">3</span>
               </div>
               <h3 className="font-semibold text-gray-800 mb-2">Enjoy</h3>
               <p className="text-gray-600 text-sm">Access your personalized recipe collection anytime, anywhere</p>
@@ -72,7 +72,7 @@ const About = () => {
             </p>
             <a 
               href="/" 
-              className="inline-block bg-blue-500 px-6 py-3 rounded-lg hover:bg-blue-600 transition-colors !text-white"
+              className="inline-block bg-[#088395] px-6 py-3 rounded-lg hover:bg-[#09637E] transition-colors !text-white"
             >
               Start Cooking →
             </a>
