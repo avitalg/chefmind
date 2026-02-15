@@ -2,7 +2,8 @@ import type React from 'react'
 import { createContext, type ReactNode, useContext, useState } from 'react'
 import { 
   useRecipesQuery, 
-  useImportRecipeMutation, 
+  useImportRecipeMutation,
+  useImportRecipeFromImageMutation,
   useCreateRecipeMutation, 
   useUpdateRecipeMutation, 
   useDeleteRecipeMutation,
@@ -15,6 +16,7 @@ interface RecipeContextType {
   error: string
   fetchRecipes: () => void
   addRecipe: (recipe: Recipe) => Promise<Recipe>
+  addRecipeFromImage: (imageFile: File) => Promise<Recipe>
   createManualRecipe: (recipe: Recipe) => Promise<Recipe>
   updateRecipe: (recipe: Recipe) => Promise<void>
   deleteRecipe: (id: string, place: number) => Promise<void>
@@ -39,6 +41,7 @@ export const RecipeProvider: React.FC<RecipeProviderProps> = ({ children, user }
   // Use React Query hooks
   const { data: recipes = [], isLoading, error: queryError } = useRecipesQuery(user)
   const importRecipeMutation = useImportRecipeMutation()
+  const importRecipeFromImageMutation = useImportRecipeFromImageMutation()
   const createRecipeMutation = useCreateRecipeMutation()
   const updateRecipeMutation = useUpdateRecipeMutation()
   const deleteRecipeMutation = useDeleteRecipeMutation()
@@ -61,6 +64,17 @@ export const RecipeProvider: React.FC<RecipeProviderProps> = ({ children, user }
       return result
     } catch (err) {
       const message = err instanceof Error ? err.message : 'Failed to add recipe'
+      setError(message)
+      throw err
+    }
+  }
+
+  const addRecipeFromImage = async (imageFile: File) => {
+    try {
+      const result = await importRecipeFromImageMutation.mutateAsync(imageFile)
+      return result
+    } catch (err) {
+      const message = err instanceof Error ? err.message : 'Failed to import recipe from image'
       setError(message)
       throw err
     }
@@ -105,6 +119,7 @@ export const RecipeProvider: React.FC<RecipeProviderProps> = ({ children, user }
     error: combinedError,
     fetchRecipes,
     addRecipe,
+    addRecipeFromImage,
     createManualRecipe,
     updateRecipe,
     deleteRecipe,

@@ -103,6 +103,41 @@ export const useImportRecipeMutation = () => {
   })
 }
 
+// Import recipe from image
+export const useImportRecipeFromImageMutation = () => {
+  const queryClient = useQueryClient()
+  
+  return useMutation({
+    mutationFn: async (imageFile: File): Promise<Recipe> => {
+      const formData = new FormData()
+      formData.append('image', imageFile)
+
+      const response = await fetch(`${API_BASE_URL}/api/recipes/import-image`, {
+        method: 'POST',
+        credentials: 'include',
+        body: formData,
+      })
+
+      if (!response.ok) {
+        if (response.status === 401) {
+          throw new Error('Please sign in to add recipes.')
+        }
+        const errorData = await response.json().catch(() => ({ error: 'Failed to import recipe from image' }))
+        throw new Error(errorData.error || 'Failed to import recipe from image')
+      }
+
+      return response.json()
+    },
+    onSuccess: (newRecipe) => {
+      // Invalidate and refetch recipes list
+      queryClient.invalidateQueries({ queryKey: recipeKeys.lists() })
+      
+      // Add the new recipe to the cache
+      queryClient.setQueryData(recipeKeys.detail(newRecipe.id), newRecipe)
+    },
+  })
+}
+
 // Create manual recipe
 export const useCreateRecipeMutation = () => {
   const queryClient = useQueryClient()
