@@ -491,31 +491,42 @@ export default function HomePage({ user, onSignIn }: HomePageProps) {
       </div>
 
       {/* Recipes Section */}
-      <div className="bg-white shadow-xl rounded-2xl p-8 border border-gray-100">
-        <div className="flex items-center justify-between mb-6">
-          <div className="flex items-center">
-            <div className="p-3 bg-green-100 rounded-full mr-4">
-              <svg
-                className="w-6 h-6 text-green-600"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M9 5H7a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"
-                />
-              </svg>
+      <div className="bg-white shadow-xl rounded-2xl p-6 sm:p-8 border border-gray-100">
+        <div className="mb-6">
+          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 sm:gap-4">
+            <div className="flex items-center gap-3 sm:gap-4">
+              <div className="p-2.5 sm:p-3 bg-[#EBF4F6] rounded-full flex-shrink-0">
+                <svg
+                  className="w-5 h-5 sm:w-6 sm:h-6 text-[#088395]"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M9 5H7a2 2 0 00-2 2v10a2 2 0 002 2h8a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"
+                  />
+                </svg>
+              </div>
+              <div>
+                <h2 className="text-xl sm:text-2xl font-bold text-gray-800 leading-tight">Your Recipes</h2>
+                {user && recipes.length > 0 && (
+                  <p className="text-sm text-gray-500 mt-1">
+                    {recipes.length} {recipes.length === 1 ? 'recipe' : 'recipes'} in your collection
+                  </p>
+                )}
+              </div>
             </div>
-            <h2 className="text-xl sm:text-2xl font-bold text-gray-800">Your Recipes</h2>
+            {user && recipes.length > 0 && (
+              <div className="flex items-center gap-2">
+                <span className="bg-[#088395] text-white text-xs sm:text-sm font-semibold px-3 sm:px-4 py-1.5 sm:py-2 rounded-full shadow-sm">
+                  {recipes.length} {recipes.length === 1 ? 'Recipe' : 'Recipes'}
+                </span>
+              </div>
+            )}
           </div>
-          {user && recipes.length > 0 && (
-            <span className="bg-[#EBF4F6] text-[#09637E] text-sm font-medium px-3 py-1 rounded-full">
-              {recipes.length} recipe{recipes.length !== 1 ? 's' : ''}
-            </span>
-          )}
         </div>
 
         <div className="space-y-4">
