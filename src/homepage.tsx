@@ -340,10 +340,15 @@ export default function HomePage({ user, onSignIn }: HomePageProps) {
             <button
               type="button"
               onClick={onSignIn}
-              className="w-full py-4 px-6 rounded-[18px] font-semibold transition-all duration-200 flex items-center justify-center bg-[#FF6500] hover:bg-[#E55A00] active:bg-[#CC5000] text-white shadow-lg hover:shadow-xl cursor-pointer"
+              className="w-full sm:w-auto inline-flex items-center justify-center px-4 sm:px-6 py-2.5 sm:py-3 bg-[#FF6500] text-white rounded-[18px] hover:bg-[#E55A00] active:bg-[#CC5000] transition-all shadow-md hover:shadow-lg cursor-pointer font-semibold text-sm sm:text-base"
               style={{ fontSize: '15px' }}
             >
-              <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg
+                className="w-4 h-4 sm:w-5 sm:h-5 mr-2 flex-shrink-0"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
                 <path
                   strokeLinecap="round"
                   strokeLinejoin="round"
@@ -351,7 +356,7 @@ export default function HomePage({ user, onSignIn }: HomePageProps) {
                   d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1"
                 />
               </svg>
-              Sign in to Import Recipes
+              <span className="whitespace-nowrap">Sign in to Import Recipes</span>
             </button>
           )}
 
