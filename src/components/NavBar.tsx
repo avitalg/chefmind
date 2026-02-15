@@ -22,6 +22,8 @@ export default function NavBar({ user, onSignIn, onSignOut }: NavBarProps) {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isRecipesDropdownOpen, setIsRecipesDropdownOpen] = useState(false);
   const [isMobileRecipesOpen, setIsMobileRecipesOpen] = useState(false);
+  const [isStoriesDropdownOpen, setIsStoriesDropdownOpen] = useState(false);
+  const [isMobileStoriesOpen, setIsMobileStoriesOpen] = useState(false);
 
   const isActive = useCallback((path: string) => {
     if (path === '/') {
@@ -37,6 +39,7 @@ export default function NavBar({ user, onSignIn, onSignOut }: NavBarProps) {
   const closeMobileMenu = useCallback(() => {
     setIsMobileMenuOpen(false);
     setIsMobileRecipesOpen(false);
+    setIsMobileStoriesOpen(false);
   }, [])
 
   const handleMobileSignIn = useCallback(() => {
@@ -103,6 +106,39 @@ export default function NavBar({ user, onSignIn, onSignOut }: NavBarProps) {
                         Find by ingredients
                       </Link>
                     )}
+                  </div>
+                </div>
+              )}
+            </div>
+            <div 
+              className="relative"
+              onMouseEnter={() => setIsStoriesDropdownOpen(true)}
+              onMouseLeave={() => setIsStoriesDropdownOpen(false)}
+            >
+              <span
+                className={`${isActive('/stories') ? activeNavLinkClass : navLinkClass} flex items-center cursor-pointer`}
+                aria-expanded={isStoriesDropdownOpen}
+              >
+                Stories
+                <svg 
+                  className={`ml-1 h-4 w-4 transition-transform ${isStoriesDropdownOpen ? 'rotate-180' : ''}`}
+                  fill="none" 
+                  stroke="currentColor" 
+                  viewBox="0 0 24 24"
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                </svg>
+              </span>
+              {isStoriesDropdownOpen && (
+                <div className="absolute left-0 top-full pt-2 w-48 z-50">
+                  <div className="bg-white rounded-md shadow-lg py-1 border border-gray-200">
+                    <Link
+                      to="/stories/import-recipe-with-image"
+                      className={`block px-4 py-2 text-sm hover:bg-gray-100 ${isActive('/stories/import-recipe-with-image') ? 'text-blue-600 font-semibold bg-blue-50' : 'text-gray-700'}`}
+                      onClick={() => setIsStoriesDropdownOpen(false)}
+                    >
+                      Import Recipe with Image
+                    </Link>
                   </div>
                 </div>
               )}
@@ -226,6 +262,36 @@ export default function NavBar({ user, onSignIn, onSignOut }: NavBarProps) {
                         Find by ingredients
                       </Link>
                     )}
+                  </div>
+                )}
+              </div>
+              <div>
+                <span
+                  onClick={() => setIsMobileStoriesOpen(!isMobileStoriesOpen)}
+                  className={`${isActive('/stories') ? activeMobileNavLinkClass : mobileNavLinkClass} w-full text-left flex items-center justify-between cursor-pointer`}
+                >
+                  <span>Stories</span>
+                  <svg 
+                    className={`h-4 w-4 transition-transform ${isMobileStoriesOpen ? 'rotate-180' : ''}`}
+                    fill="none" 
+                    stroke="currentColor" 
+                    viewBox="0 0 24 24"
+                  >
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                  </svg>
+                </span>
+                {isMobileStoriesOpen && (
+                  <div className="pl-4 mt-1 space-y-1">
+                    <Link
+                      to="/stories/import-recipe-with-image"
+                      className={isActive('/stories/import-recipe-with-image') ? activeMobileNavLinkClass : mobileNavLinkClass}
+                      onClick={() => {
+                        closeMobileMenu();
+                        setIsMobileStoriesOpen(false);
+                      }}
+                    >
+                      Import Recipe with Image
+                    </Link>
                   </div>
                 )}
               </div>
