@@ -557,7 +557,8 @@ export default function HomePage({ user, onSignIn }: HomePageProps) {
                 <h4 className="font-semibold text-[#09637E] mb-2">What you can do:</h4>
                 <ul className="text-[#09637E] text-sm space-y-1">
                   <li>• Import recipes from any website</li>
-                  <li>• Organize and categorize your collection</li>
+                  <li>• Upload images of recipes</li>
+                  <li>• Create your own recipes from scratch</li>
                   <li>• Edit and customize recipes</li>
                   <li>• Access your recipes from anywhere</li>
                 </ul>
