@@ -597,9 +597,9 @@ export default function HomePage({ user, onSignIn }: HomePageProps) {
             </div>
           ) : recipes.length === 0 ? (
             <div className="text-center py-12">
-              <div className="w-24 h-24 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+              <div className="w-24 h-24 bg-[#EBF4F6] rounded-full flex items-center justify-center mx-auto mb-4">
                 <svg
-                  className="w-12 h-12 text-green-500"
+                  className="w-12 h-12 text-[#088395]"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -612,13 +612,13 @@ export default function HomePage({ user, onSignIn }: HomePageProps) {
                   />
                 </svg>
               </div>
-              <h3 className="text-xl font-semibold text-gray-700 mb-2">No recipes yet</h3>
-              <p className="text-gray-500 mb-6">
+              <h3 className="text-xl font-semibold text-[#088395] mb-2">No recipes yet</h3>
+              <p className="text-[#09637E] mb-6">
                 Start by importing your first recipe from any website
               </p>
-              <div className="bg-green-50 border border-green-200 rounded-xl p-6 max-w-md mx-auto">
-                <h4 className="font-semibold text-green-800 mb-2">Get started:</h4>
-                <ul className="text-green-700 text-sm space-y-1">
+              <div className="bg-[#EBF4F6] border border-[#7AB2B2] rounded-xl p-6 max-w-md mx-auto">
+                <h4 className="font-semibold text-[#09637E] mb-2">Get started:</h4>
+                <ul className="text-[#088395] text-sm space-y-1">
                   <li>• Find a recipe you love online</li>
                   <li>• Copy the URL and paste it above</li>
                   <li>• We'll extract all the details for you</li>

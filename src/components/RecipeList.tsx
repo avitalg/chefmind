@@ -62,9 +62,9 @@ export default function RecipeList({ user }: RecipeListProps) {
   if (recipes.length === 0) {
     return (
       <div className="text-center py-12">
-        <div className="w-24 h-24 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+        <div className="w-24 h-24 bg-[#EBF4F6] rounded-full flex items-center justify-center mx-auto mb-4">
           <svg
-            className="w-12 h-12 text-green-500"
+            className="w-12 h-12 text-[#088395]"
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"
@@ -77,8 +77,8 @@ export default function RecipeList({ user }: RecipeListProps) {
             />
           </svg>
         </div>
-        <h3 className="text-xl font-semibold text-gray-700 mb-2">No recipes yet!</h3>
-        <p className="text-gray-600">Start by importing a recipe from a URL or creating one manually.</p>
+        <h3 className="text-xl font-semibold text-[#088395] mb-2">No recipes yet!</h3>
+        <p className="text-[#09637E]">Start by importing a recipe from a URL or creating one manually.</p>
       </div>
     )
   }
