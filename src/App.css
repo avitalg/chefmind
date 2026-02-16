@@ -52,6 +52,11 @@
     padding: unset;
     font-size: unset;
     font-weight: unset;
+    cursor: pointer;
+  }
+
+  button:disabled {
+    cursor: not-allowed;
   }
 
   /* Critical: Fix white text in Safari inputs (Safari bug) */

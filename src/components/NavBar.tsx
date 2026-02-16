@@ -207,7 +207,7 @@ export default function NavBar({ user, onSignIn, onSignOut }: NavBarProps) {
                 <button
                   type="button"
                   onClick={onSignOut}
-                  className="px-3 py-1 rounded bg-[#EBF4F6] text-[#088395] hover:bg-[#7AB2B2] hover:text-white transition-colors font-medium"
+                  className="px-3 py-1 rounded bg-[#EBF4F6] text-[#088395] hover:bg-[#7AB2B2] hover:text-white transition-colors font-medium cursor-pointer"
                 >
                   Sign out
                 </button>
@@ -235,7 +235,7 @@ export default function NavBar({ user, onSignIn, onSignOut }: NavBarProps) {
               <button
                 type="button"
                 onClick={onSignOut}
-                className="px-3 py-1.5 text-xs rounded bg-[#EBF4F6] text-[#088395] hover:bg-[#7AB2B2] hover:text-white transition-colors font-medium"
+                className="px-3 py-1.5 text-xs rounded bg-[#EBF4F6] text-[#088395] hover:bg-[#7AB2B2] hover:text-white transition-colors font-medium cursor-pointer"
               >
                 Sign out
               </button>

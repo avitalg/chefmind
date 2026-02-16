@@ -296,7 +296,7 @@ export default function HomePage({ user, onSignIn }: HomePageProps) {
             <button
               type="submit"
               disabled={isImporting || (importMode === 'image' && !selectedImage)}
-              className="w-full py-4 px-6 rounded-xl font-semibold text-lg transition-all duration-200 flex items-center justify-center bg-[#088395] hover:bg-[#09637E] text-white shadow-lg hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed"
+              className="w-full py-4 px-6 rounded-xl font-semibold text-lg transition-all duration-200 flex items-center justify-center bg-[#088395] hover:bg-[#09637E] text-white shadow-lg hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"
             >
               {isImporting ? (
                 <>
