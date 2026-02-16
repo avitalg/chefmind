@@ -24,6 +24,9 @@ import CreateRecipe from './pages/CreateRecipe';
 import FindByIngredients from './pages/FindByIngredients';
 import RecipeIdeas from './pages/RecipeIdeas';
 import ImportRecipeWithImage from './pages/stories/ImportRecipeWithImage';
+import PreservingFamilyRecipes from './pages/stories/PreservingFamilyRecipes';
+import RecipeMemoryAndNostalgia from './pages/stories/RecipeMemoryAndNostalgia';
+import BuildingYourCulinaryLegacy from './pages/stories/BuildingYourCulinaryLegacy';
 import './App.css';
 
 function App() {
@@ -45,6 +48,9 @@ function App() {
                 <Route path="/find" element={user ? <FindByIngredients /> : <Navigate to="/" replace />} />
                 <Route path="/recipe-ideas" element={<RecipeIdeas />} />
                 <Route path="/stories/import-recipe-with-image" element={<ImportRecipeWithImage />} />
+                <Route path="/stories/preserving-family-recipes" element={<PreservingFamilyRecipes />} />
+                <Route path="/stories/recipe-memory-and-nostalgia" element={<RecipeMemoryAndNostalgia />} />
+                <Route path="/stories/building-your-culinary-legacy" element={<BuildingYourCulinaryLegacy />} />
                 <Route path="/edit/:id" element={<EditRecipeWrapper />} />
                 <Route path="/recipe/:id" element={<Recipe />} />
               </Routes>

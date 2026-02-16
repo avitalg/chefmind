@@ -121,7 +121,7 @@ export default function NavBar({ user, onSignIn, onSignOut }: NavBarProps) {
                 </svg>
               </span>
               {isStoriesDropdownOpen && (
-                <div className="absolute left-0 top-full pt-2 w-48 z-50">
+                <div className="absolute left-0 top-full pt-2 w-56 z-50">
                   <div className="bg-white rounded-md shadow-lg py-1 border border-gray-200">
                     <Link
                       to="/stories/import-recipe-with-image"
@@ -129,6 +129,27 @@ export default function NavBar({ user, onSignIn, onSignOut }: NavBarProps) {
                       onClick={() => setIsStoriesDropdownOpen(false)}
                     >
                       Import Recipe with Image
+                    </Link>
+                    <Link
+                      to="/stories/preserving-family-recipes"
+                      className={`block px-4 py-2 text-sm hover:bg-gray-100 ${isActive('/stories/preserving-family-recipes') ? 'text-[#088395] font-semibold bg-[#EBF4F6]' : 'text-gray-700'}`}
+                      onClick={() => setIsStoriesDropdownOpen(false)}
+                    >
+                      Preserving Family Recipes
+                    </Link>
+                    <Link
+                      to="/stories/recipe-memory-and-nostalgia"
+                      className={`block px-4 py-2 text-sm hover:bg-gray-100 ${isActive('/stories/recipe-memory-and-nostalgia') ? 'text-[#088395] font-semibold bg-[#EBF4F6]' : 'text-gray-700'}`}
+                      onClick={() => setIsStoriesDropdownOpen(false)}
+                    >
+                      Recipe Memory & Nostalgia
+                    </Link>
+                    <Link
+                      to="/stories/building-your-culinary-legacy"
+                      className={`block px-4 py-2 text-sm hover:bg-gray-100 ${isActive('/stories/building-your-culinary-legacy') ? 'text-[#088395] font-semibold bg-[#EBF4F6]' : 'text-gray-700'}`}
+                      onClick={() => setIsStoriesDropdownOpen(false)}
+                    >
+                      Building Your Culinary Legacy
                     </Link>
                   </div>
                 </div>
@@ -370,6 +391,36 @@ export default function NavBar({ user, onSignIn, onSignOut }: NavBarProps) {
                       }}
                     >
                       Import Recipe with Image
+                    </Link>
+                    <Link
+                      to="/stories/preserving-family-recipes"
+                      className={isActive('/stories/preserving-family-recipes') ? activeMobileNavLinkClass : mobileNavLinkClass}
+                      onClick={() => {
+                        closeMobileMenu();
+                        setIsMobileStoriesOpen(false);
+                      }}
+                    >
+                      Preserving Family Recipes
+                    </Link>
+                    <Link
+                      to="/stories/recipe-memory-and-nostalgia"
+                      className={isActive('/stories/recipe-memory-and-nostalgia') ? activeMobileNavLinkClass : mobileNavLinkClass}
+                      onClick={() => {
+                        closeMobileMenu();
+                        setIsMobileStoriesOpen(false);
+                      }}
+                    >
+                      Recipe Memory & Nostalgia
+                    </Link>
+                    <Link
+                      to="/stories/building-your-culinary-legacy"
+                      className={isActive('/stories/building-your-culinary-legacy') ? activeMobileNavLinkClass : mobileNavLinkClass}
+                      onClick={() => {
+                        closeMobileMenu();
+                        setIsMobileStoriesOpen(false);
+                      }}
+                    >
+                      Building Your Culinary Legacy
                     </Link>
                   </div>
                 )}
