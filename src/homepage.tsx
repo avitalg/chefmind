@@ -78,6 +78,7 @@ export default function HomePage({ user, onSignIn }: HomePageProps) {
     } catch (err: unknown) {
       const message = err instanceof Error ? err.message : 'Failed to import recipe';
       setImportError(message);
+      clearError(); // avoid showing same message twice (context also sets error)
     } finally {
       setIsImporting(false);
     }
