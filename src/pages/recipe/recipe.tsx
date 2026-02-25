@@ -1,6 +1,7 @@
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import { useRecipes } from '../../contexts/RecipeContext';
 import { useSEO } from '../../hooks/useSEO';
+import { addUtmToPath } from '../../utils/utm';
 import './recipe.css';
 
 
@@ -44,7 +45,7 @@ export default function Recipe() {
       <div className="min-h-screen flex items-center justify-center">
         <div className="text-center">
           <h1 className="text-xl sm:text-2xl font-bold text-gray-800 mb-4 leading-tight">Recipe not found</h1>
-          <Link to="/" className="text-[#088395] hover:text-[#09637E]">
+          <Link to={addUtmToPath('/', { utm_content: 'recipe_back' })} className="text-[#088395] hover:text-[#09637E]">
             ← Back to Recipes
           </Link>
         </div>
@@ -58,7 +59,7 @@ export default function Recipe() {
     <div className="max-w-4xl mx-auto p-6" dir={recipe.direction} style={{ textAlign }}>
       {/* Header */}
       <header className="mb-8">
-        <Link to="/" className="inline-flex items-center text-[#088395] hover:text-[#09637E] mb-4">
+        <Link to={addUtmToPath('/', { utm_content: 'recipe_back_header' })} className="inline-flex items-center text-[#088395] hover:text-[#09637E] mb-4">
           <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path
               strokeLinecap="round"

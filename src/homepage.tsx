@@ -1,7 +1,8 @@
 import { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom'; 
+import { Link, useNavigate } from 'react-router-dom';
 import { useRecipes } from './contexts/RecipeContext';
 import { useSEO } from './hooks/useSEO';
+import { addUtmToPath } from './utils/utm';
 
 interface Recipe {
   id: string
@@ -453,7 +454,7 @@ export default function HomePage({ user, onSignIn }: HomePageProps) {
         </p>
         {user ? (
           <Link
-            to="/create"
+            to={addUtmToPath('/create', { utm_content: 'cta_create' })}
             className="w-full sm:w-auto inline-flex items-center justify-center px-4 sm:px-6 py-2.5 sm:py-3 bg-[#088395] text-white rounded-xl hover:bg-[#09637E] transition-colors font-semibold text-sm sm:text-base !text-white shadow-sm hover:shadow-md"
           >
             <svg
@@ -636,7 +637,7 @@ export default function HomePage({ user, onSignIn }: HomePageProps) {
                 >
                   <div className="flex items-center justify-between">
                     <Link
-                      to={`/recipe/${recipe.id}`}
+                      to={addUtmToPath(`/recipe/${recipe.id}`, { utm_content: 'home_recipe_card' })}
                       className="flex-1 group-hover:text-[#088395] transition-colors"
                     >
                       <h3 className="text-lg font-semibold text-gray-800 mb-1">{recipe.title}</h3>

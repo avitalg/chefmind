@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useRecipes } from '../contexts/RecipeContext';
 import { useSEO } from '../hooks/useSEO';
 import type { Recipe } from '../hooks/useRecipes';
+import { addUtmToPath } from '../utils/utm';
 
 function normalizeIngredient(name: string): string {
   return name.trim().toLowerCase();
@@ -198,13 +199,13 @@ export default function FindByIngredients() {
                 </button>
                 <div className="mt-2 flex gap-2">
                   <Link
-                    to={`/recipe/${recipe.id}`}
+                    to={addUtmToPath(`/recipe/${recipe.id}`, { utm_content: 'find_view_recipe' })}
                     className="text-sm text-[#088395] hover:underline"
                   >
                     View recipe
                   </Link>
                   <Link
-                    to={`/edit/${recipe.id}`}
+                    to={addUtmToPath(`/edit/${recipe.id}`, { utm_content: 'find_edit' })}
                     className="text-sm text-gray-500 hover:text-gray-700"
                   >
                     Edit

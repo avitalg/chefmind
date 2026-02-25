@@ -1,4 +1,6 @@
+import { Link } from 'react-router-dom';
 import { useSEO } from '../hooks/useSEO';
+import { addUtmToPath } from '../utils/utm';
 
 const About = () => {
   useSEO({
@@ -72,12 +74,12 @@ const About = () => {
               their recipe collections. Sign in with Google and start building your personalized 
               recipe library in minutes - it's free and easy!
             </p>
-            <a 
-              href="/" 
+            <Link 
+              to={addUtmToPath('/', { utm_content: 'about_cta' })} 
               className="inline-block bg-[#088395] px-6 py-3 rounded-lg hover:bg-[#09637E] transition-colors !text-white font-medium"
             >
               Get Started Now →
-            </a>
+            </Link>
           </div>
         </div>
       </div>

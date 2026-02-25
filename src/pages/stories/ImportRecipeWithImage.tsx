@@ -1,4 +1,6 @@
+import { Link } from 'react-router-dom';
 import { useSEO } from '../../hooks/useSEO';
+import { addUtmToPath } from '../../utils/utm';
 
 export default function ImportRecipeWithImage() {
   useSEO({
@@ -273,7 +275,7 @@ export default function ImportRecipeWithImage() {
               <div className="border-l-4 border-green-400 bg-green-50 p-4">
                 <h3 className="font-semibold text-gray-800 mb-2">Need Help?</h3>
                 <p className="text-gray-600 text-sm">
-                  Check out our <a href="/faq" className="text-[#088395] hover:underline">FAQ page</a> for more 
+                  Check out our <Link to={addUtmToPath('/faq', { utm_content: 'story_import_image_faq' })} className="text-[#088395] hover:underline">FAQ page</Link> for more 
                   information, or try the manual recipe creation option if image import doesn't work for your specific case.
                 </p>
               </div>
@@ -285,12 +287,12 @@ export default function ImportRecipeWithImage() {
             <p className="text-gray-700 mb-4">
               Start importing recipes from images today and build your digital recipe collection!
             </p>
-            <a 
-              href="/" 
+            <Link 
+              to={addUtmToPath('/', { utm_content: 'story_import_image_cta' })} 
               className="inline-block bg-[#088395] px-6 py-3 rounded-lg hover:bg-[#09637E] transition-colors !text-white font-medium"
             >
               Go to Homepage →
-            </a>
+            </Link>
           </div>
         </div>
       </article>

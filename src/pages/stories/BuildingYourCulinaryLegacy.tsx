@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { useSEO } from '../../hooks/useSEO';
+import { addUtmToPath } from '../../utils/utm';
 
 export default function BuildingYourCulinaryLegacy() {
   useSEO({
@@ -253,7 +254,7 @@ export default function BuildingYourCulinaryLegacy() {
                 Start documenting your culinary legacy with ChefMind today
               </p>
               <Link
-                to="/"
+                to={addUtmToPath('/', { utm_content: 'story_legacy_cta' })}
                 className="inline-block bg-[#088395] px-6 py-3 rounded-lg hover:bg-[#09637E] transition-colors !text-white font-medium"
               >
                 Get Started →

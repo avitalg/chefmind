@@ -1,5 +1,7 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { useSEO } from '../hooks/useSEO';
+import { addUtmToPath } from '../utils/utm';
 
 const FAQ = () => {
   useSEO({
@@ -157,8 +159,8 @@ const FAQ = () => {
           Can't find the answer you're looking for? We're here to help!
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <a
-            href="/"
+          <Link
+            to={addUtmToPath('/', { utm_content: 'faq_back_home' })}
             className="inline-flex items-center px-6 py-3 bg-[#088395] rounded-lg hover:bg-[#09637E] transition-colors !text-white"
           >
             <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -170,7 +172,7 @@ const FAQ = () => {
               />
             </svg>
             Back to Home
-          </a>
+          </Link>
         </div>
       </div>
     </div>

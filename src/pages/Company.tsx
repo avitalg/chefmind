@@ -1,4 +1,6 @@
+import { Link } from 'react-router-dom';
 import { useSEO } from '../hooks/useSEO';
+import { addUtmToPath } from '../utils/utm';
 
 const Company = () => {
   useSEO({
@@ -88,12 +90,12 @@ const Company = () => {
               Reach out to us and help shape the future of recipe management.
             </p>
             <div>
-              <a 
-                href="/" 
+              <Link 
+                to={addUtmToPath('/', { utm_content: 'company_cta' })} 
                 className="inline-block bg-[#088395] px-6 py-3 rounded-lg hover:bg-[#09637E] transition-colors !text-white"
               >
                 Try ChefMind →
-              </a>
+              </Link>
             </div>
           </div>
         </div>

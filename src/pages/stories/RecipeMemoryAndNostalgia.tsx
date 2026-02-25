@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { useSEO } from '../../hooks/useSEO';
+import { addUtmToPath } from '../../utils/utm';
 
 export default function RecipeMemoryAndNostalgia() {
   useSEO({
@@ -185,7 +186,7 @@ export default function RecipeMemoryAndNostalgia() {
                 Start documenting the recipes and memories that matter most to you
               </p>
               <Link
-                to="/"
+                to={addUtmToPath('/', { utm_content: 'story_memory_cta' })}
                 className="inline-block bg-[#088395] px-6 py-3 rounded-lg hover:bg-[#09637E] transition-colors !text-white font-medium"
               >
                 Get Started →
