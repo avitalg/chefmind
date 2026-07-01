@@ -210,7 +210,7 @@ export default function HomePage({ user, onSignIn }: HomePageProps) {
         </div>
       )}
 
-      <SectionDivider />
+      {!user && <SectionDivider />}
 
       {/* Import Recipe Section */}
       <div className="card relative">
