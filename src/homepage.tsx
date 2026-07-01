@@ -214,7 +214,6 @@ export default function HomePage({ user, onSignIn }: HomePageProps) {
 
       {/* Import Recipe Section */}
       <div className="card relative">
-        <SectionSpoonCorner corner="bottom-right" />
         <div className="flex items-center mb-6">
           <div className="icon-box mr-4">
             <svg
@@ -550,7 +549,7 @@ export default function HomePage({ user, onSignIn }: HomePageProps) {
         <>
           <SectionDivider />
           <div className="card relative">
-            <SectionSpoonCorner corner="top-left" />
+            <SectionSpoonCorner corner="top-right" />
         <div className="mb-4 sm:mb-6">
           <div className="flex items-start sm:items-center justify-between gap-2 sm:gap-4">
             <div className="flex items-center gap-2 sm:gap-3 md:gap-4 flex-1 min-w-0">
