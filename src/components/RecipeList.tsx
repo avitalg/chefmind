@@ -38,7 +38,7 @@ export default function RecipeList({ user }: RecipeListProps) {
 
   if (error) {
     return (
-      <div className="bg-red-50 border border-red-200 rounded-xl p-4">
+      <div className="bg-red-50 border border-red-200 rounded-md p-4">
         <div className="flex">
           <svg
             className="w-5 h-5 text-red-400 mr-2"
@@ -88,7 +88,7 @@ export default function RecipeList({ user }: RecipeListProps) {
       {recipes.map((recipe) => (
         <div
           key={recipe.id}
-          className="group bg-gray-50 hover:bg-gray-100 rounded-xl p-6 transition-all duration-200 border border-gray-200 hover:border-gray-300 hover:shadow-md"
+          className="group bg-white rounded-md p-5 transition-colors border border-gray-200 hover:border-gray-300"
         >
           <div className="flex items-center justify-between">
             <button

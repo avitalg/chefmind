@@ -1,10 +1,91 @@
 @import "modern-normalize";
 @import "tailwindcss";
 
+@theme {
+  --font-sans: 'Montserrat', system-ui, -apple-system, sans-serif;
+  --color-cream: #f7f4ef;
+  --color-paper: #fffcf8;
+  --color-teal: #088395;
+  --color-teal-dark: #09637E;
+  --color-orange: #E07B2D;
+  --color-orange-dark: #C4681F;
+  --color-ink: #2c2416;
+  --color-border-warm: #e0d6c8;
+}
+
 #root {
   width: 100%;
   margin: 0;
   text-align: left;
+}
+
+@layer components {
+  .btn-primary {
+    @apply inline-flex items-center justify-center px-4 py-2.5 bg-orange text-white rounded-md border border-orange
+           hover:bg-orange-dark hover:border-orange-dark transition-colors font-medium cursor-pointer
+           disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center px-4 py-2.5 bg-paper text-ink rounded-md border border-border-warm
+           hover:bg-cream transition-colors font-medium cursor-pointer;
+  }
+
+  .card {
+    @apply bg-paper border border-border-warm rounded-lg p-6 sm:p-8;
+  }
+
+  .card-section-title {
+    @apply text-xl sm:text-2xl font-semibold text-ink;
+  }
+
+  .info-box {
+    @apply bg-cream border border-border-warm rounded-lg p-4 text-[#4a4238];
+  }
+
+  .icon-box {
+    @apply p-2.5 border border-border-warm rounded-md text-teal;
+  }
+
+  .section-divider {
+    @apply flex items-center gap-3 sm:gap-4 py-2 max-w-md mx-auto text-teal/80;
+  }
+
+  .section-divider__line {
+    @apply flex-1 h-px;
+    background: linear-gradient(
+      to right,
+      transparent,
+      color-mix(in srgb, var(--color-border-warm) 70%, transparent),
+      var(--color-border-warm),
+      color-mix(in srgb, var(--color-border-warm) 70%, transparent),
+      transparent
+    );
+  }
+
+  .section-divider__pen {
+    @apply w-5 h-5 sm:w-6 sm:h-6 shrink-0;
+    transform: rotate(12deg);
+  }
+
+  .section-spoon {
+    @apply absolute pointer-events-none w-9 h-9 sm:w-11 sm:h-11 z-[1] opacity-35;
+  }
+
+  .section-spoon--top-left {
+    @apply top-2 left-2 sm:top-3 sm:left-3;
+    transform: rotate(-22deg);
+  }
+
+  .section-spoon--top-right {
+    @apply top-2 right-2 sm:top-3 sm:right-3;
+    transform: rotate(22deg);
+  }
+
+  .section-spoon--bottom-right {
+    @apply bottom-2 right-2 sm:bottom-3 sm:right-3;
+    transform: rotate(158deg);
+  }
 }
 
 .logo {

@@ -10,13 +10,13 @@ interface NavBarProps {
 }
 
 const navLinkClass =
-  'text-xs text-gray-600 hover:text-gray-800 transition-colors';
+  'text-xs text-[#4a4238] hover:text-ink transition-colors';
 const activeNavLinkClass =
-  'text-xs text-[#088395] font-semibold hover:text-[#09637E] transition-colors';
+  'text-xs text-teal font-semibold hover:text-teal-dark transition-colors';
 const mobileNavLinkClass =
-  'block px-3 py-2 text-gray-600 hover:text-gray-800 hover:bg-gray-100 rounded-md';
+  'block px-3 py-2 text-[#4a4238] hover:text-ink hover:bg-cream rounded-md';
 const activeMobileNavLinkClass =
-  'block px-3 py-2 text-[#088395] font-semibold hover:text-[#09637E] hover:bg-[#EBF4F6] rounded-md bg-[#EBF4F6]';
+  'block px-3 py-2 text-teal font-semibold hover:text-teal-dark hover:bg-cream rounded-md bg-cream';
 
 export default function NavBar({ user, onSignIn, onSignOut }: NavBarProps) {
   const location = useLocation();
@@ -48,12 +48,12 @@ export default function NavBar({ user, onSignIn, onSignOut }: NavBarProps) {
 
 
   return (
-    <nav className="bg-white shadow-lg">
+    <nav className="bg-paper border-b border-border-warm">
       <div className="max-w-6xl mx-auto px-4 w-full min-w-0">
         <div className="flex justify-between items-center h-16">
           <Link to={addUtmToPath('/', { utm_content: 'header' })} className="flex items-center">
             <img src="/chefmind.png" alt="ChefMind" className="w-8 h-8 mr-2" />
-            <span className="text-xl font-bold text-gray-800">ChefMind</span>
+            <span className="text-xl font-bold text-ink">ChefMind</span>
           </Link>
 
           <div className="hidden md:flex items-center space-x-6">
@@ -81,10 +81,10 @@ export default function NavBar({ user, onSignIn, onSignOut }: NavBarProps) {
               </span>
               {isRecipesDropdownOpen && (
                 <div className="absolute left-0 top-full pt-2 w-48 z-50">
-                  <div className="bg-white rounded-md shadow-lg py-1 border border-gray-200">
+                  <div className="bg-paper rounded-md py-1 border border-border-warm shadow-sm">
                     <Link
                       to={addUtmToPath('/recipe-ideas', { utm_content: 'header' })}
-                      className={`block px-4 py-2 text-sm hover:bg-gray-100 ${isActive('/recipe-ideas') ? 'text-[#088395] font-semibold bg-[#EBF4F6]' : 'text-gray-700'}`}
+                      className={`block px-4 py-2 text-sm hover:bg-cream ${isActive('/recipe-ideas') ? 'text-teal font-semibold' : 'text-[#4a4238]'}`}
                       onClick={() => setIsRecipesDropdownOpen(false)}
                     >
                       Recipe ideas
@@ -92,7 +92,7 @@ export default function NavBar({ user, onSignIn, onSignOut }: NavBarProps) {
                     {user && (
                       <Link
                         to={addUtmToPath('/find', { utm_content: 'header' })}
-                        className={`block px-4 py-2 text-sm hover:bg-gray-100 ${isActive('/find') ? 'text-[#088395] font-semibold bg-[#EBF4F6]' : 'text-gray-700'}`}
+                        className={`block px-4 py-2 text-sm hover:bg-cream ${isActive('/find') ? 'text-teal font-semibold' : 'text-[#4a4238]'}`}
                         onClick={() => setIsRecipesDropdownOpen(false)}
                       >
                         Find by ingredients
@@ -123,31 +123,31 @@ export default function NavBar({ user, onSignIn, onSignOut }: NavBarProps) {
               </span>
               {isStoriesDropdownOpen && (
                 <div className="absolute left-0 top-full pt-2 w-56 z-50">
-                  <div className="bg-white rounded-md shadow-lg py-1 border border-gray-200">
+                  <div className="bg-paper rounded-md py-1 border border-border-warm shadow-sm">
                     <Link
                       to={addUtmToPath('/stories/import-recipe-with-image', { utm_content: 'header' })}
-                      className={`block px-4 py-2 text-sm hover:bg-gray-100 ${isActive('/stories/import-recipe-with-image') ? 'text-[#088395] font-semibold bg-[#EBF4F6]' : 'text-gray-700'}`}
+                      className={`block px-4 py-2 text-sm hover:bg-cream ${isActive('/stories/import-recipe-with-image') ? 'text-teal font-semibold' : 'text-[#4a4238]'}`}
                       onClick={() => setIsStoriesDropdownOpen(false)}
                     >
                       Import Recipe with Image
                     </Link>
                     <Link
                       to={addUtmToPath('/stories/preserving-family-recipes', { utm_content: 'header' })}
-                      className={`block px-4 py-2 text-sm hover:bg-gray-100 ${isActive('/stories/preserving-family-recipes') ? 'text-[#088395] font-semibold bg-[#EBF4F6]' : 'text-gray-700'}`}
+                      className={`block px-4 py-2 text-sm hover:bg-cream ${isActive('/stories/preserving-family-recipes') ? 'text-teal font-semibold' : 'text-[#4a4238]'}`}
                       onClick={() => setIsStoriesDropdownOpen(false)}
                     >
                       Preserving Family Recipes
                     </Link>
                     <Link
                       to={addUtmToPath('/stories/recipe-memory-and-nostalgia', { utm_content: 'header' })}
-                      className={`block px-4 py-2 text-sm hover:bg-gray-100 ${isActive('/stories/recipe-memory-and-nostalgia') ? 'text-[#088395] font-semibold bg-[#EBF4F6]' : 'text-gray-700'}`}
+                      className={`block px-4 py-2 text-sm hover:bg-cream ${isActive('/stories/recipe-memory-and-nostalgia') ? 'text-teal font-semibold' : 'text-[#4a4238]'}`}
                       onClick={() => setIsStoriesDropdownOpen(false)}
                     >
                       Recipe Memory & Nostalgia
                     </Link>
                     <Link
                       to={addUtmToPath('/stories/building-your-culinary-legacy', { utm_content: 'header' })}
-                      className={`block px-4 py-2 text-sm hover:bg-gray-100 ${isActive('/stories/building-your-culinary-legacy') ? 'text-[#088395] font-semibold bg-[#EBF4F6]' : 'text-gray-700'}`}
+                      className={`block px-4 py-2 text-sm hover:bg-cream ${isActive('/stories/building-your-culinary-legacy') ? 'text-teal font-semibold' : 'text-[#4a4238]'}`}
                       onClick={() => setIsStoriesDropdownOpen(false)}
                     >
                       Building Your Culinary Legacy
@@ -177,17 +177,17 @@ export default function NavBar({ user, onSignIn, onSignOut }: NavBarProps) {
               </span>
               {isCompanyDropdownOpen && (
                 <div className="absolute left-0 top-full pt-2 w-48 z-50">
-                  <div className="bg-white rounded-md shadow-lg py-1 border border-gray-200">
+                  <div className="bg-paper rounded-md py-1 border border-border-warm shadow-sm">
                     <Link
                       to={addUtmToPath('/company', { utm_content: 'header' })}
-                      className={`block px-4 py-2 text-sm hover:bg-gray-100 ${isActive('/company') ? 'text-[#088395] font-semibold bg-[#EBF4F6]' : 'text-gray-700'}`}
+                      className={`block px-4 py-2 text-sm hover:bg-cream ${isActive('/company') ? 'text-teal font-semibold' : 'text-[#4a4238]'}`}
                       onClick={() => setIsCompanyDropdownOpen(false)}
                     >
                       Company
                     </Link>
                     <Link
                       to={addUtmToPath('/about', { utm_content: 'header' })}
-                      className={`block px-4 py-2 text-sm hover:bg-gray-100 ${isActive('/about') ? 'text-[#088395] font-semibold bg-[#EBF4F6]' : 'text-gray-700'}`}
+                      className={`block px-4 py-2 text-sm hover:bg-cream ${isActive('/about') ? 'text-teal font-semibold' : 'text-[#4a4238]'}`}
                       onClick={() => setIsCompanyDropdownOpen(false)}
                     >
                       About
@@ -204,11 +204,11 @@ export default function NavBar({ user, onSignIn, onSignOut }: NavBarProps) {
           <div className="hidden md:flex items-center gap-3">
             {user ? (
               <>
-                <span className="text-gray-700 text-xs font-bold">{user.displayName}</span>
+                <span className="text-[#4a4238] text-xs font-bold">{user.displayName}</span>
                 <button
                   type="button"
                   onClick={onSignOut}
-                  className="px-3 py-1 rounded bg-[#EBF4F6] text-[#088395] hover:bg-[#7AB2B2] hover:text-white transition-colors font-medium cursor-pointer"
+                  className="btn-secondary text-xs px-3 py-1.5"
                 >
                   Sign out
                 </button>
@@ -217,11 +217,10 @@ export default function NavBar({ user, onSignIn, onSignOut }: NavBarProps) {
               <button
                 type="button"
                 onClick={onSignIn}
-                className="rounded-[18px] !text-[15px] bg-[#FF6500] text-white hover:bg-[#E55A00] active:bg-[#CC5000] shadow-md hover:shadow-lg transition-all cursor-pointer ml-3 flex items-center gap-2"
-                style={{ fontSize: '15px', padding: '10px' }}
+                className="btn-primary text-sm gap-2"
               >
                 Sign in
-                <svg width="18" height="18" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <svg width="18" height="18" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                   <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
                   <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
                   <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/>
@@ -236,7 +235,7 @@ export default function NavBar({ user, onSignIn, onSignOut }: NavBarProps) {
               <button
                 type="button"
                 onClick={onSignOut}
-                className="px-3 py-1.5 text-xs rounded bg-[#EBF4F6] text-[#088395] hover:bg-[#7AB2B2] hover:text-white transition-colors font-medium cursor-pointer"
+                className="btn-secondary text-xs px-3 py-1.5"
               >
                 Sign out
               </button>
@@ -244,11 +243,10 @@ export default function NavBar({ user, onSignIn, onSignOut }: NavBarProps) {
               <button
                 type="button"
                 onClick={onSignIn}
-                className="rounded-[18px] bg-[#FF6500] text-white hover:bg-[#E55A00] active:bg-[#CC5000] shadow-md hover:shadow-lg transition-all cursor-pointer font-semibold flex items-center gap-2"
-                style={{ fontSize: '15px', padding: '10px' }}
+                className="btn-primary text-xs gap-1.5 px-3 py-1.5"
               >
                 Sign in
-                <svg width="18" height="18" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <svg width="16" height="16" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                   <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
                   <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
                   <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/>
@@ -275,7 +273,7 @@ export default function NavBar({ user, onSignIn, onSignOut }: NavBarProps) {
 
         {isMobileMenuOpen && (
           <div className="md:hidden">
-            <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-gray-50">
+            <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-cream">
               <Link 
                 to={addUtmToPath('/', { utm_content: 'header' })} 
                 className={isActive('/') ? activeMobileNavLinkClass : mobileNavLinkClass} 

@@ -2,6 +2,7 @@ import { Link, useNavigate, useParams } from 'react-router-dom';
 import { useRecipes } from '../../contexts/RecipeContext';
 import { useSEO } from '../../hooks/useSEO';
 import { addUtmToPath } from '../../utils/utm';
+import { FOOD_IMAGES } from '../../constants/foodImages';
 import './recipe.css';
 
 
@@ -45,7 +46,7 @@ export default function Recipe() {
       <div className="min-h-screen flex items-center justify-center">
         <div className="text-center">
           <h1 className="text-xl sm:text-2xl font-bold text-gray-800 mb-4 leading-tight">Recipe not found</h1>
-          <Link to={addUtmToPath('/', { utm_content: 'recipe_back' })} className="text-[#088395] hover:text-[#09637E]">
+          <Link to={addUtmToPath('/', { utm_content: 'recipe_back' })} className="text-teal hover:text-teal-dark">
             ← Back to Recipes
           </Link>
         </div>
@@ -54,12 +55,20 @@ export default function Recipe() {
   }
 
   const textAlign = recipe?.direction === 'rtl' ? 'right' : 'left'
+  const heroImage = FOOD_IMAGES.banner[recipe.title.length % FOOD_IMAGES.banner.length]
 
   return (
     <div className="max-w-4xl mx-auto p-6" dir={recipe.direction} style={{ textAlign }}>
+      <div className="mb-8 overflow-hidden rounded-lg border border-border-warm aspect-[21/9] max-h-48">
+        <img
+          src={heroImage.src}
+          alt={heroImage.alt}
+          className="w-full h-full object-cover"
+        />
+      </div>
       {/* Header */}
       <header className="mb-8">
-        <Link to={addUtmToPath('/', { utm_content: 'recipe_back_header' })} className="inline-flex items-center text-[#088395] hover:text-[#09637E] mb-4">
+        <Link to={addUtmToPath('/', { utm_content: 'recipe_back_header' })} className="inline-flex items-center text-teal hover:text-teal-dark mb-4">
           <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path
               strokeLinecap="round"
@@ -71,7 +80,7 @@ export default function Recipe() {
           Back to Recipes
         </Link>
 
-        <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold text-gray-800 mb-2 sm:mb-4 leading-tight break-words">{recipe.title}</h1>
+        <h1 className="text-2xl sm:text-3xl md:text-4xl font-semibold text-ink mb-2 sm:mb-4 leading-tight break-words">{recipe.title}</h1>
 
         {recipe.url && (
           <a
@@ -95,10 +104,10 @@ export default function Recipe() {
 
       <article className="grid md:grid-cols-2 gap-8">
         {/* Ingredients */}
-        <section className="bg-white rounded-lg shadow-md p-6">
-          <h2 className="text-xl sm:text-2xl font-bold text-gray-800 mb-4 sm:mb-6 flex items-center leading-tight">
+        <section className="card">
+          <h2 className="text-xl sm:text-2xl font-semibold text-ink mb-4 sm:mb-6 flex items-center leading-tight">
             <svg
-              className="w-6 h-6 mr-2 text-green-500"
+              className="w-6 h-6 mr-2 text-teal"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -116,7 +125,7 @@ export default function Recipe() {
             {recipe.ingredients.map((ingredient, index) => (
               <li
                 key={index}
-                className="flex items-center p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors"
+                className="flex items-center p-3 bg-cream rounded-md border border-border-warm"
                 itemProp="itemListElement"
                 itemScope
                 itemType="https://schema.org/ListItem"
@@ -133,10 +142,10 @@ export default function Recipe() {
         </section>
 
         {/* Instructions */}
-        <section className="bg-white rounded-lg shadow-md p-6">
-          <h2 className="text-xl sm:text-2xl font-bold text-gray-800 mb-4 sm:mb-6 flex items-center leading-tight">
+        <section className="card">
+          <h2 className="text-xl sm:text-2xl font-semibold text-ink mb-4 sm:mb-6 flex items-center leading-tight">
             <svg
-              className="w-6 h-6 mr-2 text-[#088395]"
+              className="w-6 h-6 mr-2 text-teal"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -153,7 +162,7 @@ export default function Recipe() {
           <ol className="space-y-4" itemScope itemType="https://schema.org/HowToSection">
             {recipe.instructions.map((instruction, index) => (
               <li key={index} className="flex items-start" itemProp="itemListElement" itemScope itemType="https://schema.org/HowToStep">
-                <span className="flex-shrink-0 w-8 h-8 bg-[#088395] text-white rounded-full flex items-center justify-center text-sm font-bold mr-4 mt-1" itemProp="position">
+                <span className="flex-shrink-0 w-8 h-8 bg-teal text-white rounded-full flex items-center justify-center text-sm font-semibold mr-4 mt-1" itemProp="position">
                   {index + 1}
                 </span>
                 <p className="text-gray-700 leading-relaxed" itemProp="text">{instruction}</p>
@@ -168,7 +177,7 @@ export default function Recipe() {
         <button
           type="button"
           onClick={() => navigate(`/edit/${id}`)}
-          className="px-6 py-3 bg-[#088395] text-white rounded-lg hover:bg-[#09637E] transition-colors flex items-center"
+          className="btn-primary px-6 py-3"
         >
           <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path

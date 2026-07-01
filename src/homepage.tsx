@@ -3,6 +3,10 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useRecipes } from './contexts/RecipeContext';
 import { useSEO } from './hooks/useSEO';
 import { addUtmToPath } from './utils/utm';
+import { HERO_SLIDES } from './constants/foodImages';
+import HeroSlider from './components/HeroSlider';
+import SectionDivider from './components/SectionDivider';
+import SectionSpoonCorner from './components/SectionSpoonCorner';
 
 interface Recipe {
   id: string
@@ -131,25 +135,90 @@ export default function HomePage({ user, onSignIn }: HomePageProps) {
 
   return (
     <div className="space-y-8">
-      {/* Hero Section */}
-      <div className="text-center py-12 bg-gradient-to-r from-[#088395] to-[#09637E] rounded-2xl text-white">
-        <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 px-4 leading-tight">Welcome to ChefMind</h1>
-        <p className="text-lg sm:text-xl md:text-2xl mb-8 opacity-90 px-4">
-          {user ? `Hello, ${user.displayName}!` : 'Your Intelligent Recipe Companion'}
-        </p>
-        <p className="text-base sm:text-lg opacity-80 max-w-2xl mx-auto px-4">
-          {user
-            ? 'Import recipes from URLs or images, create your own, and discover new dishes - all in one beautiful, organized place.'
-            : 'Transform how you collect and organize recipes. Import from websites, upload images, or create your own - all with AI-powered intelligence.'}
-        </p>
+      {/* Hero Section — fills first viewport below nav */}
+      <section className="relative -mt-6 -mx-4 sm:-mx-6 min-h-[calc(100svh-4rem)] mb-8">
+        <SectionSpoonCorner corner="top-left" />
+        <div className="card overflow-hidden p-0 h-full min-h-[calc(100svh-4rem)]">
+          <div className="flex flex-col md:grid md:grid-cols-2 h-full min-h-[inherit]">
+            <div className="p-8 sm:p-10 lg:p-12 flex flex-col justify-center border-b md:border-b-0 md:border-r border-border-warm shrink-0 md:shrink">
+            <h1 className="text-3xl sm:text-4xl font-semibold text-ink mb-4 leading-tight">
+              Welcome to ChefMind
+            </h1>
+            <p className="text-lg text-[#4a4238] mb-3">
+              {user ? `Hello, ${user.displayName}!` : 'Your personal recipe collection'}
+            </p>
+            <p className="text-base text-gray-600 max-w-lg leading-relaxed">
+              {user
+                ? 'Import, create, and keep all your recipes in one place.'
+                : 'Save and organize recipes from anywhere — in one simple library.'}
+            </p>
+          </div>
+          <div className="relative flex-1 min-h-[240px] md:min-h-0">
+            <HeroSlider slides={[...HERO_SLIDES]} />
+          </div>
+        </div>
       </div>
+      </section>
+
+      <SectionDivider />
+
+      {!user && (
+        <div className="card relative">
+          <SectionSpoonCorner corner="top-right" />
+          <h2 className="card-section-title mb-4">What is ChefMind?</h2>
+          <p className="text-gray-600 leading-relaxed mb-6">
+            ChefMind is a simple recipe manager built for home cooks who collect recipes from many places — food blogs, Instagram, handwritten cards from relatives, and old cookbooks. Instead of scattered screenshots and saved tabs, you get one clean library you can search, edit, and cook from.
+          </p>
+          <div className="grid sm:grid-cols-2 gap-4">
+            <div className="info-box">
+              <h3 className="font-semibold text-ink mb-2">Import from anywhere</h3>
+              <p className="text-sm text-[#4a4238] leading-relaxed">
+                Paste any recipe URL and we pull out the title, ingredients, and instructions. Upload a photo of a recipe card or cookbook page and we transcribe what we can read.
+              </p>
+            </div>
+            <div className="info-box">
+              <h3 className="font-semibold text-ink mb-2">Build your own</h3>
+              <p className="text-sm text-[#4a4238] leading-relaxed">
+                Create recipes from scratch — ideal for family favorites, tweaks on classics, or dishes you invent in the kitchen.
+              </p>
+            </div>
+            <div className="info-box">
+              <h3 className="font-semibold text-ink mb-2">Edit and organize</h3>
+              <p className="text-sm text-[#4a4238] leading-relaxed">
+                Fix amounts, adjust steps, and keep everything in your personal collection. Recipes stay in your account and sync wherever you sign in.
+              </p>
+            </div>
+            <Link
+              to={addUtmToPath('/recipe-ideas', { utm_content: 'home_discover_ideas' })}
+              className="info-box block hover:border-teal/40 transition-colors"
+            >
+              <h3 className="font-semibold text-ink mb-2">Discover ideas</h3>
+              <p className="text-sm text-[#4a4238] leading-relaxed">
+                Not sure what to cook? Enter ingredients you have and get AI-powered recipe suggestions in seconds.
+              </p>
+              <span className="inline-block mt-3 text-sm font-medium text-teal">Try recipe ideas →</span>
+            </Link>
+          </div>
+          <div className="mt-8 pt-6 border-t border-border-warm flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+            <p className="text-[#4a4238] text-sm">
+              Free to use. Sign in with Google to save your recipes.
+            </p>
+            <button type="button" onClick={onSignIn} className="btn-primary py-2.5 shrink-0">
+              Get started — Sign in
+            </button>
+          </div>
+        </div>
+      )}
+
+      <SectionDivider />
 
       {/* Import Recipe Section */}
-      <div className="bg-white shadow-xl rounded-2xl p-8 border border-gray-100">
+      <div className="card relative">
+        <SectionSpoonCorner corner="bottom-right" />
         <div className="flex items-center mb-6">
-          <div className="p-3 bg-[#EBF4F6] rounded-full mr-4">
+          <div className="icon-box mr-4">
             <svg
-              className="w-6 h-6 text-[#088395]"
+              className="w-5 h-5"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -162,7 +231,7 @@ export default function HomePage({ user, onSignIn }: HomePageProps) {
               />
             </svg>
           </div>
-          <h2 className="text-xl sm:text-2xl font-bold text-gray-800">Import Recipe</h2>
+          <h2 className="card-section-title">Import Recipe</h2>
         </div>
         <p className="text-gray-600 mb-6">
           {user 
@@ -172,14 +241,14 @@ export default function HomePage({ user, onSignIn }: HomePageProps) {
 
         {/* Import Mode Toggle */}
         <div className="mb-6">
-          <div className="flex gap-2 bg-gray-100 rounded-lg p-1">
+          <div className="flex gap-2 bg-cream rounded-lg p-1 border border-border-warm">
             <button
               type="button"
               onClick={handleSwitchToUrlMode}
               className={`flex-1 px-4 py-2 rounded-md font-medium transition-colors ${
                 importMode === 'url'
-                  ? 'bg-white text-[#088395] shadow-sm'
-                  : 'text-gray-600 hover:text-gray-800'
+                  ? 'bg-paper text-teal border border-border-warm'
+                  : 'text-[#4a4238] hover:text-ink'
               }`}
             >
               From URL
@@ -189,8 +258,8 @@ export default function HomePage({ user, onSignIn }: HomePageProps) {
               onClick={handleSwitchToImageMode}
               className={`flex-1 px-4 py-2 rounded-md font-medium transition-colors ${
                 importMode === 'image'
-                  ? 'bg-white text-[#088395] shadow-sm'
-                  : 'text-gray-600 hover:text-gray-800'
+                  ? 'bg-paper text-teal border border-border-warm'
+                  : 'text-[#4a4238] hover:text-ink'
               }`}
             >
               From Image
@@ -210,7 +279,7 @@ export default function HomePage({ user, onSignIn }: HomePageProps) {
                   type="url"
                   value={importUrl}
                   onChange={handleUrlChange}
-                  className="w-full p-4 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-[#088395] focus:border-transparent transition-all duration-200"
+                  className="w-full p-4 border border-border-warm rounded-md focus:ring-2 focus:ring-teal focus:border-teal transition-colors"
                   placeholder="https://example.com/recipe"
                   required
                 />
@@ -248,7 +317,7 @@ export default function HomePage({ user, onSignIn }: HomePageProps) {
                   />
                   <label
                     htmlFor="recipe-image"
-                    className="flex flex-col items-center justify-center w-full h-48 border-2 border-gray-300 border-dashed rounded-xl cursor-pointer hover:bg-gray-50 transition-colors"
+                    className="flex flex-col items-center justify-center w-full h-48 border border-dashed border-gray-300 rounded-md cursor-pointer hover:bg-gray-50 transition-colors"
                   >
                     {imagePreview ? (
                       <div className="relative w-full h-full">
@@ -298,7 +367,7 @@ export default function HomePage({ user, onSignIn }: HomePageProps) {
             <button
               type="submit"
               disabled={isImporting || (importMode === 'image' && !selectedImage)}
-              className="w-full py-4 px-6 rounded-xl font-semibold text-lg transition-all duration-200 flex items-center justify-center bg-[#088395] hover:bg-[#09637E] text-white shadow-lg hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"
+              className="w-full btn-primary py-3 text-base"
             >
               {isImporting ? (
                 <>
@@ -342,8 +411,7 @@ export default function HomePage({ user, onSignIn }: HomePageProps) {
             <button
               type="button"
               onClick={onSignIn}
-              className="w-full sm:w-auto inline-flex items-center justify-center px-4 sm:px-6 py-2.5 sm:py-3 bg-[#FF6500] text-white rounded-[18px] hover:bg-[#E55A00] active:bg-[#CC5000] transition-all shadow-md hover:shadow-lg cursor-pointer font-semibold text-sm sm:text-base"
-              style={{ fontSize: '15px' }}
+              className="btn-primary w-full sm:w-auto py-3"
             >
               <svg
                 className="w-4 h-4 sm:w-5 sm:h-5 mr-2 flex-shrink-0"
@@ -363,7 +431,7 @@ export default function HomePage({ user, onSignIn }: HomePageProps) {
           )}
 
           {importError && (
-            <div className="bg-red-50 border border-red-200 rounded-xl p-4">
+            <div className="bg-red-50 border border-red-200 rounded-md p-4">
               <div className="flex">
                 <svg
                   className="w-5 h-5 text-red-400 mr-2"
@@ -384,7 +452,7 @@ export default function HomePage({ user, onSignIn }: HomePageProps) {
           )}
 
           {error && (
-            <div className="bg-red-50 border border-red-200 rounded-xl p-4">
+            <div className="bg-red-50 border border-red-200 rounded-md p-4">
               <div className="flex">
                 <svg
                   className="w-5 h-5 text-red-400 mr-2"
@@ -403,36 +471,18 @@ export default function HomePage({ user, onSignIn }: HomePageProps) {
               </div>
             </div>
           )}
-
-          {!user && (
-            <div className="bg-[#EBF4F6] border border-[#7AB2B2] rounded-xl p-4">
-              <div className="flex">
-                <svg
-                  className="w-5 h-5 text-[#088395] mr-2"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-                  />
-                </svg>
-                <p className="text-[#09637E]">Sign in to save and manage your recipes</p>
-              </div>
-            </div>
-          )}
         </form>
       </div>
 
+      <SectionDivider />
+
       {/* Create Recipe Section */}
-      <div className="bg-white shadow-xl rounded-2xl p-4 sm:p-6 md:p-8 border border-gray-100">
+      <div className="card relative">
+        <SectionSpoonCorner corner="bottom-right" />
         <div className="flex items-center mb-4 sm:mb-6">
-          <div className="p-2 sm:p-2.5 md:p-3 bg-[#EBF4F6] rounded-full mr-3 sm:mr-4 flex-shrink-0">
+          <div className="icon-box mr-3 sm:mr-4 flex-shrink-0">
             <svg
-              className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 text-[#088395]"
+              className="w-5 h-5"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -445,7 +495,7 @@ export default function HomePage({ user, onSignIn }: HomePageProps) {
               />
             </svg>
           </div>
-          <h2 className="text-lg sm:text-xl md:text-2xl font-bold text-gray-800 leading-tight">Create Recipe</h2>
+          <h2 className="card-section-title">Create Recipe</h2>
         </div>
         <p className="text-sm sm:text-base text-gray-600 mb-4 sm:mb-6 leading-relaxed">
           {user 
@@ -455,7 +505,7 @@ export default function HomePage({ user, onSignIn }: HomePageProps) {
         {user ? (
           <Link
             to={addUtmToPath('/create', { utm_content: 'cta_create' })}
-            className="w-full sm:w-auto inline-flex items-center justify-center px-4 sm:px-6 py-2.5 sm:py-3 bg-[#088395] text-white rounded-xl hover:bg-[#09637E] transition-colors font-semibold text-sm sm:text-base !text-white shadow-sm hover:shadow-md"
+            className="btn-primary w-full sm:w-auto py-3"
           >
             <svg
               className="w-4 h-4 sm:w-5 sm:h-5 mr-2 flex-shrink-0"
@@ -476,8 +526,7 @@ export default function HomePage({ user, onSignIn }: HomePageProps) {
           <button
             type="button"
             onClick={onSignIn}
-            className="w-full sm:w-auto inline-flex items-center justify-center px-4 sm:px-6 py-2.5 sm:py-3 bg-[#FF6500] text-white rounded-[18px] hover:bg-[#E55A00] active:bg-[#CC5000] transition-all shadow-md hover:shadow-lg cursor-pointer font-semibold text-sm sm:text-base"
-            style={{ fontSize: '15px' }}
+            className="btn-primary w-full sm:w-auto py-3"
           >
             <svg
               className="w-4 h-4 sm:w-5 sm:h-5 mr-2 flex-shrink-0"
@@ -497,14 +546,17 @@ export default function HomePage({ user, onSignIn }: HomePageProps) {
         )}
       </div>
 
-      {/* Recipes Section */}
-      <div className="bg-white shadow-xl rounded-2xl p-4 sm:p-6 md:p-8 border border-gray-100">
+      {user && (
+        <>
+          <SectionDivider />
+          <div className="card relative">
+            <SectionSpoonCorner corner="top-left" />
         <div className="mb-4 sm:mb-6">
           <div className="flex items-start sm:items-center justify-between gap-2 sm:gap-4">
             <div className="flex items-center gap-2 sm:gap-3 md:gap-4 flex-1 min-w-0">
-              <div className="p-2 sm:p-2.5 md:p-3 bg-[#EBF4F6] rounded-full flex-shrink-0">
+              <div className="icon-box flex-shrink-0">
                 <svg
-                  className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 text-[#088395]"
+                  className="w-5 h-5"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -519,14 +571,14 @@ export default function HomePage({ user, onSignIn }: HomePageProps) {
               </div>
               <div className="flex-1 min-w-0">
                 <div className="flex items-center gap-2 flex-wrap">
-                  <h2 className="text-lg sm:text-xl md:text-2xl font-bold text-gray-800 leading-tight">Your Recipes</h2>
-                  {user && recipes.length > 0 && (
-                    <span className="bg-[#088395] text-white text-xs font-semibold px-2 sm:px-3 py-0.5 sm:py-1 rounded-full shadow-sm whitespace-nowrap">
+                  <h2 className="card-section-title">Your Recipes</h2>
+                  {recipes.length > 0 && (
+                    <span className="bg-cream text-ink text-xs font-medium px-2 sm:px-3 py-0.5 sm:py-1 rounded-md border border-border-warm whitespace-nowrap">
                       {recipes.length}
                     </span>
                   )}
                 </div>
-                {user && recipes.length > 0 && (
+                {recipes.length > 0 && (
                   <p className="text-xs sm:text-sm text-gray-500 mt-0.5 sm:mt-1">
                     {recipes.length === 1 ? 'recipe' : 'recipes'} in your collection
                   </p>
@@ -537,45 +589,11 @@ export default function HomePage({ user, onSignIn }: HomePageProps) {
         </div>
 
         <div className="space-y-4">
-          {!user ? (
-            <div className="text-center py-12">
-              <div className="w-24 h-24 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <svg
-                  className="w-12 h-12 text-gray-400"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"
-                  />
-                </svg>
-              </div>
-              <h3 className="text-xl font-semibold text-gray-700 mb-2">
-                Sign in to view your recipes
-              </h3>
-              <p className="text-gray-500 mb-6">
-                Your saved recipes will appear here once you sign in
-              </p>
-              <div className="bg-[#EBF4F6] border border-[#7AB2B2] rounded-xl p-6 max-w-md mx-auto">
-                <h4 className="font-semibold text-[#09637E] mb-2">What you can do:</h4>
-                <ul className="text-[#09637E] text-sm space-y-1">
-                  <li>• Import recipes from any website</li>
-                  <li>• Upload images of recipes</li>
-                  <li>• Create your own recipes from scratch</li>
-                  <li>• Edit and customize recipes</li>
-                  <li>• Access your recipes from anywhere</li>
-                </ul>
-              </div>
-            </div>
-          ) : loading ? (
+          {loading ? (
             <div className="text-center py-12">
               <div className="inline-flex items-center">
                 <svg
-                  className="animate-spin -ml-1 mr-3 h-8 w-8 text-[#088395]"
+                  className="animate-spin -ml-1 mr-3 h-8 w-8 text-teal"
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
                   viewBox="0 0 24 24"
@@ -599,9 +617,9 @@ export default function HomePage({ user, onSignIn }: HomePageProps) {
             </div>
           ) : recipes.length === 0 ? (
             <div className="text-center py-12">
-              <div className="w-24 h-24 bg-[#EBF4F6] rounded-full flex items-center justify-center mx-auto mb-4">
+              <div className="w-24 h-24 bg-cream rounded-full flex items-center justify-center mx-auto mb-4 border border-border-warm">
                 <svg
-                  className="w-12 h-12 text-[#088395]"
+                  className="w-12 h-12 text-teal"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -614,13 +632,13 @@ export default function HomePage({ user, onSignIn }: HomePageProps) {
                   />
                 </svg>
               </div>
-              <h3 className="text-xl font-semibold text-[#088395] mb-2">No recipes yet</h3>
-              <p className="text-[#09637E] mb-6">
+              <h3 className="text-xl font-semibold text-gray-800 mb-2">No recipes yet</h3>
+              <p className="text-gray-600 mb-6">
                 Start by importing your first recipe from any website
               </p>
-              <div className="bg-[#EBF4F6] border border-[#7AB2B2] rounded-xl p-6 max-w-md mx-auto">
-                <h4 className="font-semibold text-[#09637E] mb-2">Get started:</h4>
-                <ul className="text-[#088395] text-sm space-y-1">
+              <div className="info-box max-w-md mx-auto text-left">
+                <h4 className="font-semibold text-gray-900 mb-2">Get started:</h4>
+                <ul className="text-gray-600 text-sm space-y-1">
                   <li>• Find a recipe you love online</li>
                   <li>• Copy the URL and paste it above</li>
                   <li>• We'll extract all the details for you</li>
@@ -633,12 +651,12 @@ export default function HomePage({ user, onSignIn }: HomePageProps) {
               {recipes.map((recipe) => (
                 <div
                   key={recipe.id}
-                  className="group bg-gray-50 hover:bg-gray-100 rounded-xl p-6 transition-all duration-200 border border-gray-200 hover:border-gray-300 hover:shadow-md"
+                  className="group bg-paper rounded-md p-5 transition-colors border border-border-warm hover:border-teal/50"
                 >
                   <div className="flex items-center justify-between">
                     <Link
                       to={addUtmToPath(`/recipe/${recipe.id}`, { utm_content: 'home_recipe_card' })}
-                      className="flex-1 group-hover:text-[#088395] transition-colors"
+                      className="flex-1 group-hover:text-teal transition-colors"
                     >
                       <h3 className="text-lg font-semibold text-gray-800 mb-1">{recipe.title}</h3>
                       {recipe.url && (
@@ -650,7 +668,7 @@ export default function HomePage({ user, onSignIn }: HomePageProps) {
                     <div className="flex gap-2 ml-4">
                       <button
                         onClick={() => handleEditRecipe(recipe.id)}
-                        className="p-2 text-[#088395] hover:text-[#09637E] hover:bg-[#EBF4F6] rounded-lg transition-colors"
+                        className="p-2 text-teal hover:text-teal-dark hover:bg-cream rounded-md transition-colors"
                         title="Edit recipe"
                       >
                         <svg
@@ -693,7 +711,9 @@ export default function HomePage({ user, onSignIn }: HomePageProps) {
             </div>
           )}
         </div>
-      </div>
+          </div>
+        </>
+      )}
     </div>
   )
 }
