@@ -92,7 +92,7 @@ export default function HeroSlider({ slides }: HeroSliderProps) {
                 aria-label={`Go to slide ${index + 1}`}
                 className={`h-2 rounded-full transition-all ${
                   index === activeIndex
-                    ? 'w-6 bg-teal'
+                    ? 'w-6 bg-orange'
                     : 'w-2 bg-paper/80 border border-border-warm hover:bg-cream'
                 }`}
               />

@@ -54,23 +54,23 @@ export default function RecipeMemoryAndNostalgia() {
               cook a recipe that holds personal significance, we're not just preparing food—we're activating a complex web 
               of memories, emotions, and associations that connect us to our past.
             </p>
-            <div className="bg-[#EBF4F6] rounded-lg p-6 my-6">
-              <h3 className="font-semibold text-[#09637E] mb-3">Why Recipes Trigger Memories:</h3>
+            <div className="bg-[#cbf3f0] rounded-lg p-6 my-6">
+              <h3 className="font-semibold text-[#1fa396] mb-3">Why Recipes Trigger Memories:</h3>
               <ul className="text-gray-700 space-y-2">
                 <li className="flex items-start">
-                  <span className="text-[#088395] mr-2">•</span>
+                  <span className="text-[#2ec4b6] mr-2">•</span>
                   <span><strong>Multisensory experience:</strong> Cooking engages sight, smell, taste, touch, and even sound</span>
                 </li>
                 <li className="flex items-start">
-                  <span className="text-[#088395] mr-2">•</span>
+                  <span className="text-[#2ec4b6] mr-2">•</span>
                   <span><strong>Emotional associations:</strong> Recipes are often tied to people, places, and significant life events</span>
                 </li>
                 <li className="flex items-start">
-                  <span className="text-[#088395] mr-2">•</span>
+                  <span className="text-[#2ec4b6] mr-2">•</span>
                   <span><strong>Repetition and ritual:</strong> Cooking the same recipe creates neural pathways that strengthen memories</span>
                 </li>
                 <li className="flex items-start">
-                  <span className="text-[#088395] mr-2">•</span>
+                  <span className="text-[#2ec4b6] mr-2">•</span>
                   <span><strong>Cultural connection:</strong> Recipes link us to our heritage and identity</span>
                 </li>
               </ul>
@@ -97,9 +97,9 @@ export default function RecipeMemoryAndNostalgia() {
               Preserving Recipe Memories with ChefMind
             </h2>
             <div className="space-y-6">
-              <div className="bg-[#EBF4F6] rounded-lg p-6">
-                <h3 className="text-xl font-semibold text-[#09637E] mb-3 flex items-center">
-                  <span className="bg-[#088395] text-white rounded-full w-8 h-8 flex items-center justify-center mr-3 text-sm font-bold">1</span>
+              <div className="bg-[#cbf3f0] rounded-lg p-6">
+                <h3 className="text-xl font-semibold text-[#1fa396] mb-3 flex items-center">
+                  <span className="bg-[#2ec4b6] text-white rounded-full w-8 h-8 flex items-center justify-center mr-3 text-sm font-bold">1</span>
                   Document the Story
                 </h3>
                 <p className="text-gray-700 mb-3">
@@ -109,9 +109,9 @@ export default function RecipeMemoryAndNostalgia() {
                 </p>
               </div>
 
-              <div className="bg-[#EBF4F6] rounded-lg p-6">
-                <h3 className="text-xl font-semibold text-[#09637E] mb-3 flex items-center">
-                  <span className="bg-[#088395] text-white rounded-full w-8 h-8 flex items-center justify-center mr-3 text-sm font-bold">2</span>
+              <div className="bg-[#cbf3f0] rounded-lg p-6">
+                <h3 className="text-xl font-semibold text-[#1fa396] mb-3 flex items-center">
+                  <span className="bg-[#2ec4b6] text-white rounded-full w-8 h-8 flex items-center justify-center mr-3 text-sm font-bold">2</span>
                   Capture Recipes from Memory
                 </h3>
                 <p className="text-gray-700 mb-3">
@@ -121,9 +121,9 @@ export default function RecipeMemoryAndNostalgia() {
                 </p>
               </div>
 
-              <div className="bg-[#EBF4F6] rounded-lg p-6">
-                <h3 className="text-xl font-semibold text-[#09637E] mb-3 flex items-center">
-                  <span className="bg-[#088395] text-white rounded-full w-8 h-8 flex items-center justify-center mr-3 text-sm font-bold">3</span>
+              <div className="bg-[#cbf3f0] rounded-lg p-6">
+                <h3 className="text-xl font-semibold text-[#1fa396] mb-3 flex items-center">
+                  <span className="bg-[#2ec4b6] text-white rounded-full w-8 h-8 flex items-center justify-center mr-3 text-sm font-bold">3</span>
                   Recreate Lost Recipes
                 </h3>
                 <p className="text-gray-700 mb-3">
@@ -133,9 +133,9 @@ export default function RecipeMemoryAndNostalgia() {
                 </p>
               </div>
 
-              <div className="bg-[#EBF4F6] rounded-lg p-6">
-                <h3 className="text-xl font-semibold text-[#09637E] mb-3 flex items-center">
-                  <span className="bg-[#088395] text-white rounded-full w-8 h-8 flex items-center justify-center mr-3 text-sm font-bold">4</span>
+              <div className="bg-[#cbf3f0] rounded-lg p-6">
+                <h3 className="text-xl font-semibold text-[#1fa396] mb-3 flex items-center">
+                  <span className="bg-[#2ec4b6] text-white rounded-full w-8 h-8 flex items-center justify-center mr-3 text-sm font-bold">4</span>
                   Build Your Memory Collection
                 </h3>
                 <p className="text-gray-700 mb-3">
@@ -173,21 +173,21 @@ export default function RecipeMemoryAndNostalgia() {
               meaning, ChefMind helps you maintain the connection between food and memory.
             </p>
             <div className="bg-[#7AB2B2] rounded-lg p-6 my-6">
-              <h3 className="font-semibold text-[#09637E] mb-3">Remember the Moments</h3>
+              <h3 className="font-semibold text-[#1fa396] mb-3">Remember the Moments</h3>
               <p className="text-gray-700">
                 As you add recipes to ChefMind, take a moment to note the memories associated with each one. These stories 
                 are what make your recipe collection truly special—a digital scrapbook of flavors, people, and moments that 
                 matter.
               </p>
             </div>
-            <div className="bg-[#EBF4F6] rounded-lg p-6 mt-8 text-center">
+            <div className="bg-[#cbf3f0] rounded-lg p-6 mt-8 text-center">
               <h3 className="text-xl font-semibold text-gray-800 mb-3">Preserve Your Recipe Memories</h3>
               <p className="text-gray-700 mb-4">
                 Start documenting the recipes and memories that matter most to you
               </p>
               <Link
                 to={addUtmToPath('/', { utm_content: 'story_memory_cta' })}
-                className="inline-block bg-[#088395] px-6 py-3 rounded-lg hover:bg-[#09637E] transition-colors !text-white font-medium"
+                className="inline-block bg-[#2ec4b6] px-6 py-3 rounded-lg hover:bg-[#1fa396] transition-colors !text-white font-medium"
               >
                 Get Started →
               </Link>

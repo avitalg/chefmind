@@ -86,7 +86,7 @@ export default function CreateRecipe() {
         <button
           type="button"
           onClick={() => navigate('/')}
-          className="text-[#088395] hover:text-[#09637E]"
+          className="text-[#2ec4b6] hover:text-[#1fa396]"
         >
           ← Back to Recipes
         </button>
@@ -104,7 +104,7 @@ export default function CreateRecipe() {
             type="text"
             value={recipe.title}
             onChange={(e) => setRecipe({ ...recipe, title: e.target.value })}
-            className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#088395] focus:border-[#088395]"
+            className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#2ec4b6] focus:border-[#2ec4b6]"
             placeholder="Enter recipe title"
             required
           />
@@ -123,7 +123,7 @@ export default function CreateRecipe() {
                     newIngredients[index] = { ...ing, amount: parseFloat(e.target.value) || 0 }
                     setRecipe({ ...recipe, ingredients: newIngredients })
                   }}
-                  className="w-24 p-2 border border-gray-300 rounded focus:ring-2 focus:ring-[#088395] focus:border-[#088395]"
+                  className="w-24 p-2 border border-gray-300 rounded focus:ring-2 focus:ring-[#2ec4b6] focus:border-[#2ec4b6]"
                   step="0.1"
                   min="0"
                   placeholder="0"
@@ -136,7 +136,7 @@ export default function CreateRecipe() {
                     newIngredients[index] = { ...ing, unit: e.target.value }
                     setRecipe({ ...recipe, ingredients: newIngredients })
                   }}
-                  className="w-24 p-2 border border-gray-300 rounded focus:ring-2 focus:ring-[#088395] focus:border-[#088395]"
+                  className="w-24 p-2 border border-gray-300 rounded focus:ring-2 focus:ring-[#2ec4b6] focus:border-[#2ec4b6]"
                   placeholder="cup"
                 />
                 <input
@@ -147,7 +147,7 @@ export default function CreateRecipe() {
                     newIngredients[index] = { ...ing, name: e.target.value }
                     setRecipe({ ...recipe, ingredients: newIngredients })
                   }}
-                  className="flex-1 p-2 border border-gray-300 rounded focus:ring-2 focus:ring-[#088395] focus:border-[#088395]"
+                  className="flex-1 p-2 border border-gray-300 rounded focus:ring-2 focus:ring-[#2ec4b6] focus:border-[#2ec4b6]"
                   placeholder="ingredient name"
                 />
                 <button
@@ -182,7 +182,7 @@ export default function CreateRecipe() {
           <div className="space-y-3">
             {recipe.instructions.map((instruction: string, index: number) => (
               <div key={index} className="flex space-x-3">
-                <span className="flex-shrink-0 w-8 h-8 bg-[#088395] text-white rounded-full flex items-center justify-center text-sm font-bold mt-1">
+                <span className="flex-shrink-0 w-8 h-8 bg-[#2ec4b6] text-white rounded-full flex items-center justify-center text-sm font-bold mt-1">
                   {index + 1}
                 </span>
                 <textarea
@@ -192,7 +192,7 @@ export default function CreateRecipe() {
                     newInstructions[index] = e.target.value
                     setRecipe({ ...recipe, instructions: newInstructions })
                   }}
-                  className="flex-1 p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#088395] focus:border-[#088395]"
+                  className="flex-1 p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#2ec4b6] focus:border-[#2ec4b6]"
                   rows={3}
                   placeholder="Enter instruction step"
                 />
@@ -231,7 +231,7 @@ export default function CreateRecipe() {
             id="direction"
             value={recipe.direction}
             onChange={(e) => setRecipe({ ...recipe, direction: e.target.value })}
-            className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#088395] focus:border-[#088395]"
+            className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#2ec4b6] focus:border-[#2ec4b6]"
           >
             <option value="ltr">Left to Right (LTR)</option>
             <option value="rtl">Right to Left (RTL)</option>
@@ -247,7 +247,7 @@ export default function CreateRecipe() {
         <div className="flex space-x-4">
           <button
             type="submit"
-            className="flex-1 px-6 py-3 bg-[#088395] text-white rounded-lg hover:bg-[#09637E] transition-colors font-medium"
+            className="flex-1 px-6 py-3 bg-[#2ec4b6] text-white rounded-lg hover:bg-[#1fa396] transition-colors font-medium"
           >
             Create Recipe
           </button>

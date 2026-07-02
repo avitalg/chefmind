@@ -95,7 +95,7 @@ export default function RecipeIdeas() {
             onChange={(e) => setIngredientInput(e.target.value)}
             onKeyDown={handleKeyDown}
             placeholder="e.g. chicken, garlic"
-            className="flex-1 min-w-[200px] px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#088395] focus:border-[#088395]"
+            className="flex-1 min-w-[200px] px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#2ec4b6] focus:border-[#2ec4b6]"
             aria-label="Add ingredient"
           />
           <button
@@ -136,7 +136,7 @@ export default function RecipeIdeas() {
           type="button"
           onClick={handleGetIdeas}
           disabled={ingredients.length === 0 || loading}
-          className="px-4 py-2 bg-[#088395] text-white rounded-lg hover:bg-[#09637E] disabled:opacity-50 disabled:pointer-events-none transition-colors"
+          className="px-4 py-2 bg-[#2ec4b6] text-white rounded-lg hover:bg-[#1fa396] disabled:opacity-50 disabled:pointer-events-none transition-colors"
         >
           {loading ? 'Loading…' : 'Get 5 recipe ideas'}
         </button>

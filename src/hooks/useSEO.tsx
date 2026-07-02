@@ -12,7 +12,7 @@ interface SEOProps {
 
 const defaultTitle = 'ChefMind - Your Personal Recipe Collection';
 const defaultDescription = 'ChefMind is a modern recipe management application that makes it easy to collect, organize, and customize recipes from any website. Import recipes, edit ingredients, and build your perfect recipe collection.';
-const defaultImage = '/chefmind.png';
+const defaultImage = '/favicon10.svg';
 
 // Normalize URL: remove trailing slashes (except for root), ensure it starts with /
 const normalizeUrl = (url: string): string => {

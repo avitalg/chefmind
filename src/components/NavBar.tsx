@@ -10,11 +10,11 @@ interface NavBarProps {
 }
 
 const navLinkClass =
-  'text-xs text-[#4a4238] hover:text-ink transition-colors';
+  'text-xs text-[#2d5a54] hover:text-ink transition-colors';
 const activeNavLinkClass =
   'text-xs text-teal font-semibold hover:text-teal-dark transition-colors';
 const mobileNavLinkClass =
-  'block px-3 py-2 text-[#4a4238] hover:text-ink hover:bg-cream rounded-md';
+  'block px-3 py-2 text-[#2d5a54] hover:text-ink hover:bg-cream rounded-md';
 const activeMobileNavLinkClass =
   'block px-3 py-2 text-teal font-semibold hover:text-teal-dark hover:bg-cream rounded-md bg-cream';
 
@@ -52,7 +52,7 @@ export default function NavBar({ user, onSignIn, onSignOut }: NavBarProps) {
       <div className="max-w-6xl mx-auto px-4 w-full min-w-0">
         <div className="flex justify-between items-center h-16">
           <Link to={addUtmToPath('/', { utm_content: 'header' })} className="flex items-center">
-            <img src="/chefmind.png" alt="ChefMind" className="w-8 h-8 mr-2" />
+            <img src="/favicon10.svg" alt="ChefMind" className="w-8 h-8 mr-2" />
             <span className="text-xl font-bold text-ink">ChefMind</span>
           </Link>
 
@@ -84,7 +84,7 @@ export default function NavBar({ user, onSignIn, onSignOut }: NavBarProps) {
                   <div className="bg-paper rounded-md py-1 border border-border-warm shadow-sm">
                     <Link
                       to={addUtmToPath('/recipe-ideas', { utm_content: 'header' })}
-                      className={`block px-4 py-2 text-sm hover:bg-cream ${isActive('/recipe-ideas') ? 'text-teal font-semibold' : 'text-[#4a4238]'}`}
+                      className={`block px-4 py-2 text-sm hover:bg-cream ${isActive('/recipe-ideas') ? 'text-teal font-semibold' : 'text-[#2d5a54]'}`}
                       onClick={() => setIsRecipesDropdownOpen(false)}
                     >
                       Recipe ideas
@@ -92,7 +92,7 @@ export default function NavBar({ user, onSignIn, onSignOut }: NavBarProps) {
                     {user && (
                       <Link
                         to={addUtmToPath('/find', { utm_content: 'header' })}
-                        className={`block px-4 py-2 text-sm hover:bg-cream ${isActive('/find') ? 'text-teal font-semibold' : 'text-[#4a4238]'}`}
+                        className={`block px-4 py-2 text-sm hover:bg-cream ${isActive('/find') ? 'text-teal font-semibold' : 'text-[#2d5a54]'}`}
                         onClick={() => setIsRecipesDropdownOpen(false)}
                       >
                         Find by ingredients
@@ -126,28 +126,28 @@ export default function NavBar({ user, onSignIn, onSignOut }: NavBarProps) {
                   <div className="bg-paper rounded-md py-1 border border-border-warm shadow-sm">
                     <Link
                       to={addUtmToPath('/stories/import-recipe-with-image', { utm_content: 'header' })}
-                      className={`block px-4 py-2 text-sm hover:bg-cream ${isActive('/stories/import-recipe-with-image') ? 'text-teal font-semibold' : 'text-[#4a4238]'}`}
+                      className={`block px-4 py-2 text-sm hover:bg-cream ${isActive('/stories/import-recipe-with-image') ? 'text-teal font-semibold' : 'text-[#2d5a54]'}`}
                       onClick={() => setIsStoriesDropdownOpen(false)}
                     >
                       Import Recipe with Image
                     </Link>
                     <Link
                       to={addUtmToPath('/stories/preserving-family-recipes', { utm_content: 'header' })}
-                      className={`block px-4 py-2 text-sm hover:bg-cream ${isActive('/stories/preserving-family-recipes') ? 'text-teal font-semibold' : 'text-[#4a4238]'}`}
+                      className={`block px-4 py-2 text-sm hover:bg-cream ${isActive('/stories/preserving-family-recipes') ? 'text-teal font-semibold' : 'text-[#2d5a54]'}`}
                       onClick={() => setIsStoriesDropdownOpen(false)}
                     >
                       Preserving Family Recipes
                     </Link>
                     <Link
                       to={addUtmToPath('/stories/recipe-memory-and-nostalgia', { utm_content: 'header' })}
-                      className={`block px-4 py-2 text-sm hover:bg-cream ${isActive('/stories/recipe-memory-and-nostalgia') ? 'text-teal font-semibold' : 'text-[#4a4238]'}`}
+                      className={`block px-4 py-2 text-sm hover:bg-cream ${isActive('/stories/recipe-memory-and-nostalgia') ? 'text-teal font-semibold' : 'text-[#2d5a54]'}`}
                       onClick={() => setIsStoriesDropdownOpen(false)}
                     >
                       Recipe Memory & Nostalgia
                     </Link>
                     <Link
                       to={addUtmToPath('/stories/building-your-culinary-legacy', { utm_content: 'header' })}
-                      className={`block px-4 py-2 text-sm hover:bg-cream ${isActive('/stories/building-your-culinary-legacy') ? 'text-teal font-semibold' : 'text-[#4a4238]'}`}
+                      className={`block px-4 py-2 text-sm hover:bg-cream ${isActive('/stories/building-your-culinary-legacy') ? 'text-teal font-semibold' : 'text-[#2d5a54]'}`}
                       onClick={() => setIsStoriesDropdownOpen(false)}
                     >
                       Building Your Culinary Legacy
@@ -180,14 +180,14 @@ export default function NavBar({ user, onSignIn, onSignOut }: NavBarProps) {
                   <div className="bg-paper rounded-md py-1 border border-border-warm shadow-sm">
                     <Link
                       to={addUtmToPath('/company', { utm_content: 'header' })}
-                      className={`block px-4 py-2 text-sm hover:bg-cream ${isActive('/company') ? 'text-teal font-semibold' : 'text-[#4a4238]'}`}
+                      className={`block px-4 py-2 text-sm hover:bg-cream ${isActive('/company') ? 'text-teal font-semibold' : 'text-[#2d5a54]'}`}
                       onClick={() => setIsCompanyDropdownOpen(false)}
                     >
                       Company
                     </Link>
                     <Link
                       to={addUtmToPath('/about', { utm_content: 'header' })}
-                      className={`block px-4 py-2 text-sm hover:bg-cream ${isActive('/about') ? 'text-teal font-semibold' : 'text-[#4a4238]'}`}
+                      className={`block px-4 py-2 text-sm hover:bg-cream ${isActive('/about') ? 'text-teal font-semibold' : 'text-[#2d5a54]'}`}
                       onClick={() => setIsCompanyDropdownOpen(false)}
                     >
                       About
@@ -204,7 +204,7 @@ export default function NavBar({ user, onSignIn, onSignOut }: NavBarProps) {
           <div className="hidden md:flex items-center gap-3">
             {user ? (
               <>
-                <span className="text-[#4a4238] text-xs font-bold">{user.displayName}</span>
+                <span className="text-[#2d5a54] text-xs font-bold">{user.displayName}</span>
                 <button
                   type="button"
                   onClick={onSignOut}

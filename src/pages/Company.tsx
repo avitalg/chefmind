@@ -38,8 +38,8 @@ const Company = () => {
 
           <h2 className="text-xl sm:text-2xl font-semibold text-gray-800 mt-6 sm:mt-8 mb-3 sm:mb-4 leading-tight">Our Values</h2>
           <div className="grid md:grid-cols-2 gap-6">
-            <div className="bg-[#EBF4F6] p-6 rounded-lg">
-              <h3 className="font-semibold text-[#09637E] mb-3">Innovation</h3>
+            <div className="bg-[#cbf3f0] p-6 rounded-lg">
+              <h3 className="font-semibold text-[#1fa396] mb-3">Innovation</h3>
               <p className="text-gray-600 text-sm">
                 We constantly push the boundaries of what's possible in recipe management, 
                 using cutting-edge AI and modern web technologies.
@@ -52,15 +52,15 @@ const Company = () => {
                 should be intuitive and easy to use.
               </p>
             </div>
-            <div className="bg-[#EBF4F6] p-6 rounded-lg">
-              <h3 className="font-semibold text-[#09637E] mb-3">Community</h3>
+            <div className="bg-[#cbf3f0] p-6 rounded-lg">
+              <h3 className="font-semibold text-[#1fa396] mb-3">Community</h3>
               <p className="text-gray-600 text-sm">
                 We're building more than a product – we're fostering a community of 
                 passionate cooks who share knowledge and inspiration.
               </p>
             </div>
             <div className="bg-[#7AB2B2] p-6 rounded-lg">
-              <h3 className="font-semibold text-[#09637E] mb-3">Privacy</h3>
+              <h3 className="font-semibold text-[#1fa396] mb-3">Privacy</h3>
               <p className="text-gray-600 text-sm">
                 Your recipes are personal. We respect your privacy and give you complete 
                 control over your culinary data.
@@ -83,8 +83,8 @@ const Company = () => {
             </p>
           </div>      
 
-          <div className="bg-[#EBF4F6] rounded-lg p-6 mt-8">
-            <h3 className="font-semibold text-[#09637E] mb-3">Get in Touch</h3>
+          <div className="bg-[#cbf3f0] rounded-lg p-6 mt-8">
+            <h3 className="font-semibold text-[#1fa396] mb-3">Get in Touch</h3>
             <p className="text-gray-600 mb-4">
               Have questions, feedback, or ideas? We'd love to hear from you. 
               Reach out to us and help shape the future of recipe management.
@@ -92,7 +92,7 @@ const Company = () => {
             <div>
               <Link 
                 to={addUtmToPath('/', { utm_content: 'company_cta' })} 
-                className="inline-block bg-[#088395] px-6 py-3 rounded-lg hover:bg-[#09637E] transition-colors !text-white"
+                className="inline-block bg-[#2ec4b6] px-6 py-3 rounded-lg hover:bg-[#1fa396] transition-colors !text-white"
               >
                 Try ChefMind →
               </Link>

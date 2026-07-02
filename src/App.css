@@ -3,14 +3,16 @@
 
 @theme {
   --font-sans: 'Montserrat', system-ui, -apple-system, sans-serif;
-  --color-cream: #f7f4ef;
-  --color-paper: #fffcf8;
-  --color-teal: #088395;
-  --color-teal-dark: #09637E;
-  --color-orange: #E07B2D;
-  --color-orange-dark: #C4681F;
-  --color-ink: #2c2416;
-  --color-border-warm: #e0d6c8;
+  /* Palette: #ff9f1c · #ffbf69 · #ffffff · #cbf3f0 · #2ec4b6 */
+  --color-cream: #cbf3f0;
+  --color-paper: #ffffff;
+  --color-teal: #2ec4b6;
+  --color-teal-dark: #1fa396;
+  --color-orange: #ff9f1c;
+  --color-orange-light: #ffbf69;
+  --color-ink: #1a5c55;
+  --color-body: #2d5a54;
+  --color-border-warm: #a8dcd6;
 }
 
 #root {
@@ -22,7 +24,7 @@
 @layer components {
   .btn-primary {
     @apply inline-flex items-center justify-center px-4 py-2.5 bg-orange text-white rounded-md border border-orange
-           hover:bg-orange-dark hover:border-orange-dark transition-colors font-medium cursor-pointer
+           hover:bg-teal hover:border-teal transition-colors font-medium cursor-pointer
            disabled:opacity-50 disabled:cursor-not-allowed;
   }
 
@@ -32,7 +34,7 @@
   }
 
   .card {
-    @apply bg-paper border border-border-warm rounded-lg p-6 sm:p-8;
+    @apply bg-paper border border-border-warm rounded-lg p-6 sm:p-8 shadow-sm;
   }
 
   .card-section-title {
@@ -40,11 +42,11 @@
   }
 
   .info-box {
-    @apply bg-cream border border-border-warm rounded-lg p-4 text-[#4a4238];
+    @apply bg-cream border border-border-warm rounded-lg p-4 text-[#cbf3f0];
   }
 
   .icon-box {
-    @apply p-2.5 border border-border-warm rounded-md text-teal;
+    @apply p-2.5 border border-border-warm rounded-md text-teal bg-cream/60;
   }
 
   .section-divider {
@@ -124,9 +126,7 @@
   color: #888;
 }
 
-/* Override global button styles from index.css to allow Tailwind classes to work */
 @layer base {
-  /* Reset button styles to allow Tailwind utility classes */
   button {
     background-color: unset;
     border: unset;
@@ -140,7 +140,6 @@
     cursor: not-allowed;
   }
 
-  /* Critical: Fix white text in Safari inputs (Safari bug) */
   input[type="text"],
   input[type="url"],
   input[type="email"],
@@ -150,10 +149,9 @@
   input[type="tel"],
   textarea,
   select {
-    color: #1f2937 !important; /* text-gray-800 - force visible text */
+    color: #1f2937 !important;
   }
 
-  /* Critical: Fix Safari autofill white text bug */
   input:-webkit-autofill,
   input:-webkit-autofill:hover,
   input:-webkit-autofill:focus,
@@ -163,7 +161,6 @@
     box-shadow: 0 0 0px 1000px #ffffff inset !important;
   }
 
-  /* Critical: Prevent iOS zoom on input focus */
   @media screen and (max-width: 768px) {
     input[type="text"],
     input[type="url"],

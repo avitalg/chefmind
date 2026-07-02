@@ -30,7 +30,7 @@ export default function RecipeList({ user }: RecipeListProps) {
   if (isLoading) {
     return (
       <div className="text-center py-12">
-        <div className="w-16 h-16 border-4 border-[#EBF4F6] border-t-[#088395] rounded-full animate-spin mx-auto mb-4"></div>
+        <div className="w-16 h-16 border-4 border-[#cbf3f0] border-t-[#2ec4b6] rounded-full animate-spin mx-auto mb-4"></div>
         <span className="text-lg text-gray-600">Loading your recipes...</span>
       </div>
     )
@@ -62,9 +62,9 @@ export default function RecipeList({ user }: RecipeListProps) {
   if (recipes.length === 0) {
     return (
       <div className="text-center py-12">
-        <div className="w-24 h-24 bg-[#EBF4F6] rounded-full flex items-center justify-center mx-auto mb-4">
+        <div className="w-24 h-24 bg-[#cbf3f0] rounded-full flex items-center justify-center mx-auto mb-4">
           <svg
-            className="w-12 h-12 text-[#088395]"
+            className="w-12 h-12 text-[#2ec4b6]"
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"
@@ -77,8 +77,8 @@ export default function RecipeList({ user }: RecipeListProps) {
             />
           </svg>
         </div>
-        <h3 className="text-xl font-semibold text-[#088395] mb-2">No recipes yet!</h3>
-        <p className="text-[#09637E]">Start by importing a recipe from a URL or creating one manually.</p>
+        <h3 className="text-xl font-semibold text-[#2ec4b6] mb-2">No recipes yet!</h3>
+        <p className="text-[#1fa396]">Start by importing a recipe from a URL or creating one manually.</p>
       </div>
     )
   }
@@ -93,7 +93,7 @@ export default function RecipeList({ user }: RecipeListProps) {
           <div className="flex items-center justify-between">
             <button
               onClick={() => navigate(`/recipe/${recipe.id}`)}
-              className="flex-1 group-hover:text-[#088395] transition-colors text-left"
+              className="flex-1 group-hover:text-[#2ec4b6] transition-colors text-left"
             >
               <h3 className="text-lg font-semibold text-gray-800 mb-1">{recipe.title}</h3>
               {recipe.url && (
@@ -105,7 +105,7 @@ export default function RecipeList({ user }: RecipeListProps) {
             <div className="flex gap-2 ml-4">
               <button
                 onClick={() => navigate(`/edit/${recipe.id}`)}
-                className="p-2 text-[#088395] hover:text-[#09637E] hover:bg-[#EBF4F6] rounded-lg transition-colors"
+                className="p-2 text-[#2ec4b6] hover:text-[#1fa396] hover:bg-[#cbf3f0] rounded-lg transition-colors"
                 title="Edit recipe"
               >
                 <svg

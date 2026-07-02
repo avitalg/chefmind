@@ -22,7 +22,7 @@ export default function Recipe() {
       ? `${recipe.title}, recipe, cooking, ${recipe.ingredients.map(i => i.name).join(', ')}`
       : 'recipe, cooking',
     url: recipe ? `/recipe/${id}` : undefined,
-    image: '/chefmind.png',
+    image: '/favicon10.svg',
     type: 'article',
     structuredData: recipe ? {
       '@context': 'https://schema.org',

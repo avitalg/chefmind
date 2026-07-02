@@ -50,7 +50,7 @@ export default function EditRecipe({ recipe: initialRecipe }: EditRecipeProps) {
         <button
           type="button"
           onClick={() => navigate('/')}
-          className="text-[#088395] hover:text-[#09637E]"
+          className="text-[#2ec4b6] hover:text-[#1fa396]"
         >
           ← Back to Recipes
         </button>
@@ -180,7 +180,7 @@ export default function EditRecipe({ recipe: initialRecipe }: EditRecipeProps) {
 
         <button
           type="submit"
-          className="w-full px-4 py-2 bg-[#088395] text-white rounded hover:bg-[#09637E]"
+          className="w-full px-4 py-2 bg-[#2ec4b6] text-white rounded hover:bg-[#1fa396]"
         >
           Save Recipe
         </button>

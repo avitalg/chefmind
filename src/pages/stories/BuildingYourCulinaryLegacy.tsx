@@ -61,27 +61,27 @@ export default function BuildingYourCulinaryLegacy() {
               Why Build Your Culinary Legacy?
             </h2>
             <div className="grid md:grid-cols-2 gap-4 mb-6">
-              <div className="bg-[#EBF4F6] p-6 rounded-lg">
-                <h3 className="font-semibold text-[#09637E] mb-3">Preserve Family Traditions</h3>
+              <div className="bg-[#cbf3f0] p-6 rounded-lg">
+                <h3 className="font-semibold text-[#1fa396] mb-3">Preserve Family Traditions</h3>
                 <p className="text-gray-700 text-sm">
                   Keep your family's unique cooking methods, secret ingredients, and time-honored techniques alive for future 
                   generations to discover and enjoy.
                 </p>
               </div>
               <div className="bg-[#7AB2B2] p-6 rounded-lg">
-                <h3 className="font-semibold text-[#09637E] mb-3">Share Knowledge</h3>
+                <h3 className="font-semibold text-[#1fa396] mb-3">Share Knowledge</h3>
                 <p className="text-gray-700 text-sm">
                   Document your cooking expertise so others can learn from your experience, techniques, and culinary wisdom.
                 </p>
               </div>
-              <div className="bg-[#EBF4F6] p-6 rounded-lg">
-                <h3 className="font-semibold text-[#09637E] mb-3">Create Connections</h3>
+              <div className="bg-[#cbf3f0] p-6 rounded-lg">
+                <h3 className="font-semibold text-[#1fa396] mb-3">Create Connections</h3>
                 <p className="text-gray-700 text-sm">
                   Build bridges between generations through shared recipes and cooking experiences that bring families together.
                 </p>
               </div>
               <div className="bg-[#7AB2B2] p-6 rounded-lg">
-                <h3 className="font-semibold text-[#09637E] mb-3">Document Your Journey</h3>
+                <h3 className="font-semibold text-[#1fa396] mb-3">Document Your Journey</h3>
                 <p className="text-gray-700 text-sm">
                   Record your culinary evolution—from favorite childhood dishes to signature recipes you've perfected over the years.
                 </p>
@@ -94,9 +94,9 @@ export default function BuildingYourCulinaryLegacy() {
               How ChefMind Helps You Build Your Legacy
             </h2>
             <div className="space-y-6">
-              <div className="bg-[#EBF4F6] rounded-lg p-6">
-                <h3 className="text-xl font-semibold text-[#09637E] mb-3 flex items-center">
-                  <span className="bg-[#088395] text-white rounded-full w-8 h-8 flex items-center justify-center mr-3 text-sm font-bold">1</span>
+              <div className="bg-[#cbf3f0] rounded-lg p-6">
+                <h3 className="text-xl font-semibold text-[#1fa396] mb-3 flex items-center">
+                  <span className="bg-[#2ec4b6] text-white rounded-full w-8 h-8 flex items-center justify-center mr-3 text-sm font-bold">1</span>
                   Comprehensive Recipe Documentation
                 </h3>
                 <p className="text-gray-700 mb-3">
@@ -106,9 +106,9 @@ export default function BuildingYourCulinaryLegacy() {
                 </p>
               </div>
 
-              <div className="bg-[#EBF4F6] rounded-lg p-6">
-                <h3 className="text-xl font-semibold text-[#09637E] mb-3 flex items-center">
-                  <span className="bg-[#088395] text-white rounded-full w-8 h-8 flex items-center justify-center mr-3 text-sm font-bold">2</span>
+              <div className="bg-[#cbf3f0] rounded-lg p-6">
+                <h3 className="text-xl font-semibold text-[#1fa396] mb-3 flex items-center">
+                  <span className="bg-[#2ec4b6] text-white rounded-full w-8 h-8 flex items-center justify-center mr-3 text-sm font-bold">2</span>
                   Preserve Multiple Sources
                 </h3>
                 <p className="text-gray-700 mb-3">
@@ -118,9 +118,9 @@ export default function BuildingYourCulinaryLegacy() {
                 </p>
               </div>
 
-              <div className="bg-[#EBF4F6] rounded-lg p-6">
-                <h3 className="text-xl font-semibold text-[#09637E] mb-3 flex items-center">
-                  <span className="bg-[#088395] text-white rounded-full w-8 h-8 flex items-center justify-center mr-3 text-sm font-bold">3</span>
+              <div className="bg-[#cbf3f0] rounded-lg p-6">
+                <h3 className="text-xl font-semibold text-[#1fa396] mb-3 flex items-center">
+                  <span className="bg-[#2ec4b6] text-white rounded-full w-8 h-8 flex items-center justify-center mr-3 text-sm font-bold">3</span>
                   Edit and Refine Over Time
                 </h3>
                 <p className="text-gray-700 mb-3">
@@ -130,9 +130,9 @@ export default function BuildingYourCulinaryLegacy() {
                 </p>
               </div>
 
-              <div className="bg-[#EBF4F6] rounded-lg p-6">
-                <h3 className="text-xl font-semibold text-[#09637E] mb-3 flex items-center">
-                  <span className="bg-[#088395] text-white rounded-full w-8 h-8 flex items-center justify-center mr-3 text-sm font-bold">4</span>
+              <div className="bg-[#cbf3f0] rounded-lg p-6">
+                <h3 className="text-xl font-semibold text-[#1fa396] mb-3 flex items-center">
+                  <span className="bg-[#2ec4b6] text-white rounded-full w-8 h-8 flex items-center justify-center mr-3 text-sm font-bold">4</span>
                   Secure and Accessible
                 </h3>
                 <p className="text-gray-700 mb-3">
@@ -148,31 +148,31 @@ export default function BuildingYourCulinaryLegacy() {
             <h2 className="text-xl sm:text-2xl font-semibold text-gray-800 mt-6 sm:mt-8 mb-3 sm:mb-4 leading-tight">
               What to Include in Your Culinary Legacy
             </h2>
-            <div className="bg-[#EBF4F6] rounded-lg p-6 mb-6">
-              <h3 className="font-semibold text-[#09637E] mb-3">Essential Elements:</h3>
+            <div className="bg-[#cbf3f0] rounded-lg p-6 mb-6">
+              <h3 className="font-semibold text-[#1fa396] mb-3">Essential Elements:</h3>
               <ul className="text-gray-700 space-y-2">
                 <li className="flex items-start">
-                  <span className="text-[#088395] mr-2">•</span>
+                  <span className="text-[#2ec4b6] mr-2">•</span>
                   <span><strong>Family favorites:</strong> Recipes that have been passed down through generations</span>
                 </li>
                 <li className="flex items-start">
-                  <span className="text-[#088395] mr-2">•</span>
+                  <span className="text-[#2ec4b6] mr-2">•</span>
                   <span><strong>Signature dishes:</strong> Recipes you've perfected and are known for</span>
                 </li>
                 <li className="flex items-start">
-                  <span className="text-[#088395] mr-2">•</span>
+                  <span className="text-[#2ec4b6] mr-2">•</span>
                   <span><strong>Holiday traditions:</strong> Special recipes associated with celebrations and family gatherings</span>
                 </li>
                 <li className="flex items-start">
-                  <span className="text-[#088395] mr-2">•</span>
+                  <span className="text-[#2ec4b6] mr-2">•</span>
                   <span><strong>Cultural heritage:</strong> Recipes that connect you to your cultural background</span>
                 </li>
                 <li className="flex items-start">
-                  <span className="text-[#088395] mr-2">•</span>
+                  <span className="text-[#2ec4b6] mr-2">•</span>
                   <span><strong>Personal creations:</strong> Original recipes you've developed</span>
                 </li>
                 <li className="flex items-start">
-                  <span className="text-[#088395] mr-2">•</span>
+                  <span className="text-[#2ec4b6] mr-2">•</span>
                   <span><strong>Stories and memories:</strong> The context and meaning behind each recipe</span>
                 </li>
               </ul>
@@ -185,7 +185,7 @@ export default function BuildingYourCulinaryLegacy() {
             </h2>
             <div className="space-y-4 mb-6">
               <div className="flex items-start">
-                <span className="flex-shrink-0 w-8 h-8 bg-[#088395] text-white rounded-full flex items-center justify-center text-sm font-bold mr-4 mt-1">1</span>
+                <span className="flex-shrink-0 w-8 h-8 bg-[#2ec4b6] text-white rounded-full flex items-center justify-center text-sm font-bold mr-4 mt-1">1</span>
                 <div>
                   <h3 className="font-semibold text-gray-800 mb-2">Start with Your Favorites</h3>
                   <p className="text-gray-600 text-sm">
@@ -195,7 +195,7 @@ export default function BuildingYourCulinaryLegacy() {
                 </div>
               </div>
               <div className="flex items-start">
-                <span className="flex-shrink-0 w-8 h-8 bg-[#088395] text-white rounded-full flex items-center justify-center text-sm font-bold mr-4 mt-1">2</span>
+                <span className="flex-shrink-0 w-8 h-8 bg-[#2ec4b6] text-white rounded-full flex items-center justify-center text-sm font-bold mr-4 mt-1">2</span>
                 <div>
                   <h3 className="font-semibold text-gray-800 mb-2">Gather from All Sources</h3>
                   <p className="text-gray-600 text-sm">
@@ -205,7 +205,7 @@ export default function BuildingYourCulinaryLegacy() {
                 </div>
               </div>
               <div className="flex items-start">
-                <span className="flex-shrink-0 w-8 h-8 bg-[#088395] text-white rounded-full flex items-center justify-center text-sm font-bold mr-4 mt-1">3</span>
+                <span className="flex-shrink-0 w-8 h-8 bg-[#2ec4b6] text-white rounded-full flex items-center justify-center text-sm font-bold mr-4 mt-1">3</span>
                 <div>
                   <h3 className="font-semibold text-gray-800 mb-2">Add Personal Context</h3>
                   <p className="text-gray-600 text-sm">
@@ -215,7 +215,7 @@ export default function BuildingYourCulinaryLegacy() {
                 </div>
               </div>
               <div className="flex items-start">
-                <span className="flex-shrink-0 w-8 h-8 bg-[#088395] text-white rounded-full flex items-center justify-center text-sm font-bold mr-4 mt-1">4</span>
+                <span className="flex-shrink-0 w-8 h-8 bg-[#2ec4b6] text-white rounded-full flex items-center justify-center text-sm font-bold mr-4 mt-1">4</span>
                 <div>
                   <h3 className="font-semibold text-gray-800 mb-2">Keep It Growing</h3>
                   <p className="text-gray-600 text-sm">
@@ -241,21 +241,21 @@ export default function BuildingYourCulinaryLegacy() {
               and give your family a treasure that will be cherished for generations to come.
             </p>
             <div className="bg-[#7AB2B2] rounded-lg p-6 my-6">
-              <h3 className="font-semibold text-[#09637E] mb-3">A Legacy That Lasts</h3>
+              <h3 className="font-semibold text-[#1fa396] mb-3">A Legacy That Lasts</h3>
               <p className="text-gray-700">
                 Your recipes, techniques, and stories are valuable. By documenting them in ChefMind, you're ensuring they 
                 survive and thrive, becoming a resource that your family can turn to for years to come. Start building your 
                 culinary legacy today.
               </p>
             </div>
-            <div className="bg-[#EBF4F6] rounded-lg p-6 mt-8 text-center">
+            <div className="bg-[#cbf3f0] rounded-lg p-6 mt-8 text-center">
               <h3 className="text-xl font-semibold text-gray-800 mb-3">Begin Your Legacy</h3>
               <p className="text-gray-700 mb-4">
                 Start documenting your culinary legacy with ChefMind today
               </p>
               <Link
                 to={addUtmToPath('/', { utm_content: 'story_legacy_cta' })}
-                className="inline-block bg-[#088395] px-6 py-3 rounded-lg hover:bg-[#09637E] transition-colors !text-white font-medium"
+                className="inline-block bg-[#2ec4b6] px-6 py-3 rounded-lg hover:bg-[#1fa396] transition-colors !text-white font-medium"
               >
                 Get Started →
               </Link>

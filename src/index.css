@@ -1,12 +1,14 @@
 :root {
-  /* Two-color system: teal accent + warm neutrals */
-  --color-accent: #088395;
-  --color-accent-hover: #09637E;
-  --color-bg: #f7f4ef;
-  --color-surface: #fffcf8;
-  --color-border: #e0d6c8;
-  --color-text: #4a4238;
-  --color-heading: #2c2416;
+  /* Palette: #ff9f1c · #ffbf69 · #ffffff · #cbf3f0 · #2ec4b6 */
+  --color-accent: #2ec4b6;
+  --color-accent-hover: #1fa396;
+  --color-highlight: #ff9f1c;
+  --color-highlight-soft: #ffbf69;
+  --color-bg: #cbf3f0;
+  --color-surface: #ffffff;
+  --color-border: #a8dcd6;
+  --color-text: #2d5a54;
+  --color-heading: #1a5c55;
 
   font-family: 'Montserrat', system-ui, -apple-system, sans-serif;
   line-height: 1.5;

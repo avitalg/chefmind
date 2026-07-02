@@ -37,8 +37,8 @@ const About = () => {
           <h2 className="text-xl sm:text-2xl font-semibold text-gray-800 mt-6 sm:mt-8 mb-3 sm:mb-4 leading-tight">How It Works</h2>
           <div className="grid md:grid-cols-3 gap-6 mt-6">
             <div className="text-center">
-              <div className="bg-[#EBF4F6] rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
-                <span className="text-2xl font-bold text-[#088395]">1</span>
+              <div className="bg-[#cbf3f0] rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+                <span className="text-2xl font-bold text-[#2ec4b6]">1</span>
               </div>
               <h3 className="font-semibold text-gray-800 mb-2">Import or Create</h3>
               <p className="text-gray-600 text-sm">Import recipes from URLs, upload recipe images, or create your own from scratch</p>
@@ -51,8 +51,8 @@ const About = () => {
               <p className="text-gray-600 text-sm">Edit ingredients, adjust quantities, modify instructions, and make each recipe uniquely yours</p>
             </div>
             <div className="text-center">
-              <div className="bg-[#EBF4F6] rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
-                <span className="text-2xl font-bold text-[#088395]">3</span>
+              <div className="bg-[#cbf3f0] rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+                <span className="text-2xl font-bold text-[#2ec4b6]">3</span>
               </div>
               <h3 className="font-semibold text-gray-800 mb-2">Cook & Enjoy</h3>
               <p className="text-gray-600 text-sm">Access your personalized recipe collection anytime, anywhere, and never lose a great recipe again</p>
@@ -67,8 +67,8 @@ const About = () => {
             control over your recipe collection - add, edit, or delete recipes whenever you want.
           </p>
 
-          <div className="bg-[#EBF4F6] rounded-lg p-6 mt-8">
-            <h3 className="font-semibold text-[#09637E] mb-3">Ready to Transform Your Cooking?</h3>
+          <div className="bg-[#cbf3f0] rounded-lg p-6 mt-8">
+            <h3 className="font-semibold text-[#1fa396] mb-3">Ready to Transform Your Cooking?</h3>
             <p className="text-gray-700 mb-4">
               Join thousands of home cooks and chefs who are already using ChefMind to organize 
               their recipe collections. Sign in with Google and start building your personalized 
@@ -76,7 +76,7 @@ const About = () => {
             </p>
             <Link 
               to={addUtmToPath('/', { utm_content: 'about_cta' })} 
-              className="inline-block bg-[#088395] px-6 py-3 rounded-lg hover:bg-[#09637E] transition-colors !text-white font-medium"
+              className="inline-block bg-[#2ec4b6] px-6 py-3 rounded-lg hover:bg-[#1fa396] transition-colors !text-white font-medium"
             >
               Get Started Now →
             </Link>

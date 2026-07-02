@@ -61,27 +61,27 @@ export default function PreservingFamilyRecipes() {
             <h2 className="text-xl sm:text-2xl font-semibold text-gray-800 mt-6 sm:mt-8 mb-3 sm:mb-4 leading-tight">
               The Challenge of Recipe Preservation
             </h2>
-            <div className="bg-[#EBF4F6] rounded-lg p-6 mb-6">
-              <h3 className="font-semibold text-[#09637E] mb-3">Common Preservation Challenges:</h3>
+            <div className="bg-[#cbf3f0] rounded-lg p-6 mb-6">
+              <h3 className="font-semibold text-[#1fa396] mb-3">Common Preservation Challenges:</h3>
               <ul className="text-gray-700 space-y-2">
                 <li className="flex items-start">
-                  <span className="text-[#088395] mr-2">•</span>
+                  <span className="text-[#2ec4b6] mr-2">•</span>
                   <span><strong>Fading handwriting:</strong> Old recipe cards and notebooks deteriorate over time</span>
                 </li>
                 <li className="flex items-start">
-                  <span className="text-[#088395] mr-2">•</span>
+                  <span className="text-[#2ec4b6] mr-2">•</span>
                   <span><strong>Lost recipes:</strong> Recipes stored in memory or on paper can be easily misplaced</span>
                 </li>
                 <li className="flex items-start">
-                  <span className="text-[#088395] mr-2">•</span>
+                  <span className="text-[#2ec4b6] mr-2">•</span>
                   <span><strong>Incomplete instructions:</strong> Family recipes often rely on "a pinch of this" or "until it looks right"</span>
                 </li>
                 <li className="flex items-start">
-                  <span className="text-[#088395] mr-2">•</span>
+                  <span className="text-[#2ec4b6] mr-2">•</span>
                   <span><strong>Scattered sources:</strong> Recipes spread across cookbooks, cards, and family members</span>
                 </li>
                 <li className="flex items-start">
-                  <span className="text-[#088395] mr-2">•</span>
+                  <span className="text-[#2ec4b6] mr-2">•</span>
                   <span><strong>Language barriers:</strong> Recipes passed down in different languages or dialects</span>
                 </li>
               </ul>
@@ -93,9 +93,9 @@ export default function PreservingFamilyRecipes() {
               How ChefMind Helps Preserve Your Family Recipes
             </h2>
             <div className="space-y-6">
-              <div className="bg-[#EBF4F6] rounded-lg p-6">
-                <h3 className="text-xl font-semibold text-[#09637E] mb-3 flex items-center">
-                  <span className="bg-[#088395] text-white rounded-full w-8 h-8 flex items-center justify-center mr-3 text-sm font-bold">1</span>
+              <div className="bg-[#cbf3f0] rounded-lg p-6">
+                <h3 className="text-xl font-semibold text-[#1fa396] mb-3 flex items-center">
+                  <span className="bg-[#2ec4b6] text-white rounded-full w-8 h-8 flex items-center justify-center mr-3 text-sm font-bold">1</span>
                   Digitize Handwritten Recipes
                 </h3>
                 <p className="text-gray-700 mb-3">
@@ -110,9 +110,9 @@ export default function PreservingFamilyRecipes() {
                 </div>
               </div>
 
-              <div className="bg-[#EBF4F6] rounded-lg p-6">
-                <h3 className="text-xl font-semibold text-[#09637E] mb-3 flex items-center">
-                  <span className="bg-[#088395] text-white rounded-full w-8 h-8 flex items-center justify-center mr-3 text-sm font-bold">2</span>
+              <div className="bg-[#cbf3f0] rounded-lg p-6">
+                <h3 className="text-xl font-semibold text-[#1fa396] mb-3 flex items-center">
+                  <span className="bg-[#2ec4b6] text-white rounded-full w-8 h-8 flex items-center justify-center mr-3 text-sm font-bold">2</span>
                   Organize Your Family Collection
                 </h3>
                 <p className="text-gray-700 mb-3">
@@ -122,9 +122,9 @@ export default function PreservingFamilyRecipes() {
                 </p>
               </div>
 
-              <div className="bg-[#EBF4F6] rounded-lg p-6">
-                <h3 className="text-xl font-semibold text-[#09637E] mb-3 flex items-center">
-                  <span className="bg-[#088395] text-white rounded-full w-8 h-8 flex items-center justify-center mr-3 text-sm font-bold">3</span>
+              <div className="bg-[#cbf3f0] rounded-lg p-6">
+                <h3 className="text-xl font-semibold text-[#1fa396] mb-3 flex items-center">
+                  <span className="bg-[#2ec4b6] text-white rounded-full w-8 h-8 flex items-center justify-center mr-3 text-sm font-bold">3</span>
                   Add Personal Notes and Memories
                 </h3>
                 <p className="text-gray-700 mb-3">
@@ -134,9 +134,9 @@ export default function PreservingFamilyRecipes() {
                 </p>
               </div>
 
-              <div className="bg-[#EBF4F6] rounded-lg p-6">
-                <h3 className="text-xl font-semibold text-[#09637E] mb-3 flex items-center">
-                  <span className="bg-[#088395] text-white rounded-full w-8 h-8 flex items-center justify-center mr-3 text-sm font-bold">4</span>
+              <div className="bg-[#cbf3f0] rounded-lg p-6">
+                <h3 className="text-xl font-semibold text-[#1fa396] mb-3 flex items-center">
+                  <span className="bg-[#2ec4b6] text-white rounded-full w-8 h-8 flex items-center justify-center mr-3 text-sm font-bold">4</span>
                   Standardize and Complete Recipes
                 </h3>
                 <p className="text-gray-700 mb-3">
@@ -162,7 +162,7 @@ export default function PreservingFamilyRecipes() {
               <li>Edit and refine recipes to ensure they're complete and accurate</li>
             </ul>
             <div className="bg-[#7AB2B2] rounded-lg p-6">
-              <h3 className="font-semibold text-[#09637E] mb-3">Share the Legacy</h3>
+              <h3 className="font-semibold text-[#1fa396] mb-3">Share the Legacy</h3>
               <p className="text-gray-700 mb-4">
                 Once your recipes are in ChefMind, they're safely stored in the cloud. Share access with family members 
                 so everyone can contribute and enjoy the collection. Your family's culinary traditions will live on for 
@@ -180,14 +180,14 @@ export default function PreservingFamilyRecipes() {
               your family recipes. Whether you're digitizing old recipe cards, importing from family websites, or creating 
               recipes from memory, ChefMind makes it easy to build and maintain your family recipe collection.
             </p>
-            <div className="bg-[#EBF4F6] rounded-lg p-6 mt-8 text-center">
+            <div className="bg-[#cbf3f0] rounded-lg p-6 mt-8 text-center">
               <h3 className="text-xl font-semibold text-gray-800 mb-3">Start Preserving Today</h3>
               <p className="text-gray-700 mb-4">
                 Join thousands of families preserving their culinary traditions with ChefMind
               </p>
               <Link
                 to={addUtmToPath('/', { utm_content: 'story_preserving_cta' })}
-                className="inline-block bg-[#088395] px-6 py-3 rounded-lg hover:bg-[#09637E] transition-colors !text-white font-medium"
+                className="inline-block bg-[#2ec4b6] px-6 py-3 rounded-lg hover:bg-[#1fa396] transition-colors !text-white font-medium"
               >
                 Get Started →
               </Link>
