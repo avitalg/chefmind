@@ -2,17 +2,17 @@
 @import "tailwindcss";
 
 @theme {
-  --font-sans: 'Montserrat', system-ui, -apple-system, sans-serif;
-  /* Palette: #ff9f1c · #ffbf69 · #ffffff · #cbf3f0 · #2ec4b6 */
-  --color-cream: #cbf3f0;
+  --font-sans: 'Open Sans', 'Helvetica Neue', system-ui, -apple-system, sans-serif;
+  --color-cream: #eef6fc;
   --color-paper: #ffffff;
-  --color-teal: #2ec4b6;
-  --color-teal-dark: #1fa396;
-  --color-orange: #ff9f1c;
-  --color-orange-light: #ffbf69;
-  --color-ink: #1a5c55;
-  --color-body: #2d5a54;
-  --color-border-warm: #a8dcd6;
+  --color-teal: #006fb9;
+  --color-teal-dark: #005293;
+  --color-orange: #006fb9;
+  --color-orange-light: #3392cc;
+  --color-ink: #333333;
+  --color-body: #666666;
+  --color-border-warm: #dddddd;
+  --color-accent: #006fb9;
 }
 
 #root {
@@ -23,70 +23,51 @@
 
 @layer components {
   .btn-primary {
-    @apply inline-flex items-center justify-center px-4 py-2.5 bg-orange text-white rounded-md border border-orange
-           hover:bg-teal hover:border-teal transition-colors font-medium cursor-pointer
+    @apply inline-flex items-center justify-center px-6 py-3 bg-teal text-white rounded-full
+           hover:bg-teal-dark transition-colors font-semibold cursor-pointer text-sm
+           shadow-sm hover:shadow-md
            disabled:opacity-50 disabled:cursor-not-allowed;
   }
 
   .btn-secondary {
-    @apply inline-flex items-center justify-center px-4 py-2.5 bg-paper text-ink rounded-md border border-border-warm
-           hover:bg-cream transition-colors font-medium cursor-pointer;
+    @apply inline-flex items-center justify-center px-6 py-3 bg-paper text-teal rounded-full border-2 border-teal
+           hover:bg-cream transition-colors font-semibold cursor-pointer text-sm;
   }
 
   .card {
-    @apply bg-paper border border-border-warm rounded-lg p-6 sm:p-8 shadow-sm;
+    @apply bg-paper border border-border-warm rounded-2xl p-6 sm:p-8 shadow-md;
   }
 
   .card-section-title {
-    @apply text-xl sm:text-2xl font-semibold text-ink;
+    @apply text-2xl sm:text-3xl font-bold text-ink tracking-tight;
+  }
+
+  .section-heading {
+    @apply text-xl sm:text-2xl font-bold text-teal pb-3 mb-6 border-b-2 border-teal/20;
   }
 
   .info-box {
-    @apply bg-cream border border-border-warm rounded-lg p-4 text-[#cbf3f0];
+    @apply bg-cream border border-border-warm rounded-xl p-4 text-body;
   }
 
   .icon-box {
-    @apply p-2.5 border border-border-warm rounded-md text-teal bg-cream/60;
+    @apply p-2.5 border border-border-warm rounded-xl text-teal bg-cream;
   }
 
   .section-divider {
-    @apply flex items-center gap-3 sm:gap-4 py-2 max-w-md mx-auto text-teal/80;
+    @apply border-t border-border-warm my-10;
   }
 
   .section-divider__line {
-    @apply flex-1 h-px;
-    background: linear-gradient(
-      to right,
-      transparent,
-      color-mix(in srgb, var(--color-border-warm) 70%, transparent),
-      var(--color-border-warm),
-      color-mix(in srgb, var(--color-border-warm) 70%, transparent),
-      transparent
-    );
+    @apply hidden;
   }
 
   .section-divider__pen {
-    @apply w-5 h-5 sm:w-6 sm:h-6 shrink-0;
-    transform: rotate(12deg);
+    @apply hidden;
   }
 
   .section-spoon {
-    @apply absolute pointer-events-none w-9 h-9 sm:w-11 sm:h-11 z-[1] opacity-35;
-  }
-
-  .section-spoon--top-left {
-    @apply top-2 left-2 sm:top-3 sm:left-3;
-    transform: rotate(-22deg);
-  }
-
-  .section-spoon--top-right {
-    @apply top-2 right-2 sm:top-3 sm:right-3;
-    transform: rotate(22deg);
-  }
-
-  .section-spoon--bottom-right {
-    @apply bottom-2 right-2 sm:bottom-3 sm:right-3;
-    transform: rotate(158deg);
+    @apply hidden;
   }
 }
 
@@ -95,31 +76,6 @@
   padding: 1.5em;
   will-change: filter;
   transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
-}
-
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
-}
-
-.card {
-  padding: 2em;
 }
 
 .read-the-docs {
@@ -149,14 +105,14 @@
   input[type="tel"],
   textarea,
   select {
-    color: #1f2937 !important;
+    color: #333333 !important;
   }
 
   input:-webkit-autofill,
   input:-webkit-autofill:hover,
   input:-webkit-autofill:focus,
   input:-webkit-autofill:active {
-    -webkit-text-fill-color: #1f2937 !important;
+    -webkit-text-fill-color: #333333 !important;
     -webkit-box-shadow: 0 0 0px 1000px #ffffff inset !important;
     box-shadow: 0 0 0px 1000px #ffffff inset !important;
   }

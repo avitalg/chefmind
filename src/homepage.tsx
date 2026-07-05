@@ -5,8 +5,6 @@ import { useSEO } from './hooks/useSEO';
 import { addUtmToPath } from './utils/utm';
 import { HERO_SLIDES } from './constants/foodImages';
 import HeroSlider from './components/HeroSlider';
-import SectionDivider from './components/SectionDivider';
-import SectionSpoonCorner from './components/SectionSpoonCorner';
 
 interface Recipe {
   id: string
@@ -228,7 +226,7 @@ export default function HomePage({ user, onSignIn }: HomePageProps) {
             {recipes.map((recipe) => (
               <div
                 key={recipe.id}
-                className={`group bg-paper rounded-md transition-colors border border-border-warm hover:border-teal/50 ${
+                className={`group bg-paper transition-colors border-b border-border-warm hover:bg-cream ${
                   compact ? 'p-3 sm:p-4' : 'p-5'
                 }`}
               >
@@ -249,7 +247,7 @@ export default function HomePage({ user, onSignIn }: HomePageProps) {
                   <div className="flex gap-1 shrink-0">
                     <button
                       onClick={() => handleEditRecipe(recipe.id)}
-                      className="p-2 text-teal hover:text-teal-dark hover:bg-cream rounded-md transition-colors"
+                      className="p-2 text-teal hover:bg-cream rounded-lg transition-colors"
                       title="Edit recipe"
                     >
                       <svg className="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -286,106 +284,83 @@ export default function HomePage({ user, onSignIn }: HomePageProps) {
   );
 
   return (
-    <div className="space-y-8">
-      {/* Hero Section — fills first viewport below nav */}
-      <section className="relative -mt-6 -mx-4 sm:-mx-6 min-h-[calc(100svh-4rem)] mb-8">
-        <SectionSpoonCorner corner="top-left" />
-        <div className="card overflow-hidden p-0 h-full min-h-[calc(100svh-4rem)]">
-          <div className="flex flex-col md:grid md:grid-cols-2 h-full min-h-[inherit]">
-            <div className="p-8 sm:p-10 lg:p-12 flex flex-col justify-center border-b md:border-b-0 md:border-r border-border-warm shrink-0 md:shrink">
-            <h1 className="text-3xl sm:text-4xl font-semibold text-ink mb-4 leading-tight">
+    <div className="space-y-14">
+      {/* Hero */}
+      <section className="bg-cream rounded-3xl p-6 sm:p-10 lg:p-12">
+        <div className="grid md:grid-cols-2 gap-8 lg:gap-12 items-center">
+          <div className="flex flex-col justify-center">
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-ink mb-4 leading-tight">
               {user ? `Welcome back, ${user.displayName}!` : 'Welcome to ChefMind'}
             </h1>
             {user ? (
               <>
-                <p className="text-lg text-[#2d5a54] mb-4">
+                <p className="text-lg text-body mb-4 font-medium">
                   Your recipe library is ready — add more anytime.
                 </p>
                 <p className="text-base text-gray-600 max-w-lg leading-relaxed mb-6">
                   Import recipes from food blogs, Instagram saves, or photos of handwritten cards.
                   ChefMind pulls out ingredients and steps so you can edit, save, and cook from them later.
                 </p>
-                <div className="space-y-3 mb-8 max-w-lg">
-                  <div className="info-box text-sm">
-                    <h3 className="font-semibold text-ink mb-1">Paste a recipe URL</h3>
-                    <p className="text-[#2d5a54] leading-relaxed">
-                      Copy a link from any cooking site — we extract the title, ingredients, and instructions for you.
-                    </p>
-                  </div>
-                  <div className="info-box text-sm">
-                    <h3 className="font-semibold text-ink mb-1">Upload a photo</h3>
-                    <p className="text-[#2d5a54] leading-relaxed">
-                      Snap a cookbook page or family recipe card and we transcribe what we can read.
-                    </p>
-                  </div>
-                </div>
-                <button type="button" onClick={scrollToImport} className="btn-primary w-fit py-2.5">
+                <ul className="space-y-3 mb-8 max-w-lg text-sm text-body leading-relaxed">
+                  <li><strong className="text-ink">Paste a recipe URL</strong> — we extract the title, ingredients, and instructions.</li>
+                  <li><strong className="text-ink">Upload a photo</strong> — we transcribe cookbook pages and recipe cards.</li>
+                </ul>
+                <button type="button" onClick={scrollToImport} className="btn-primary w-fit">
                   Import a recipe
                 </button>
               </>
             ) : (
               <>
-                <p className="text-lg text-[#2d5a54] mb-3">Your personal recipe collection</p>
+                <p className="text-lg text-body mb-3 font-medium">Your personal recipe collection</p>
                 <p className="text-base text-gray-600 max-w-lg leading-relaxed mb-4">
                   Save and organize recipes from anywhere — in one simple library.
                 </p>
-                <div className="space-y-2 max-w-lg text-base text-gray-600 leading-relaxed">
-                  <p>Paste a recipe link or upload a photo — we extract ingredients and steps for you.</p>
-                  <p>Create and edit your own recipes, from family favorites to new experiments.</p>
-                  <p>Enter what&apos;s in your fridge and get AI-powered dinner ideas in seconds.</p>
-                </div>
+                <ul className="space-y-2 max-w-lg text-base text-gray-600 leading-relaxed list-disc pl-5">
+                  <li>Paste a recipe link or upload a photo — we extract ingredients and steps for you.</li>
+                  <li>Create and edit your own recipes, from family favorites to new experiments.</li>
+                  <li>Enter what&apos;s in your fridge and get AI-powered dinner ideas in seconds.</li>
+                </ul>
               </>
             )}
           </div>
-          <div className={`relative flex-1 min-h-[320px] md:min-h-0 ${user ? 'flex flex-col bg-cream md:h-full' : ''}`}>
-            {user ? (
-              <>
-                <SectionSpoonCorner corner="top-right" />
-                {renderRecipeList(true)}
-              </>
-            ) : (
-              <HeroSlider slides={[...HERO_SLIDES]} />
-            )}
+          <div className={`relative min-h-[320px] md:min-h-[400px] rounded-2xl overflow-hidden shadow-lg ${user ? 'flex flex-col bg-paper' : ''}`}>
+            {user ? renderRecipeList(true) : <HeroSlider slides={[...HERO_SLIDES]} />}
           </div>
         </div>
-      </div>
       </section>
 
-      <SectionDivider />
-
       {!user && (
-        <div className="card relative">
-          <SectionSpoonCorner corner="top-right" />
-          <h2 className="card-section-title mb-4">What is ChefMind?</h2>
-          <p className="text-gray-600 leading-relaxed mb-6">
+        <section className="card">
+          <h2 className="section-heading">What is ChefMind?</h2>
+          <p className="text-gray-600 leading-relaxed mb-6 max-w-3xl">
             ChefMind is a simple recipe manager built for home cooks who collect recipes from many places — food blogs, Instagram, handwritten cards from relatives, and old cookbooks. Instead of scattered screenshots and saved tabs, you get one clean library you can search, edit, and cook from.
           </p>
-          <ul className="space-y-4 text-[#2d5a54] leading-relaxed">
+          <ul className="space-y-5 text-body leading-relaxed max-w-3xl">
             <li>
-              <h3 className="font-semibold text-ink mb-1">Import from anywhere</h3>
-              <p className="text-sm">
+              <h3 className="font-bold text-teal text-lg mb-1">Import from anywhere</h3>
+              <p className="text-sm text-gray-600">
                 Paste any recipe URL and we pull out the title, ingredients, and instructions. Upload a photo of a recipe card or cookbook page and we transcribe what we can read.
               </p>
             </li>
             <li>
-              <h3 className="font-semibold text-ink mb-1">Build your own</h3>
-              <p className="text-sm">
+              <h3 className="font-bold text-teal text-lg mb-1">Build your own</h3>
+              <p className="text-sm text-gray-600">
                 Create recipes from scratch — ideal for family favorites, tweaks on classics, or dishes you invent in the kitchen.
               </p>
             </li>
             <li>
-              <h3 className="font-semibold text-ink mb-1">Edit and organize</h3>
-              <p className="text-sm">
+              <h3 className="font-bold text-teal text-lg mb-1">Edit and organize</h3>
+              <p className="text-sm text-gray-600">
                 Fix amounts, adjust steps, and keep everything in your personal collection. Recipes stay in your account and sync wherever you sign in.
               </p>
             </li>
             <li>
-              <h3 className="font-semibold text-ink mb-1">Discover ideas</h3>
-              <p className="text-sm">
+              <h3 className="font-bold text-teal text-lg mb-1">Discover ideas</h3>
+              <p className="text-sm text-gray-600">
                 Not sure what to cook? Enter ingredients you have and get AI-powered recipe suggestions in seconds.{' '}
                 <Link
                   to={addUtmToPath('/recipe-ideas', { utm_content: 'home_discover_ideas' })}
-                  className="font-medium text-teal hover:text-teal-dark transition-colors"
+                  className="font-semibold text-teal hover:text-teal-dark transition-colors"
                 >
                   Try recipe ideas →
                 </Link>
@@ -393,39 +368,20 @@ export default function HomePage({ user, onSignIn }: HomePageProps) {
             </li>
           </ul>
           <div className="mt-8 pt-6 border-t border-border-warm flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-            <p className="text-[#2d5a54] text-sm">
+            <p className="text-body text-sm">
               Free to use. Sign in with Google to save your recipes.
             </p>
             <button type="button" onClick={onSignIn} className="btn-primary py-2.5 shrink-0">
               Get started — Sign in
             </button>
           </div>
-        </div>
+        </section>
       )}
 
-      {!user && <SectionDivider />}
-
-      <div className="grid lg:grid-cols-2 gap-6 lg:gap-8 items-stretch">
+      <div className="grid lg:grid-cols-2 gap-8 items-stretch">
       {/* Import Recipe Section */}
-      <div ref={importSectionRef} id="import-recipe" className="card relative scroll-mt-6 h-full flex flex-col">
-        <div className="flex items-center mb-6">
-          <div className="icon-box mr-4">
-            <svg
-              className="w-5 h-5"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M12 6v6m0 0v6m0-6h6m-6 0H6"
-              />
-            </svg>
-          </div>
-          <h2 className="card-section-title">Import Recipe</h2>
-        </div>
+      <section ref={importSectionRef} id="import-recipe" className="card scroll-mt-6 h-full flex flex-col">
+        <h2 className="section-heading">Import Recipe</h2>
         <p className="text-gray-600 mb-6">
           {user 
             ? "Import recipes from any website URL or upload a recipe image. Our AI will automatically extract all the details for you."
@@ -434,14 +390,14 @@ export default function HomePage({ user, onSignIn }: HomePageProps) {
 
         {/* Import Mode Toggle */}
         <div className="mb-6">
-          <div className="flex gap-2 bg-cream rounded-lg p-1 border border-border-warm">
+          <div className="flex gap-2 bg-cream rounded-full p-1">
             <button
               type="button"
               onClick={handleSwitchToUrlMode}
-              className={`flex-1 px-4 py-2 rounded-md font-medium transition-colors ${
+              className={`flex-1 px-4 py-2.5 text-sm font-semibold rounded-full transition-colors ${
                 importMode === 'url'
-                  ? 'bg-paper text-teal border border-border-warm'
-                  : 'text-[#2d5a54] hover:text-ink'
+                  ? 'bg-teal text-white shadow-sm'
+                  : 'text-body hover:text-teal'
               }`}
             >
               From URL
@@ -449,10 +405,10 @@ export default function HomePage({ user, onSignIn }: HomePageProps) {
             <button
               type="button"
               onClick={handleSwitchToImageMode}
-              className={`flex-1 px-4 py-2 rounded-md font-medium transition-colors ${
+              className={`flex-1 px-4 py-2.5 text-sm font-semibold rounded-full transition-colors ${
                 importMode === 'image'
-                  ? 'bg-paper text-teal border border-border-warm'
-                  : 'text-[#2d5a54] hover:text-ink'
+                  ? 'bg-teal text-white shadow-sm'
+                  : 'text-body hover:text-teal'
               }`}
             >
               From Image
@@ -472,7 +428,7 @@ export default function HomePage({ user, onSignIn }: HomePageProps) {
                   type="url"
                   value={importUrl}
                   onChange={handleUrlChange}
-                  className="w-full p-4 border border-border-warm rounded-md focus:ring-2 focus:ring-teal focus:border-teal transition-colors"
+                  className="w-full p-4 border border-border-warm rounded-xl focus:ring-2 focus:ring-teal focus:border-teal transition-colors"
                   placeholder="https://example.com/recipe"
                   required
                 />
@@ -665,29 +621,11 @@ export default function HomePage({ user, onSignIn }: HomePageProps) {
             </div>
           )}
         </form>
-      </div>
+      </section>
 
       {/* Create Recipe Section */}
-      <div className="card relative h-full flex flex-col">
-        <SectionSpoonCorner corner="bottom-right" />
-        <div className="flex items-center mb-4 sm:mb-6">
-          <div className="icon-box mr-3 sm:mr-4 flex-shrink-0">
-            <svg
-              className="w-5 h-5"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M12 6v6m0 0v6m0-6h6m-6 0H6"
-              />
-            </svg>
-          </div>
-          <h2 className="card-section-title">Create Recipe</h2>
-        </div>
+      <section className="card h-full flex flex-col">
+        <h2 className="section-heading">Create Recipe</h2>
         <p className="text-sm sm:text-base text-gray-600 mb-4 sm:mb-6 leading-relaxed flex-1">
           {user 
             ? "Have a family recipe or want to create something new? Build your own recipe from scratch with our intuitive form."
@@ -735,7 +673,7 @@ export default function HomePage({ user, onSignIn }: HomePageProps) {
             <span className="whitespace-nowrap">Sign in to Create Recipe</span>
           </button>
         )}
-      </div>
+      </section>
       </div>
     </div>
   )

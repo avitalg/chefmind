@@ -36,9 +36,9 @@ function App() {
     <QueryClientProvider client={queryClient}>
       <RecipeProvider user={user}>
         <Router>
-          <div className="min-h-screen bg-cream w-full overflow-x-hidden">
+          <div className="min-h-screen bg-paper w-full overflow-x-hidden">
             <NavBar user={user} onSignIn={signIn} onSignOut={signOut} />
-            <main className="max-w-6xl mx-auto py-6 sm:px-6 lg:px-8 w-full min-w-0 px-4">
+            <main className="max-w-7xl mx-auto py-8 sm:px-6 lg:px-8 w-full min-w-0 px-4">
               <Routes>
                 <Route path="/" element={<HomePage user={user} onSignIn={signIn} />} />
                 <Route path="/about" element={<About />} />

@@ -1,17 +1,16 @@
 :root {
-  /* Palette: #ff9f1c · #ffbf69 · #ffffff · #cbf3f0 · #2ec4b6 */
-  --color-accent: #2ec4b6;
-  --color-accent-hover: #1fa396;
-  --color-highlight: #ff9f1c;
-  --color-highlight-soft: #ffbf69;
-  --color-bg: #cbf3f0;
+  --color-accent: #006fb9;
+  --color-accent-hover: #005293;
+  --color-highlight: #006fb9;
+  --color-highlight-soft: #3392cc;
+  --color-bg: #ffffff;
   --color-surface: #ffffff;
-  --color-border: #a8dcd6;
-  --color-text: #2d5a54;
-  --color-heading: #1a5c55;
+  --color-border: #dddddd;
+  --color-text: #666666;
+  --color-heading: #333333;
 
-  font-family: 'Montserrat', system-ui, -apple-system, sans-serif;
-  line-height: 1.5;
+  font-family: 'Open Sans', 'Helvetica Neue', system-ui, -apple-system, sans-serif;
+  line-height: 1.6;
   font-weight: 400;
   color: var(--color-text);
   background-color: var(--color-bg);
@@ -33,11 +32,11 @@ body {
   min-height: 100vh;
   background-color: var(--color-bg);
   color: var(--color-text);
-  font-family: 'Montserrat', system-ui, -apple-system, sans-serif;
+  font-family: 'Open Sans', 'Helvetica Neue', system-ui, -apple-system, sans-serif;
 }
 
 h1, h2, h3 {
-  font-family: 'Montserrat', system-ui, -apple-system, sans-serif;
+  font-family: 'Open Sans', 'Helvetica Neue', system-ui, -apple-system, sans-serif;
   color: var(--color-heading);
-  line-height: 1.2;
+  line-height: 1.25;
 }

@@ -36,7 +36,7 @@ export default function HeroSlider({ slides }: HeroSliderProps) {
   if (slideCount === 0) return null;
 
   return (
-    <div className="absolute inset-0 bg-cream group">
+    <div className="absolute inset-0 bg-paper group">
       {slides.map((slide, index) => (
         <img
           key={slide.src}
@@ -66,7 +66,7 @@ export default function HeroSlider({ slides }: HeroSliderProps) {
             type="button"
             onClick={goPrev}
             aria-label="Previous photo"
-            className="absolute left-3 top-1/2 -translate-y-1/2 p-2 rounded-md bg-paper/90 border border-border-warm text-ink hover:bg-cream transition-colors opacity-0 group-hover:opacity-100 focus:opacity-100"
+            className="absolute left-3 top-1/2 -translate-y-1/2 p-2 rounded-full bg-paper/95 border border-border-warm text-teal hover:bg-cream transition-colors opacity-0 group-hover:opacity-100 focus:opacity-100 shadow-md"
           >
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
@@ -76,7 +76,7 @@ export default function HeroSlider({ slides }: HeroSliderProps) {
             type="button"
             onClick={goNext}
             aria-label="Next photo"
-            className="absolute right-3 top-1/2 -translate-y-1/2 p-2 rounded-md bg-paper/90 border border-border-warm text-ink hover:bg-cream transition-colors opacity-0 group-hover:opacity-100 focus:opacity-100"
+            className="absolute right-3 top-1/2 -translate-y-1/2 p-2 rounded-full bg-paper/95 border border-border-warm text-teal hover:bg-cream transition-colors opacity-0 group-hover:opacity-100 focus:opacity-100 shadow-md"
           >
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
@@ -92,7 +92,7 @@ export default function HeroSlider({ slides }: HeroSliderProps) {
                 aria-label={`Go to slide ${index + 1}`}
                 className={`h-2 rounded-full transition-all ${
                   index === activeIndex
-                    ? 'w-6 bg-orange'
+                    ? 'w-6 bg-teal'
                     : 'w-2 bg-paper/80 border border-border-warm hover:bg-cream'
                 }`}
               />
