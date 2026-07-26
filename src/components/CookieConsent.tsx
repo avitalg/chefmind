@@ -4,6 +4,7 @@ import { addUtmToPath } from '../utils/utm';
 import {
   enableAnalytics,
   getCookieConsent,
+  isEuropeanVisitor,
   setCookieConsent,
   type CookieConsentValue,
 } from '../utils/cookieConsent';
@@ -12,14 +13,33 @@ export default function CookieConsent() {
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
-    const existing = getCookieConsent();
-    if (existing === 'accepted') {
-      enableAnalytics();
-      return;
+    let cancelled = false;
+
+    async function init() {
+      const existing = getCookieConsent();
+      if (existing === 'accepted') {
+        enableAnalytics();
+        return;
+      }
+      if (existing === 'declined') {
+        return;
+      }
+
+      const inEurope = await isEuropeanVisitor();
+      if (cancelled) return;
+
+      if (inEurope) {
+        setVisible(true);
+      } else {
+        // Outside Europe: no consent banner; enable analytics by default
+        enableAnalytics();
+      }
     }
-    if (!existing) {
-      setVisible(true);
-    }
+
+    void init();
+    return () => {
+      cancelled = true;
+    };
   }, []);
 
   const handleChoice = (value: CookieConsentValue) => {

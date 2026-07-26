@@ -1,7 +1,18 @@
 const CONSENT_KEY = 'chefmind-cookie-consent';
+const REGION_KEY = 'chefmind-cookie-region';
 const GA_ID = 'G-Q9CBEFR6PX';
 
 export type CookieConsentValue = 'accepted' | 'declined';
+
+/** EU + EEA + UK + Switzerland (common GDPR cookie-consent scope) */
+const EUROPE_COUNTRY_CODES = new Set([
+  'AT', 'BE', 'BG', 'HR', 'CY', 'CZ', 'DK', 'EE', 'FI', 'FR',
+  'DE', 'GR', 'HU', 'IE', 'IT', 'LV', 'LT', 'LU', 'MT', 'NL',
+  'PL', 'PT', 'RO', 'SK', 'SI', 'ES', 'SE',
+  'IS', 'LI', 'NO', // EEA
+  'GB', 'UK', // UK
+  'CH', // Switzerland
+]);
 
 declare global {
   interface Window {
@@ -28,7 +39,73 @@ export function setCookieConsent(value: CookieConsentValue) {
   }
 }
 
-/** Load Google Analytics only after the user accepts cookies. */
+function cacheRegion(isEurope: boolean) {
+  try {
+    localStorage.setItem(REGION_KEY, isEurope ? 'eu' : 'other');
+  } catch {
+    // ignore
+  }
+}
+
+function getCachedRegion(): boolean | null {
+  try {
+    const value = localStorage.getItem(REGION_KEY);
+    if (value === 'eu') return true;
+    if (value === 'other') return false;
+  } catch {
+    // ignore
+  }
+  return null;
+}
+
+function isEuropeTimezone(): boolean {
+  try {
+    const tz = Intl.DateTimeFormat().resolvedOptions().timeZone || '';
+    return (
+      tz.startsWith('Europe/') ||
+      tz === 'Atlantic/Reykjavik' ||
+      tz === 'Atlantic/Faroe' ||
+      tz === 'Atlantic/Canary' ||
+      tz === 'Atlantic/Madeira' ||
+      tz === 'Atlantic/Azores'
+    );
+  } catch {
+    return false;
+  }
+}
+
+/**
+ * Detect whether the visitor is in Europe.
+ * Uses a lightweight geo IP lookup, with timezone as fallback.
+ */
+export async function isEuropeanVisitor(): Promise<boolean> {
+  const cached = getCachedRegion();
+  if (cached !== null) return cached;
+
+  try {
+    const controller = new AbortController();
+    const timeout = window.setTimeout(() => controller.abort(), 2500);
+    const response = await fetch('https://ipapi.co/country/', {
+      signal: controller.signal,
+    });
+    window.clearTimeout(timeout);
+
+    if (response.ok) {
+      const country = (await response.text()).trim().toUpperCase();
+      const inEurope = EUROPE_COUNTRY_CODES.has(country);
+      cacheRegion(inEurope);
+      return inEurope;
+    }
+  } catch {
+    // fall through to timezone heuristic
+  }
+
+  const inEurope = isEuropeTimezone();
+  cacheRegion(inEurope);
+  return inEurope;
+}
+
+/** Load Google Analytics only after the user accepts cookies (or outside Europe). */
 export function enableAnalytics() {
   if (typeof window === 'undefined') return;
   if (document.getElementById('gtag-js')) return;
