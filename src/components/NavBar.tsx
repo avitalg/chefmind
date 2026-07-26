@@ -66,7 +66,7 @@ export default function NavBar({ user, onSignIn, onSignOut }: NavBarProps) {
               onMouseLeave={() => setIsRecipesDropdownOpen(false)}
             >
               <span
-                className={`${isActive('/recipe-ideas') || isActive('/find') ? activeNavLinkClass : navLinkClass} flex items-center cursor-pointer`}
+                className={`${isActive('/recipe-ideas') || isActive('/find') || isActive('/recipes') ? activeNavLinkClass : navLinkClass} flex items-center cursor-pointer`}
                 aria-expanded={isRecipesDropdownOpen}
               >
                 Recipes
@@ -82,6 +82,15 @@ export default function NavBar({ user, onSignIn, onSignOut }: NavBarProps) {
               {isRecipesDropdownOpen && (
                 <div className="absolute left-0 top-full pt-2 w-48 z-50">
                   <div className="bg-paper rounded-xl py-1 border border-border-warm shadow-lg">
+                    {user && (
+                      <Link
+                        to={addUtmToPath('/recipes', { utm_content: 'header' })}
+                        className={`block px-4 py-2 text-sm hover:bg-cream ${isActive('/recipes') ? 'text-teal font-bold' : 'text-body'}`}
+                        onClick={() => setIsRecipesDropdownOpen(false)}
+                      >
+                        My recipes
+                      </Link>
+                    )}
                     <Link
                       to={addUtmToPath('/recipe-ideas', { utm_content: 'header' })}
                       className={`block px-4 py-2 text-sm hover:bg-cream ${isActive('/recipe-ideas') ? 'text-teal font-bold' : 'text-body'}`}
@@ -331,7 +340,7 @@ export default function NavBar({ user, onSignIn, onSignOut }: NavBarProps) {
               <div>
                 <span
                   onClick={() => setIsMobileRecipesOpen(!isMobileRecipesOpen)}
-                  className={`${isActive('/recipe-ideas') || isActive('/find') ? activeMobileNavLinkClass : mobileNavLinkClass} w-full text-left flex items-center justify-between cursor-pointer`}
+                  className={`${isActive('/recipe-ideas') || isActive('/find') || isActive('/recipes') ? activeMobileNavLinkClass : mobileNavLinkClass} w-full text-left flex items-center justify-between cursor-pointer`}
                 >
                   <span>Recipes</span>
                   <svg 
@@ -345,6 +354,18 @@ export default function NavBar({ user, onSignIn, onSignOut }: NavBarProps) {
                 </span>
                 {isMobileRecipesOpen && (
                   <div className="pl-4 mt-1 space-y-1">
+                    {user && (
+                      <Link
+                        to={addUtmToPath('/recipes', { utm_content: 'header' })}
+                        className={isActive('/recipes') ? activeMobileNavLinkClass : mobileNavLinkClass}
+                        onClick={() => {
+                          closeMobileMenu();
+                          setIsMobileRecipesOpen(false);
+                        }}
+                      >
+                        My recipes
+                      </Link>
+                    )}
                     <Link
                       to={addUtmToPath('/recipe-ideas', { utm_content: 'header' })}
                       className={isActive('/recipe-ideas') ? activeMobileNavLinkClass : mobileNavLinkClass}

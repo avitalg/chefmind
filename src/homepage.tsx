@@ -223,62 +223,74 @@ export default function HomePage({ user, onSignIn }: HomePageProps) {
             )}
           </div>
         ) : (
-          <div className="grid gap-3">
-            {recipes.map((recipe) => (
-              <div
-                key={recipe.id}
-                className={`group bg-paper transition-colors border-b border-border-warm hover:bg-cream ${
-                  compact ? 'p-3 sm:p-4' : 'p-5'
-                }`}
-              >
-                <div className="flex items-center justify-between gap-2">
-                  <Link
-                    to={addUtmToPath(`/recipe/${recipe.id}`, { utm_content: 'home_recipe_card' })}
-                    className="flex-1 min-w-0 group-hover:text-teal transition-colors"
-                  >
-                    <h3 className={`font-semibold text-gray-800 mb-0.5 truncate ${compact ? 'text-base' : 'text-lg'}`}>
-                      {recipe.title}
-                    </h3>
-                    {recipe.url && (
-                      <p className="text-xs sm:text-sm text-gray-500 truncate">
-                        {new URL(recipe.url).hostname}
-                      </p>
-                    )}
-                  </Link>
-                  <div className="flex gap-1 shrink-0">
-                    <button
-                      onClick={() => handleEditRecipe(recipe.id)}
-                      className="p-2 text-teal hover:bg-cream rounded-lg transition-colors"
-                      title="Edit recipe"
+          <>
+            <div className="grid gap-3">
+              {recipes.slice(0, 3).map((recipe) => (
+                <div
+                  key={recipe.id}
+                  className={`group bg-paper transition-colors border-b border-border-warm hover:bg-cream ${
+                    compact ? 'p-3 sm:p-4' : 'p-5'
+                  }`}
+                >
+                  <div className="flex items-center justify-between gap-2">
+                    <Link
+                      to={addUtmToPath(`/recipe/${recipe.id}`, { utm_content: 'home_recipe_card' })}
+                      className="flex-1 min-w-0 group-hover:text-teal transition-colors"
                     >
-                      <svg className="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"
-                        />
-                      </svg>
-                    </button>
-                    <button
-                      onClick={() => handleDelete(recipes.indexOf(recipe), recipe.id, recipe.title)}
-                      className="p-2 text-red-500 hover:text-red-700 hover:bg-red-50 rounded-lg transition-colors"
-                      title="Delete recipe"
-                    >
-                      <svg className="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                          strokeWidth={2}
-                          d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"
-                        />
-                      </svg>
-                    </button>
+                      <h3 className={`font-semibold text-gray-800 mb-0.5 truncate ${compact ? 'text-base' : 'text-lg'}`}>
+                        {recipe.title}
+                      </h3>
+                      {recipe.url && (
+                        <p className="text-xs sm:text-sm text-gray-500 truncate">
+                          {new URL(recipe.url).hostname}
+                        </p>
+                      )}
+                    </Link>
+                    <div className="flex gap-1 shrink-0">
+                      <button
+                        onClick={() => handleEditRecipe(recipe.id)}
+                        className="p-2 text-teal hover:bg-cream rounded-lg transition-colors"
+                        title="Edit recipe"
+                      >
+                        <svg className="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={2}
+                            d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"
+                          />
+                        </svg>
+                      </button>
+                      <button
+                        onClick={() => handleDelete(recipes.indexOf(recipe), recipe.id, recipe.title)}
+                        className="p-2 text-red-500 hover:text-red-700 hover:bg-red-50 rounded-lg transition-colors"
+                        title="Delete recipe"
+                      >
+                        <svg className="w-4 h-4 sm:w-5 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={2}
+                            d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"
+                          />
+                        </svg>
+                      </button>
+                    </div>
                   </div>
                 </div>
+              ))}
+            </div>
+            {recipes.length > 3 && (
+              <div className={compact ? 'pt-1' : 'pt-2'}>
+                <Link
+                  to={addUtmToPath('/recipes', { utm_content: 'home_view_all_recipes' })}
+                  className="inline-flex items-center text-sm font-semibold text-teal hover:text-teal-dark transition-colors"
+                >
+                  View all {recipes.length} recipes →
+                </Link>
               </div>
-            ))}
-          </div>
+            )}
+          </>
         )}
       </div>
     </>

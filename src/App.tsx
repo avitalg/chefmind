@@ -27,6 +27,7 @@ import ImportRecipeWithImage from './pages/stories/ImportRecipeWithImage';
 import PreservingFamilyRecipes from './pages/stories/PreservingFamilyRecipes';
 import RecipeMemoryAndNostalgia from './pages/stories/RecipeMemoryAndNostalgia';
 import BuildingYourCulinaryLegacy from './pages/stories/BuildingYourCulinaryLegacy';
+import MyRecipes from './pages/MyRecipes';
 import CookieConsent from './components/CookieConsent';
 import './App.css';
 
@@ -46,6 +47,7 @@ function App() {
                 <Route path="/company" element={<Company />} />
                 <Route path="/faq" element={<FAQ />} />
                 <Route path="/create" element={<CreateRecipe />} />
+                <Route path="/recipes" element={<MyRecipes user={user} />} />
                 <Route path="/find" element={user ? <FindByIngredients /> : <Navigate to="/" replace />} />
                 <Route path="/recipe-ideas" element={<RecipeIdeas />} />
                 <Route path="/stories/import-recipe-with-image" element={<ImportRecipeWithImage />} />
