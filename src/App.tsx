@@ -27,6 +27,7 @@ import ImportRecipeWithImage from './pages/stories/ImportRecipeWithImage';
 import PreservingFamilyRecipes from './pages/stories/PreservingFamilyRecipes';
 import RecipeMemoryAndNostalgia from './pages/stories/RecipeMemoryAndNostalgia';
 import BuildingYourCulinaryLegacy from './pages/stories/BuildingYourCulinaryLegacy';
+import CookieConsent from './components/CookieConsent';
 import './App.css';
 
 function App() {
@@ -55,6 +56,7 @@ function App() {
                 <Route path="/recipe/:id" element={<Recipe />} />
               </Routes>
             </main>
+            <CookieConsent />
           </div>
         </Router>
         {import.meta.env.DEV && <ReactQueryDevTools />}
