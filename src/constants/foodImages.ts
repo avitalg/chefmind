@@ -1,4 +1,4 @@
-import heroNotebookImg from '../assets/writing.png';
+import heroBreakfastImg from '../assets/breakfast-spread.png';
 import recipeIdeasImg from '../assets/Gemini_Generated_Image_oeccz9oeccz9oecc.png';
 
 export type HeroSlide = {
@@ -13,8 +13,8 @@ export type HeroSlide = {
 /** Hero slider slides */
 export const HERO_SLIDES: HeroSlide[] = [
   {
-    src: heroNotebookImg,
-    alt: 'Person writing a recipe in a notebook',
+    src: heroBreakfastImg,
+    alt: 'Breakfast spread with eggs, bacon, toast, pancakes, and fresh pastries',
   },
   {
     src: recipeIdeasImg,
