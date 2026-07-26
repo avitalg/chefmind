@@ -11,6 +11,7 @@ interface Recipe {
   title: string
   ingredients: Array<{ amount: number; unit: string; name: string }>
   instructions: string[]
+  notes?: string
   url?: string
   _id?: string
   direction: string

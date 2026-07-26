@@ -13,6 +13,7 @@ export interface Recipe {
   title: string
   ingredients: Ingredient[]
   instructions: string[]
+  notes?: string
   url?: string
   _id?: string
   direction: string

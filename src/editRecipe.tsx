@@ -13,6 +13,7 @@ interface Recipe {
   title: string
   ingredients: Ingredient[]
   instructions: string[]
+  notes?: string
   url?: string
   _id?: string
   direction: string
@@ -24,7 +25,10 @@ interface EditRecipeProps {
 }
 
 export default function EditRecipe({ recipe: initialRecipe }: EditRecipeProps) {
-  const [recipe, setRecipe] = useState<Recipe>(initialRecipe)
+  const [recipe, setRecipe] = useState<Recipe>({
+    ...initialRecipe,
+    notes: initialRecipe.notes ?? '',
+  })
   const [error, setError] = useState('')
   const { updateRecipe } = useRecipes()
   const navigate = useNavigate()
@@ -175,6 +179,19 @@ export default function EditRecipe({ recipe: initialRecipe }: EditRecipeProps) {
             Add Instruction
           </button>
         </fieldset>
+
+        <div>
+          <label htmlFor="notes" className="block mb-2">
+            Notes:
+          </label>
+          <textarea
+            id="notes"
+            value={recipe.notes ?? ''}
+            onChange={(e) => setRecipe({ ...recipe, notes: e.target.value })}
+            className="w-full p-2 border rounded min-h-[120px]"
+            placeholder="Add personal notes, tips, substitutions, or memories..."
+          />
+        </div>
 
         {error && <p className="text-red-500">{error}</p>}
 

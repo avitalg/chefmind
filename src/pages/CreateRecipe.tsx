@@ -14,6 +14,7 @@ interface Recipe {
   title: string
   ingredients: Ingredient[]
   instructions: string[]
+  notes?: string
   url?: string
   _id?: string
   direction: string
@@ -32,6 +33,7 @@ export default function CreateRecipe() {
     title: '',
     ingredients: [{ amount: 0, unit: '', name: '' }],
     instructions: [''],
+    notes: '',
     direction: 'ltr'
   })
   const [error, setError] = useState('')
@@ -222,6 +224,19 @@ export default function CreateRecipe() {
             + Add Instruction
           </button>
         </fieldset>
+
+        <div>
+          <label htmlFor="notes" className="block mb-2 font-medium text-gray-700">
+            Notes
+          </label>
+          <textarea
+            id="notes"
+            value={recipe.notes ?? ''}
+            onChange={(e) => setRecipe({ ...recipe, notes: e.target.value })}
+            className="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#2ec4b6] focus:border-[#2ec4b6] min-h-[120px]"
+            placeholder="Add personal notes, tips, substitutions, or memories..."
+          />
+        </div>
 
         <div>
           <label htmlFor="direction" className="block mb-2 font-medium text-gray-700">
