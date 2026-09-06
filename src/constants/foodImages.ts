@@ -1,5 +1,5 @@
 import heroBreakfastImg from '../assets/breakfast-spread.png';
-import recipeIdeasImg from '../assets/Gemini_Generated_Image_oeccz9oeccz9oecc.png';
+import recipeIdeasImg from '../assets/recipe-ideas-hero.webp';
 
 export type HeroSlide = {
   src: string;

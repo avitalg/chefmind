@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useRecipes } from './contexts/RecipeContext'
+import { useSEO } from './hooks/useSEO'
 
 interface Ingredient {
   amount: number
@@ -25,6 +26,13 @@ interface EditRecipeProps {
 }
 
 export default function EditRecipe({ recipe: initialRecipe }: EditRecipeProps) {
+  useSEO({
+    title: 'Edit Recipe',
+    description: 'Edit a recipe in your ChefMind collection.',
+    url: `/edit/${initialRecipe.id}`,
+    robots: 'noindex, nofollow',
+  })
+
   const [recipe, setRecipe] = useState<Recipe>({
     ...initialRecipe,
     notes: initialRecipe.notes ?? '',

@@ -1,58 +1,8 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useSEO } from '../hooks/useSEO';
-import { addUtmToPath } from '../utils/utm';
 
-const FAQ = () => {
-  useSEO({
-    title: 'Frequently Asked Questions',
-    description: 'Find answers to common questions about ChefMind, recipe import, editing, security, and how to get the most out of your recipe management experience.',
-    keywords: 'chefmind faq, recipe management faq, cooking app help, recipe import questions',
-    url: '/faq',
-    structuredData: {
-      '@context': 'https://schema.org',
-      '@type': 'FAQPage',
-      mainEntity: [
-        {
-          '@type': 'Question',
-          name: 'How do I import a recipe from a website?',
-          acceptedAnswer: {
-            '@type': 'Answer',
-            text: 'Simply paste the recipe URL into the import form on the homepage and click "Import Recipe". ChefMind will automatically extract the ingredients, instructions, and other details from the website.'
-          }
-        },
-        {
-          '@type': 'Question',
-          name: 'Can I create recipes manually without importing from a website?',
-          acceptedAnswer: {
-            '@type': 'Answer',
-            text: 'Yes! Click the "Create Recipe" button on the homepage to add recipes from scratch. You can enter the title, ingredients, and instructions manually.'
-          }
-        },
-        {
-          '@type': 'Question',
-          name: 'Is my recipe data secure and private?',
-          acceptedAnswer: {
-            '@type': 'Answer',
-            text: 'Absolutely! Your recipes are stored securely and are only accessible to you. We use JWT authentication and never share your personal data with third parties.'
-          }
-        }
-      ]
-    }
-  });
-  const [openItems, setOpenItems] = useState<Set<number>>(new Set());
-
-  const toggleItem = (index: number) => {
-    const newOpenItems = new Set(openItems)
-    if (newOpenItems.has(index)) {
-      newOpenItems.delete(index);
-    } else {
-      newOpenItems.add(index);
-    }
-    setOpenItems(newOpenItems);
-  }
-
-  const faqData = [
+const faqData = [
     {
       question: "How do I import a recipe from a website?",
       answer: "Simply paste the recipe URL into the import form on the homepage and click 'Import Recipe'. ChefMind will automatically extract the ingredients, instructions, and other details from the website. Make sure you're signed in to save the recipe to your collection."
@@ -102,6 +52,39 @@ const FAQ = () => {
       answer: "If you encounter any problems or have questions not covered in this FAQ, please contact our support team. We're here to help and continuously improve ChefMind based on user feedback."
     }
   ];
+
+const faqStructuredData = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqData.map((item) => ({
+    '@type': 'Question',
+    name: item.question,
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: item.answer,
+    },
+  })),
+};
+
+const FAQ = () => {
+  useSEO({
+    title: 'Frequently Asked Questions',
+    description: 'Find answers to common questions about ChefMind, recipe import, editing, security, and how to get the most out of your recipe management experience.',
+    keywords: 'chefmind faq, recipe management faq, cooking app help, recipe import questions',
+    url: '/faq',
+    structuredData: faqStructuredData,
+  });
+  const [openItems, setOpenItems] = useState<Set<number>>(new Set());
+
+  const toggleItem = (index: number) => {
+    const newOpenItems = new Set(openItems)
+    if (newOpenItems.has(index)) {
+      newOpenItems.delete(index);
+    } else {
+      newOpenItems.add(index);
+    }
+    setOpenItems(newOpenItems);
+  }
 
   return (
     <div className="max-w-4xl mx-auto py-8 px-4 w-full min-w-0">
@@ -160,7 +143,7 @@ const FAQ = () => {
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <Link
-            to={addUtmToPath('/', { utm_content: 'faq_back_home' })}
+            to={'/'}
             className="inline-flex items-center px-6 py-3 bg-[#2ec4b6] rounded-lg hover:bg-[#1fa396] transition-colors !text-white"
           >
             <svg className="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">

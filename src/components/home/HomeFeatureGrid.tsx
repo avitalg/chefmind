@@ -1,5 +1,4 @@
 import { Link } from 'react-router-dom';
-import { addUtmToPath } from '../../utils/utm';
 import { FOOD_IMAGES } from '../../constants/foodImages';
 
 interface HomeFeatureGridProps {
@@ -68,7 +67,7 @@ export default function HomeFeatureGrid({ onSignIn, onImport }: HomeFeatureGridP
             ) : (
               <Link
                 key={item.label}
-                to={addUtmToPath(item.href, { utm_content: 'home_browse' })}
+                to={item.href}
                 className="index-link"
               >
                 {item.label}
@@ -114,7 +113,7 @@ export default function HomeFeatureGrid({ onSignIn, onImport }: HomeFeatureGridP
             return (
               <Link
                 key={story.title}
-                to={addUtmToPath(story.href, { utm_content: 'home_story_tile' })}
+                to={story.href}
                 className="group"
               >
                 {inner}

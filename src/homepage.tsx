@@ -2,9 +2,25 @@ import { useRef, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useRecipes } from './contexts/RecipeContext';
 import { useSEO } from './hooks/useSEO';
-import { addUtmToPath } from './utils/utm';
 import { HERO_SLIDES } from './constants/foodImages';
 import HomeFeatureGrid from './components/home/HomeFeatureGrid';
+
+const HOME_STRUCTURED_DATA = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'WebSite',
+      name: 'ChefMind',
+      url: 'https://chefmind.net/',
+    },
+    {
+      '@type': 'Organization',
+      name: 'ChefMind',
+      url: 'https://chefmind.net/',
+      logo: 'https://chefmind.net/og-image.png',
+    },
+  ],
+};
 
 interface Recipe {
   id: string
@@ -33,6 +49,7 @@ export default function HomePage({ user, onSignIn }: HomePageProps) {
     description: 'Manage your personal recipe collection with ChefMind. Import recipes from any website, create custom recipes, and organize your culinary favorites all in one place.',
     keywords: 'recipe collection, recipe management, import recipes, cooking recipes, recipe organizer',
     url: '/',
+    structuredData: HOME_STRUCTURED_DATA,
   });
 
   const navigate = useNavigate();
@@ -150,7 +167,7 @@ export default function HomePage({ user, onSignIn }: HomePageProps) {
       <header className="max-w-3xl mx-auto px-4 pt-12 sm:pt-16 pb-10 text-center rise">
         <p className="text-xs tracking-[0.28em] uppercase text-body mb-4">Home</p>
         <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl text-ink mb-5">
-          {user ? `Welcome back, ${user.displayName}` : 'ChefMind'}
+          {user ? `Welcome back, ${user.displayName}` : 'Save and organize recipes from any website'}
         </h1>
         <p className="text-lg text-body max-w-xl mx-auto leading-relaxed mb-8">
           {user
@@ -290,7 +307,7 @@ export default function HomePage({ user, onSignIn }: HomePageProps) {
             Or{' '}
             {user ? (
               <Link
-                to={addUtmToPath('/create', { utm_content: 'cta_create' })}
+                to={'/create'}
                 className="text-white underline underline-offset-4"
               >
                 write one from scratch
@@ -330,7 +347,7 @@ export default function HomePage({ user, onSignIn }: HomePageProps) {
                 {recipes.slice(0, 3).map((recipe) => (
                   <li key={recipe.id} className="py-5 border-b border-border-warm flex items-center justify-between gap-4">
                     <Link
-                      to={addUtmToPath(`/recipe/${recipe.id}`, { utm_content: 'home_recipe_card' })}
+                      to={`/recipe/${recipe.id}`}
                       className="min-w-0 flex-1 group"
                     >
                       <h3 className="font-display text-2xl text-ink group-hover:text-teal transition-colors truncate">
@@ -368,7 +385,7 @@ export default function HomePage({ user, onSignIn }: HomePageProps) {
               {recipes.length > 3 && (
                 <div className="pt-6">
                   <Link
-                    to={addUtmToPath('/recipes', { utm_content: 'home_view_all_recipes' })}
+                    to={'/recipes'}
                     className="index-link"
                   >
                     View all {recipes.length} recipes

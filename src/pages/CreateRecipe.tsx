@@ -26,6 +26,7 @@ export default function CreateRecipe() {
     description: 'Create a new recipe from scratch with ChefMind. Add ingredients, instructions, and customize your recipe to build your perfect recipe collection.',
     keywords: 'create recipe, new recipe, recipe builder, custom recipe, recipe creator',
     url: '/create',
+    robots: 'noindex, nofollow',
   });
 
   const [recipe, setRecipe] = useState<Recipe>({

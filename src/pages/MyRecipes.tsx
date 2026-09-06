@@ -1,7 +1,6 @@
 import { Link, Navigate, useNavigate } from 'react-router-dom';
 import { useRecipes } from '../contexts/RecipeContext';
 import { useSEO } from '../hooks/useSEO';
-import { addUtmToPath } from '../utils/utm';
 import type { User } from '../hooks/useAuth';
 
 interface MyRecipesProps {
@@ -14,6 +13,7 @@ export default function MyRecipes({ user }: MyRecipesProps) {
     description: 'Browse and manage your full ChefMind recipe collection.',
     keywords: 'my recipes, recipe collection, saved recipes',
     url: '/recipes',
+    robots: 'noindex, nofollow',
   });
 
   const navigate = useNavigate();
@@ -37,7 +37,7 @@ export default function MyRecipes({ user }: MyRecipesProps) {
     <div className="max-w-4xl mx-auto">
       <div className="mb-6">
         <Link
-          to={addUtmToPath('/', { utm_content: 'my_recipes_back' })}
+          to={'/'}
           className="inline-flex items-center text-teal hover:text-teal-dark mb-4 text-sm font-medium"
         >
           ← Back to Home
@@ -81,10 +81,10 @@ export default function MyRecipes({ user }: MyRecipesProps) {
           <h2 className="text-xl font-semibold text-ink mb-2">No recipes yet</h2>
           <p className="text-body mb-6">Import a recipe from a URL or photo, or create one from scratch.</p>
           <div className="flex flex-col sm:flex-row gap-3 justify-center">
-            <Link to={addUtmToPath('/#import-recipe', { utm_content: 'my_recipes_empty' })} className="btn-primary">
+            <Link to={'/#import-recipe'} className="btn-primary">
               Import a recipe
             </Link>
-            <Link to={addUtmToPath('/create', { utm_content: 'my_recipes_empty' })} className="btn-secondary">
+            <Link to={'/create'} className="btn-secondary">
               Create recipe
             </Link>
           </div>
@@ -98,7 +98,7 @@ export default function MyRecipes({ user }: MyRecipesProps) {
                 className="group flex items-center justify-between gap-3 p-4 sm:p-5 hover:bg-cream transition-colors"
               >
                 <Link
-                  to={addUtmToPath(`/recipe/${recipe.id}`, { utm_content: 'my_recipes_card' })}
+                  to={`/recipe/${recipe.id}`}
                   className="flex-1 min-w-0 group-hover:text-teal transition-colors"
                 >
                   <h2 className="font-semibold text-ink text-base sm:text-lg truncate">{recipe.title}</h2>

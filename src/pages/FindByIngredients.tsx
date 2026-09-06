@@ -3,7 +3,6 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useRecipes } from '../contexts/RecipeContext';
 import { useSEO } from '../hooks/useSEO';
 import type { Recipe } from '../hooks/useRecipes';
-import { addUtmToPath } from '../utils/utm';
 
 function normalizeIngredient(name: string): string {
   return name.trim().toLowerCase();
@@ -34,6 +33,7 @@ export default function FindByIngredients() {
     description: 'Search your recipe collection by ingredients. Find recipes that use specific ingredients you have available with ChefMind\'s ingredient-based search.',
     keywords: 'find recipes by ingredients, ingredient search, recipe search, cooking with ingredients',
     url: '/find',
+    robots: 'noindex, nofollow',
   });
 
   const navigate = useNavigate();
@@ -199,13 +199,13 @@ export default function FindByIngredients() {
                 </button>
                 <div className="mt-2 flex gap-2">
                   <Link
-                    to={addUtmToPath(`/recipe/${recipe.id}`, { utm_content: 'find_view_recipe' })}
+                    to={`/recipe/${recipe.id}`}
                     className="text-sm text-[#2ec4b6] hover:underline"
                   >
                     View recipe
                   </Link>
                   <Link
-                    to={addUtmToPath(`/edit/${recipe.id}`, { utm_content: 'find_edit' })}
+                    to={`/edit/${recipe.id}`}
                     className="text-sm text-gray-500 hover:text-gray-700"
                   >
                     Edit

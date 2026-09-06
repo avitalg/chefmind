@@ -7,12 +7,13 @@ interface SEOProps {
   image?: string;
   url?: string;
   type?: string;
+  robots?: string;
   structuredData?: object;
 }
 
 const defaultTitle = 'ChefMind - Your Personal Recipe Collection';
 const defaultDescription = 'ChefMind is a modern recipe management application that makes it easy to collect, organize, and customize recipes from any website. Import recipes, edit ingredients, and build your perfect recipe collection.';
-const defaultImage = '/favicon10.svg';
+const defaultImage = '/og-image.png';
 
 // Normalize URL: remove trailing slashes (except for root), ensure it starts with /
 const normalizeUrl = (url: string): string => {
@@ -39,6 +40,7 @@ export function useSEO({
   image = defaultImage,
   url,
   type = 'website',
+  robots = 'index, follow',
   structuredData,
 }: SEOProps = {}) {
   useEffect(() => {
@@ -67,6 +69,7 @@ export function useSEO({
     // Basic meta tags
     updateMetaTag('description', description);
     updateMetaTag('keywords', keywords);
+    updateMetaTag('robots', robots);
 
     // Open Graph tags
     updateMetaTag('og:title', fullTitle, 'property');
@@ -107,5 +110,5 @@ export function useSEO({
     return () => {
       // Optionally reset to defaults on unmount
     };
-  }, [title, description, keywords, image, url, type, structuredData]);
+  }, [title, description, keywords, image, url, type, robots, structuredData]);
 }

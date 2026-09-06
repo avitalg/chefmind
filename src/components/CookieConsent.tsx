@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { addUtmToPath } from '../utils/utm';
 import {
   enableAnalytics,
   getCookieConsent,
@@ -68,7 +67,7 @@ export default function CookieConsent() {
           ChefMind is used (via Google Analytics). You can accept analytics cookies or continue
           with essential cookies only.{' '}
           <Link
-            to={addUtmToPath('/about', { utm_content: 'cookie_consent' })}
+            to={'/about'}
             className="text-teal font-semibold hover:text-teal-dark underline underline-offset-2"
           >
             Learn more

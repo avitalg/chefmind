@@ -1,7 +1,6 @@
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import { useRecipes } from '../../contexts/RecipeContext';
 import { useSEO } from '../../hooks/useSEO';
-import { addUtmToPath } from '../../utils/utm';
 import { FOOD_IMAGES } from '../../constants/foodImages';
 import './recipe.css';
 
@@ -22,8 +21,8 @@ export default function Recipe() {
       ? `${recipe.title}, recipe, cooking, ${recipe.ingredients.map(i => i.name).join(', ')}`
       : 'recipe, cooking',
     url: recipe ? `/recipe/${id}` : undefined,
-    image: '/favicon10.svg',
     type: 'article',
+    robots: 'noindex, nofollow',
     structuredData: recipe ? {
       '@context': 'https://schema.org',
       '@type': 'Recipe',
@@ -46,7 +45,7 @@ export default function Recipe() {
       <div className="min-h-screen flex items-center justify-center">
         <div className="text-center">
           <h1 className="text-xl sm:text-2xl font-bold text-gray-800 mb-4 leading-tight">Recipe not found</h1>
-          <Link to={addUtmToPath('/', { utm_content: 'recipe_back' })} className="text-teal hover:text-teal-dark">
+          <Link to={'/'} className="text-teal hover:text-teal-dark">
             ← Back to Recipes
           </Link>
         </div>
@@ -68,7 +67,7 @@ export default function Recipe() {
       </div>
       {/* Header */}
       <header className="mb-8">
-        <Link to={addUtmToPath('/', { utm_content: 'recipe_back_header' })} dir="ltr" className="inline-flex items-center text-teal hover:text-teal-dark mb-4">
+        <Link to={'/'} dir="ltr" className="inline-flex items-center text-teal hover:text-teal-dark mb-4">
           <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path
               strokeLinecap="round"

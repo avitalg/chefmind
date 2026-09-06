@@ -1,7 +1,6 @@
 import { useCallback, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import type { User } from '../hooks/useAuth';
-import { addUtmToPath } from '../utils/utm';
 
 interface NavBarProps {
   user: User | null
@@ -51,13 +50,13 @@ export default function NavBar({ user, onSignIn, onSignOut }: NavBarProps) {
     <nav className="bg-paper border-b border-border-warm sticky top-0 z-50">
       <div className="max-w-7xl mx-auto px-4 w-full min-w-0">
         <div className="flex justify-between items-center h-16 sm:h-[4.5rem]">
-          <Link to={addUtmToPath('/', { utm_content: 'header' })} className="flex items-center gap-2.5">
+          <Link to={'/'} className="flex items-center gap-2.5">
             <img src="/favicon10.svg" alt="" className="w-9 h-9" />
             <span className="text-xl sm:text-2xl font-display font-bold text-ink tracking-tight">ChefMind</span>
           </Link>
 
           <div className="hidden md:flex items-center space-x-6">
-            <Link to={addUtmToPath('/', { utm_content: 'header' })} className={isActive('/') ? activeNavLinkClass : navLinkClass}>
+            <Link to={'/'} className={isActive('/') ? activeNavLinkClass : navLinkClass}>
               Home
             </Link>
             <div 
@@ -84,7 +83,7 @@ export default function NavBar({ user, onSignIn, onSignOut }: NavBarProps) {
                   <div className="bg-paper rounded-xl py-1 border border-border-warm shadow-lg">
                     {user && (
                       <Link
-                        to={addUtmToPath('/recipes', { utm_content: 'header' })}
+                        to={'/recipes'}
                         className={`block px-4 py-2 text-sm hover:bg-cream ${isActive('/recipes') ? 'text-teal font-bold' : 'text-body'}`}
                         onClick={() => setIsRecipesDropdownOpen(false)}
                       >
@@ -92,7 +91,7 @@ export default function NavBar({ user, onSignIn, onSignOut }: NavBarProps) {
                       </Link>
                     )}
                     <Link
-                      to={addUtmToPath('/recipe-ideas', { utm_content: 'header' })}
+                      to={'/recipe-ideas'}
                       className={`block px-4 py-2 text-sm hover:bg-cream ${isActive('/recipe-ideas') ? 'text-teal font-bold' : 'text-body'}`}
                       onClick={() => setIsRecipesDropdownOpen(false)}
                     >
@@ -100,7 +99,7 @@ export default function NavBar({ user, onSignIn, onSignOut }: NavBarProps) {
                     </Link>
                     {user && (
                       <Link
-                        to={addUtmToPath('/find', { utm_content: 'header' })}
+                        to={'/find'}
                         className={`block px-4 py-2 text-sm hover:bg-cream ${isActive('/find') ? 'text-teal font-bold' : 'text-body'}`}
                         onClick={() => setIsRecipesDropdownOpen(false)}
                       >
@@ -134,28 +133,28 @@ export default function NavBar({ user, onSignIn, onSignOut }: NavBarProps) {
                 <div className="absolute left-0 top-full pt-2 w-56 z-50">
                   <div className="bg-paper rounded-xl py-1 border border-border-warm shadow-lg">
                     <Link
-                      to={addUtmToPath('/stories/import-recipe-with-image', { utm_content: 'header' })}
+                      to={'/stories/import-recipe-with-image'}
                       className={`block px-4 py-2 text-sm hover:bg-cream ${isActive('/stories/import-recipe-with-image') ? 'text-teal font-bold' : 'text-body'}`}
                       onClick={() => setIsStoriesDropdownOpen(false)}
                     >
                       Import Recipe with Image
                     </Link>
                     <Link
-                      to={addUtmToPath('/stories/preserving-family-recipes', { utm_content: 'header' })}
+                      to={'/stories/preserving-family-recipes'}
                       className={`block px-4 py-2 text-sm hover:bg-cream ${isActive('/stories/preserving-family-recipes') ? 'text-teal font-bold' : 'text-body'}`}
                       onClick={() => setIsStoriesDropdownOpen(false)}
                     >
                       Preserving Family Recipes
                     </Link>
                     <Link
-                      to={addUtmToPath('/stories/recipe-memory-and-nostalgia', { utm_content: 'header' })}
+                      to={'/stories/recipe-memory-and-nostalgia'}
                       className={`block px-4 py-2 text-sm hover:bg-cream ${isActive('/stories/recipe-memory-and-nostalgia') ? 'text-teal font-bold' : 'text-body'}`}
                       onClick={() => setIsStoriesDropdownOpen(false)}
                     >
                       Recipe Memory & Nostalgia
                     </Link>
                     <Link
-                      to={addUtmToPath('/stories/building-your-culinary-legacy', { utm_content: 'header' })}
+                      to={'/stories/building-your-culinary-legacy'}
                       className={`block px-4 py-2 text-sm hover:bg-cream ${isActive('/stories/building-your-culinary-legacy') ? 'text-teal font-bold' : 'text-body'}`}
                       onClick={() => setIsStoriesDropdownOpen(false)}
                     >
@@ -188,14 +187,14 @@ export default function NavBar({ user, onSignIn, onSignOut }: NavBarProps) {
                 <div className="absolute left-0 top-full pt-2 w-48 z-50">
                   <div className="bg-paper rounded-xl py-1 border border-border-warm shadow-lg">
                     <Link
-                      to={addUtmToPath('/company', { utm_content: 'header' })}
+                      to={'/company'}
                       className={`block px-4 py-2 text-sm hover:bg-cream ${isActive('/company') ? 'text-teal font-bold' : 'text-body'}`}
                       onClick={() => setIsCompanyDropdownOpen(false)}
                     >
                       Company
                     </Link>
                     <Link
-                      to={addUtmToPath('/about', { utm_content: 'header' })}
+                      to={'/about'}
                       className={`block px-4 py-2 text-sm hover:bg-cream ${isActive('/about') ? 'text-teal font-bold' : 'text-body'}`}
                       onClick={() => setIsCompanyDropdownOpen(false)}
                     >
@@ -205,7 +204,7 @@ export default function NavBar({ user, onSignIn, onSignOut }: NavBarProps) {
                 </div>
               )}
             </div>
-            <Link to={addUtmToPath('/faq', { utm_content: 'header' })} className={isActive('/faq') ? activeNavLinkClass : navLinkClass}>
+            <Link to={'/faq'} className={isActive('/faq') ? activeNavLinkClass : navLinkClass}>
               FAQ
             </Link>
           </div>
@@ -284,7 +283,7 @@ export default function NavBar({ user, onSignIn, onSignOut }: NavBarProps) {
           <div className="md:hidden">
             <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-cream">
               <Link 
-                to={addUtmToPath('/', { utm_content: 'header' })} 
+                to={'/'} 
                 className={isActive('/') ? activeMobileNavLinkClass : mobileNavLinkClass} 
                 onClick={closeMobileMenu}
               >
@@ -308,7 +307,7 @@ export default function NavBar({ user, onSignIn, onSignOut }: NavBarProps) {
                 {isMobileCompanyOpen && (
                   <div className="pl-4 mt-1 space-y-1">
                     <Link
-                      to={addUtmToPath('/company', { utm_content: 'header' })}
+                      to={'/company'}
                       className={isActive('/company') ? activeMobileNavLinkClass : mobileNavLinkClass}
                       onClick={() => {
                         closeMobileMenu();
@@ -318,7 +317,7 @@ export default function NavBar({ user, onSignIn, onSignOut }: NavBarProps) {
                       Company
                     </Link>
                     <Link
-                      to={addUtmToPath('/about', { utm_content: 'header' })}
+                      to={'/about'}
                       className={isActive('/about') ? activeMobileNavLinkClass : mobileNavLinkClass}
                       onClick={() => {
                         closeMobileMenu();
@@ -331,7 +330,7 @@ export default function NavBar({ user, onSignIn, onSignOut }: NavBarProps) {
                 )}
               </div>
               <Link 
-                to={addUtmToPath('/faq', { utm_content: 'header' })} 
+                to={'/faq'} 
                 className={isActive('/faq') ? activeMobileNavLinkClass : mobileNavLinkClass} 
                 onClick={closeMobileMenu}
               >
@@ -356,7 +355,7 @@ export default function NavBar({ user, onSignIn, onSignOut }: NavBarProps) {
                   <div className="pl-4 mt-1 space-y-1">
                     {user && (
                       <Link
-                        to={addUtmToPath('/recipes', { utm_content: 'header' })}
+                        to={'/recipes'}
                         className={isActive('/recipes') ? activeMobileNavLinkClass : mobileNavLinkClass}
                         onClick={() => {
                           closeMobileMenu();
@@ -367,7 +366,7 @@ export default function NavBar({ user, onSignIn, onSignOut }: NavBarProps) {
                       </Link>
                     )}
                     <Link
-                      to={addUtmToPath('/recipe-ideas', { utm_content: 'header' })}
+                      to={'/recipe-ideas'}
                       className={isActive('/recipe-ideas') ? activeMobileNavLinkClass : mobileNavLinkClass}
                       onClick={() => {
                         closeMobileMenu();
@@ -378,7 +377,7 @@ export default function NavBar({ user, onSignIn, onSignOut }: NavBarProps) {
                     </Link>
                     {user && (
                       <Link
-                        to={addUtmToPath('/find', { utm_content: 'header' })}
+                        to={'/find'}
                         className={isActive('/find') ? activeMobileNavLinkClass : mobileNavLinkClass}
                         onClick={() => {
                           closeMobileMenu();
@@ -409,7 +408,7 @@ export default function NavBar({ user, onSignIn, onSignOut }: NavBarProps) {
                 {isMobileStoriesOpen && (
                   <div className="pl-4 mt-1 space-y-1">
                     <Link
-                      to={addUtmToPath('/stories/import-recipe-with-image', { utm_content: 'header' })}
+                      to={'/stories/import-recipe-with-image'}
                       className={isActive('/stories/import-recipe-with-image') ? activeMobileNavLinkClass : mobileNavLinkClass}
                       onClick={() => {
                         closeMobileMenu();
@@ -419,7 +418,7 @@ export default function NavBar({ user, onSignIn, onSignOut }: NavBarProps) {
                       Import Recipe with Image
                     </Link>
                     <Link
-                      to={addUtmToPath('/stories/preserving-family-recipes', { utm_content: 'header' })}
+                      to={'/stories/preserving-family-recipes'}
                       className={isActive('/stories/preserving-family-recipes') ? activeMobileNavLinkClass : mobileNavLinkClass}
                       onClick={() => {
                         closeMobileMenu();
@@ -429,7 +428,7 @@ export default function NavBar({ user, onSignIn, onSignOut }: NavBarProps) {
                       Preserving Family Recipes
                     </Link>
                     <Link
-                      to={addUtmToPath('/stories/recipe-memory-and-nostalgia', { utm_content: 'header' })}
+                      to={'/stories/recipe-memory-and-nostalgia'}
                       className={isActive('/stories/recipe-memory-and-nostalgia') ? activeMobileNavLinkClass : mobileNavLinkClass}
                       onClick={() => {
                         closeMobileMenu();
@@ -439,7 +438,7 @@ export default function NavBar({ user, onSignIn, onSignOut }: NavBarProps) {
                       Recipe Memory & Nostalgia
                     </Link>
                     <Link
-                      to={addUtmToPath('/stories/building-your-culinary-legacy', { utm_content: 'header' })}
+                      to={'/stories/building-your-culinary-legacy'}
                       className={isActive('/stories/building-your-culinary-legacy') ? activeMobileNavLinkClass : mobileNavLinkClass}
                       onClick={() => {
                         closeMobileMenu();

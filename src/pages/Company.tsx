@@ -1,6 +1,5 @@
 import { Link } from 'react-router-dom';
 import { useSEO } from '../hooks/useSEO';
-import { addUtmToPath } from '../utils/utm';
 
 const Company = () => {
   useSEO({
@@ -91,7 +90,7 @@ const Company = () => {
             </p>
             <div>
               <Link 
-                to={addUtmToPath('/', { utm_content: 'company_cta' })} 
+                to={'/'} 
                 className="inline-block bg-[#2ec4b6] px-6 py-3 rounded-lg hover:bg-[#1fa396] transition-colors !text-white"
               >
                 Try ChefMind →
