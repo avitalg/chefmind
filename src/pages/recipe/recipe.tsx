@@ -68,7 +68,7 @@ export default function Recipe() {
       </div>
       {/* Header */}
       <header className="mb-8">
-        <Link to={addUtmToPath('/', { utm_content: 'recipe_back_header' })} className="inline-flex items-center text-teal hover:text-teal-dark mb-4">
+        <Link to={addUtmToPath('/', { utm_content: 'recipe_back_header' })} dir="ltr" className="inline-flex items-center text-teal hover:text-teal-dark mb-4">
           <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path
               strokeLinecap="round"

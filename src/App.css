@@ -2,17 +2,18 @@
 @import "tailwindcss";
 
 @theme {
-  --font-sans: 'Open Sans', 'Helvetica Neue', system-ui, -apple-system, sans-serif;
-  --color-cream: #eef6fc;
-  --color-paper: #ffffff;
-  --color-teal: #006fb9;
-  --color-teal-dark: #005293;
-  --color-orange: #006fb9;
-  --color-orange-light: #3392cc;
-  --color-ink: #333333;
-  --color-body: #666666;
-  --color-border-warm: #dddddd;
-  --color-accent: #006fb9;
+  --font-sans: 'Plus Jakarta Sans', 'Helvetica Neue', system-ui, -apple-system, sans-serif;
+  --font-display: 'Fraunces', Georgia, 'Times New Roman', serif;
+  --color-cream: #e4eeea;
+  --color-paper: #f8f6f1;
+  --color-teal: #2f5d50;
+  --color-teal-dark: #244a40;
+  --color-orange: #3d7a6b;
+  --color-orange-light: #4f8f7e;
+  --color-ink: #1f332c;
+  --color-body: #5a645f;
+  --color-border-warm: #ddd8ce;
+  --color-accent: #2f5d50;
 }
 
 #root {
@@ -22,36 +23,91 @@
 }
 
 @layer components {
+  .font-display {
+    font-family: var(--font-display);
+  }
+
   .btn-primary {
-    @apply inline-flex items-center justify-center px-6 py-3 bg-teal text-white rounded-full
+    @apply inline-flex items-center justify-center px-7 py-3 bg-teal text-white
            hover:bg-teal-dark transition-colors font-semibold cursor-pointer text-sm
-           shadow-sm hover:shadow-md
-           disabled:opacity-50 disabled:cursor-not-allowed;
+           tracking-wide disabled:opacity-50 disabled:cursor-not-allowed;
+    border-radius: 2px;
+  }
+
+  .btn-accent {
+    @apply inline-flex items-center justify-center px-7 py-3 bg-paper text-teal
+           hover:bg-cream transition-colors font-semibold cursor-pointer text-sm
+           tracking-wide disabled:opacity-50 disabled:cursor-not-allowed;
+    border-radius: 2px;
   }
 
   .btn-secondary {
-    @apply inline-flex items-center justify-center px-6 py-3 bg-paper text-teal rounded-full border-2 border-teal
-           hover:bg-cream transition-colors font-semibold cursor-pointer text-sm;
+    @apply inline-flex items-center justify-center px-7 py-3 bg-transparent text-teal
+           border border-teal hover:bg-cream transition-colors font-semibold cursor-pointer text-sm;
+    border-radius: 2px;
   }
 
   .card {
-    @apply bg-paper border border-border-warm rounded-2xl p-6 sm:p-8 shadow-md;
+    @apply bg-paper p-6 sm:p-8;
   }
 
   .card-section-title {
-    @apply text-2xl sm:text-3xl font-bold text-ink tracking-tight;
+    @apply text-2xl sm:text-3xl font-bold text-ink tracking-tight font-display;
   }
 
   .section-heading {
-    @apply text-xl sm:text-2xl font-bold text-teal pb-3 mb-6 border-b-2 border-teal/20;
+    @apply text-xl sm:text-2xl font-bold text-ink pb-3 mb-6 font-display;
   }
 
   .info-box {
-    @apply bg-cream border border-border-warm rounded-xl p-4 text-body;
+    @apply text-body;
   }
 
   .icon-box {
-    @apply p-2.5 border border-border-warm rounded-xl text-teal bg-cream;
+    @apply p-2.5 text-teal;
+  }
+
+  .intro-band {
+    @apply py-10 sm:py-12 px-6;
+    background: #e4eeea;
+  }
+
+  .import-band {
+    @apply py-10 sm:py-14 px-4;
+    background: #2f5d50;
+  }
+
+  .import-band input[type="url"] {
+    color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important;
+  }
+
+  .import-band input[type="url"]::placeholder {
+    color: rgb(255 255 255 / 0.5);
+    -webkit-text-fill-color: rgb(255 255 255 / 0.5);
+  }
+
+  .import-band input[type="url"]:-webkit-autofill {
+    -webkit-text-fill-color: #ffffff !important;
+    box-shadow: 0 0 0px 1000px #2f5d50 inset !important;
+    -webkit-box-shadow: 0 0 0px 1000px #2f5d50 inset !important;
+  }
+
+  .photo-tile img {
+    @apply w-full object-cover transition-transform duration-700 ease-out;
+    aspect-ratio: 4 / 5;
+  }
+
+  .photo-tile:hover img {
+    transform: scale(1.04);
+  }
+
+  .index-link {
+    @apply text-sm text-ink hover:text-teal underline underline-offset-4 decoration-border-warm hover:decoration-teal transition-colors;
+  }
+
+  .rise {
+    animation: home-rise 0.8s ease both;
   }
 
   .section-divider {
@@ -68,6 +124,17 @@
 
   .section-spoon {
     @apply hidden;
+  }
+}
+
+@keyframes home-rise {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
   }
 }
 
@@ -105,16 +172,16 @@
   input[type="tel"],
   textarea,
   select {
-    color: #333333 !important;
+    color: #1f332c !important;
   }
 
   input:-webkit-autofill,
   input:-webkit-autofill:hover,
   input:-webkit-autofill:focus,
   input:-webkit-autofill:active {
-    -webkit-text-fill-color: #333333 !important;
-    -webkit-box-shadow: 0 0 0px 1000px #ffffff inset !important;
-    box-shadow: 0 0 0px 1000px #ffffff inset !important;
+    -webkit-text-fill-color: #1f332c !important;
+    -webkit-box-shadow: 0 0 0px 1000px #f8f6f1 inset !important;
+    box-shadow: 0 0 0px 1000px #f8f6f1 inset !important;
   }
 
   @media screen and (max-width: 768px) {

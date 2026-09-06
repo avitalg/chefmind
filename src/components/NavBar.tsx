@@ -48,12 +48,12 @@ export default function NavBar({ user, onSignIn, onSignOut }: NavBarProps) {
 
 
   return (
-    <nav className="bg-paper border-b border-border-warm sticky top-0 z-50 shadow-sm">
+    <nav className="bg-paper border-b border-border-warm sticky top-0 z-50">
       <div className="max-w-7xl mx-auto px-4 w-full min-w-0">
         <div className="flex justify-between items-center h-16 sm:h-[4.5rem]">
           <Link to={addUtmToPath('/', { utm_content: 'header' })} className="flex items-center gap-2.5">
             <img src="/favicon10.svg" alt="" className="w-9 h-9" />
-            <span className="text-xl sm:text-2xl font-bold text-teal tracking-tight">ChefMind</span>
+            <span className="text-xl sm:text-2xl font-display font-bold text-ink tracking-tight">ChefMind</span>
           </Link>
 
           <div className="hidden md:flex items-center space-x-6">
