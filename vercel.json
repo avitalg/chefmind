@@ -1,18 +1,4 @@
 {
-  "redirects": [
-    {
-      "source": "/",
-      "has": [{ "type": "host", "value": "www.chefmind.net" }],
-      "destination": "https://chefmind.net/",
-      "permanent": true
-    },
-    {
-      "source": "/:path*",
-      "has": [{ "type": "host", "value": "www.chefmind.net" }],
-      "destination": "https://chefmind.net/:path*",
-      "permanent": true
-    }
-  ],
   "rewrites": [
     { "source": "/((?!.*\\..*).*)", "destination": "/" }
   ]

@@ -11,13 +11,13 @@ const HOME_STRUCTURED_DATA = {
     {
       '@type': 'WebSite',
       name: 'ChefMind',
-      url: 'https://chefmind.net/',
+      url: 'https://www.chefmind.net/',
     },
     {
       '@type': 'Organization',
       name: 'ChefMind',
-      url: 'https://chefmind.net/',
-      logo: 'https://chefmind.net/og-image.png',
+      url: 'https://www.chefmind.net/',
+      logo: 'https://www.chefmind.net/og-image.png',
     },
   ],
 };

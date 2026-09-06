@@ -2,7 +2,7 @@ User-agent: *
 Allow: /
 
 # Sitemap
-Sitemap: https://chefmind.net/sitemap.xml
+Sitemap: https://www.chefmind.net/sitemap.xml
 
 # Disallow admin/private routes
 Disallow: /edit/
