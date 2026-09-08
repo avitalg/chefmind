@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 
 interface SEOProps {
   title?: string;
+  fullTitle?: string;
   description?: string;
   keywords?: string;
   image?: string;
@@ -11,8 +12,8 @@ interface SEOProps {
   structuredData?: object;
 }
 
-const defaultTitle = 'ChefMind - Your Personal Recipe Collection';
-const defaultDescription = 'ChefMind is a modern recipe management application that makes it easy to collect, organize, and customize recipes from any website. Import recipes, edit ingredients, and build your perfect recipe collection.';
+const defaultTitle = 'ChefMind | Save & Organize Your Recipes';
+const defaultDescription = 'Free recipe organizer for home cooks. Import from any website or photo, edit ingredients, and cook from one library — no subscription.';
 const defaultImage = '/og-image.png';
 
 // Normalize URL: remove trailing slashes (except for root), ensure it starts with /
@@ -35,6 +36,7 @@ const getAbsoluteUrl = (path: string): string => {
 
 export function useSEO({
   title,
+  fullTitle,
   description = defaultDescription,
   keywords = 'recipes, cooking, recipe management, recipe collection, food, chef, ingredients, cooking app',
   image = defaultImage,
@@ -51,9 +53,8 @@ export function useSEO({
     const absoluteUrl = getAbsoluteUrl(normalizedUrl);
     const siteUrl = typeof window !== 'undefined' ? window.location.origin : '';
 
-    // Update title
-    const fullTitle = title ? `${title} | ChefMind` : defaultTitle;
-    document.title = fullTitle;
+    const pageTitle = fullTitle ?? (title ? `${title} | ChefMind` : defaultTitle);
+    document.title = pageTitle;
 
     // Update or create meta tags
     const updateMetaTag = (name: string, content: string, attribute: string = 'name') => {
@@ -72,7 +73,7 @@ export function useSEO({
     updateMetaTag('robots', robots);
 
     // Open Graph tags
-    updateMetaTag('og:title', fullTitle, 'property');
+    updateMetaTag('og:title', pageTitle, 'property');
     updateMetaTag('og:description', description, 'property');
     updateMetaTag('og:image', image.startsWith('http') ? image : `${siteUrl}${image}`, 'property');
     updateMetaTag('og:type', type, 'property');
@@ -80,7 +81,7 @@ export function useSEO({
 
     // Twitter Card tags
     updateMetaTag('twitter:card', 'summary_large_image');
-    updateMetaTag('twitter:title', fullTitle);
+    updateMetaTag('twitter:title', pageTitle);
     updateMetaTag('twitter:description', description);
     updateMetaTag('twitter:image', image.startsWith('http') ? image : `${siteUrl}${image}`);
 
@@ -110,5 +111,5 @@ export function useSEO({
     return () => {
       // Optionally reset to defaults on unmount
     };
-  }, [title, description, keywords, image, url, type, robots, structuredData]);
+  }, [title, fullTitle, description, keywords, image, url, type, robots, structuredData]);
 }

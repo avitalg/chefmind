@@ -1,4 +1,4 @@
-import heroBreakfastImg from '../assets/breakfast-spread.png';
+import heroBreakfastImg from '../assets/breakfast-spread.webp';
 import recipeIdeasImg from '../assets/recipe-ideas-hero.webp';
 
 export type HeroSlide = {

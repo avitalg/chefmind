@@ -45,8 +45,8 @@ interface HomePageProps {
 
 export default function HomePage({ user, onSignIn }: HomePageProps) {
   useSEO({
-    title: 'Home',
-    description: 'Manage your personal recipe collection with ChefMind. Import recipes from any website, create custom recipes, and organize your culinary favorites all in one place.',
+    fullTitle: 'ChefMind | Save & Organize Your Recipes',
+    description: 'Free recipe organizer for home cooks. Import from any website or photo, edit ingredients, and cook from one library — no subscription.',
     keywords: 'recipe collection, recipe management, import recipes, cooking recipes, recipe organizer',
     url: '/',
     structuredData: HOME_STRUCTURED_DATA,
@@ -160,6 +160,12 @@ export default function HomePage({ user, onSignIn }: HomePageProps) {
         <img
           src={HERO_SLIDES[0].src}
           alt={HERO_SLIDES[0].alt}
+          width={1024}
+          height={558}
+          fetchPriority="high"
+          loading="eager"
+          decoding="async"
+          sizes="100vw"
           className="absolute inset-0 w-full h-full object-cover"
         />
       </section>
@@ -172,11 +178,14 @@ export default function HomePage({ user, onSignIn }: HomePageProps) {
         <p className="text-lg text-body max-w-xl mx-auto leading-relaxed mb-8">
           {user
             ? 'Your recipes live here — import another, or cook from what you already saved.'
-            : 'A personal recipe collection for home cooks. Save dishes from blogs, photos, and family cards, then cook from one quiet library.'}
+            : 'A personal recipe collection for home cooks. Save dishes from blogs, photos, and family cards, then cook from one quiet library. ChefMind is free to use — no subscription.'}
         </p>
         <button type="button" onClick={scrollToImport} className="btn-primary">
           {user ? 'Import a recipe' : 'Start collecting'}
         </button>
+        {!user && (
+          <p className="text-sm text-body mt-4">Always free. Sign in with Google to keep your recipes.</p>
+        )}
       </header>
 
       {!user && (
