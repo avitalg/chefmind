@@ -61,9 +61,10 @@ const About = () => {
           <h2 className="text-xl sm:text-2xl font-semibold text-gray-800 mt-6 sm:mt-8 mb-3 sm:mb-4 leading-tight">Privacy & Security</h2>
           <p className="text-gray-600 mb-4">
             Your privacy and data security are our top priorities. ChefMind uses industry-standard 
-            Google authentication to ensure your account is secure. Your recipes and personal 
-            information are stored safely and never shared with third parties. You have complete 
-            control over your recipe collection - add, edit, or delete recipes whenever you want.
+            Google authentication to ensure your account is secure. When you sign in, we store your 
+            Google name and email so we can identify your account, along with the recipes you save. 
+            This information is never shared with third parties. You have complete control over your 
+            recipe collection - add, edit, or delete recipes whenever you want.
           </p>
 
           <div className="bg-[#cbf3f0] rounded-lg p-6 mt-8">

@@ -17,7 +17,7 @@ const faqData = [
     },
     {
       question: "Is my recipe data secure and private?",
-      answer: "Absolutely! Your recipes are stored securely and are only accessible to you. We use JWT authentication and never share your personal data with third parties. Your recipes are backed up and can be accessed from any device when you're signed in."
+      answer: "Absolutely! Your recipes are stored securely and are only accessible to you. When you sign in with Google we also save your name and email so we can identify your account. We use JWT authentication and never share your personal data with third parties. Your recipes are backed up and can be accessed from any device when you're signed in."
     },
     {
       question: "Can I access my recipes from multiple devices?",
