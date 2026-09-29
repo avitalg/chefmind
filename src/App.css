@@ -75,22 +75,7 @@
   .import-band {
     @apply py-10 sm:py-14 px-4;
     background: #2f5d50;
-  }
-
-  .import-band input[type="url"] {
-    color: #ffffff !important;
-    -webkit-text-fill-color: #ffffff !important;
-  }
-
-  .import-band input[type="url"]::placeholder {
-    color: rgb(255 255 255 / 0.5);
-    -webkit-text-fill-color: rgb(255 255 255 / 0.5);
-  }
-
-  .import-band input[type="url"]:-webkit-autofill {
-    -webkit-text-fill-color: #ffffff !important;
-    box-shadow: 0 0 0px 1000px #2f5d50 inset !important;
-    -webkit-box-shadow: 0 0 0px 1000px #2f5d50 inset !important;
+    color: #ffffff;
   }
 
   .photo-tile img {
@@ -125,6 +110,14 @@
   .section-spoon {
     @apply hidden;
   }
+}
+
+/* Global heading color is unlayered, so it overrides Tailwind text color utilities. */
+.import-band,
+.import-band h1,
+.import-band h2,
+.import-band h3 {
+  color: #ffffff;
 }
 
 @keyframes home-rise {
@@ -173,6 +166,25 @@
   textarea,
   select {
     color: #1f332c !important;
+  }
+
+  .import-band input[type="url"] {
+    color: #ffffff !important;
+    -webkit-text-fill-color: #ffffff !important;
+  }
+
+  .import-band input[type="url"]::placeholder {
+    color: rgb(255 255 255 / 0.9);
+    -webkit-text-fill-color: rgb(255 255 255 / 0.9);
+  }
+
+  .import-band input[type="url"]:-webkit-autofill,
+  .import-band input[type="url"]:-webkit-autofill:hover,
+  .import-band input[type="url"]:-webkit-autofill:focus,
+  .import-band input[type="url"]:-webkit-autofill:active {
+    -webkit-text-fill-color: #ffffff !important;
+    box-shadow: 0 0 0px 1000px #2f5d50 inset !important;
+    -webkit-box-shadow: 0 0 0px 1000px #2f5d50 inset !important;
   }
 
   input:-webkit-autofill,
