@@ -267,8 +267,9 @@ export default function NavBar({ user, onSignIn, onSignOut }: NavBarProps) {
               onClick={toggleMobileMenu}
               className="text-gray-600 hover:text-gray-800 focus:outline-none focus:text-gray-800"
               aria-expanded={isMobileMenuOpen}
+              aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
             >
-              <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
                 {isMobileMenuOpen ? (
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
                 ) : (
