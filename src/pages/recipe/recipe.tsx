@@ -1,50 +1,53 @@
-import { Link, useNavigate, useParams } from 'react-router-dom';
-import { useRecipes } from '../../contexts/RecipeContext';
-import { useSEO } from '../../hooks/useSEO';
-import { FOOD_IMAGES } from '../../constants/foodImages';
-import './recipe.css';
-
+import { Link, useNavigate, useParams } from 'react-router-dom'
+import { STORY_PHOTOS } from '../../constants/foodImages'
+import { useRecipes } from '../../contexts/RecipeContext'
+import { useSEO } from '../../hooks/useSEO'
+import './recipe.css'
 
 export default function Recipe() {
   const { id } = useParams<{ id: string }>()
-  const { recipes } = useRecipes();
-  const navigate = useNavigate();
-  const recipe = id ? recipes.find(r => r.id === id) : null;
+  const { recipes } = useRecipes()
+  const navigate = useNavigate()
+  const recipe = id ? recipes.find((r) => r.id === id) : null
 
   // SEO with structured data for recipe
   useSEO({
     title: recipe?.title || 'Recipe',
-    description: recipe 
+    description: recipe
       ? `Recipe for ${recipe.title}. ${recipe.ingredients.length} ingredients. ${recipe.instructions.length} steps.`
       : 'View recipe details',
-    keywords: recipe 
-      ? `${recipe.title}, recipe, cooking, ${recipe.ingredients.map(i => i.name).join(', ')}`
+    keywords: recipe
+      ? `${recipe.title}, recipe, cooking, ${recipe.ingredients.map((i) => i.name).join(', ')}`
       : 'recipe, cooking',
     url: recipe ? `/recipe/${id}` : undefined,
     type: 'article',
     robots: 'noindex, nofollow',
-    structuredData: recipe ? {
-      '@context': 'https://schema.org',
-      '@type': 'Recipe',
-      name: recipe.title,
-      description: `Recipe for ${recipe.title}`,
-      recipeIngredient: recipe.ingredients.map(ing => 
-        `${ing.amount} ${ing.unit} ${ing.name}`.trim()
-      ),
-      recipeInstructions: recipe.instructions.map((instruction, index) => ({
-        '@type': 'HowToStep',
-        position: index + 1,
-        text: instruction,
-      })),
-      ...(recipe.url ? { url: recipe.url } : {}),
-    } : undefined,
-  });
+    structuredData: recipe
+      ? {
+          '@context': 'https://schema.org',
+          '@type': 'Recipe',
+          name: recipe.title,
+          description: `Recipe for ${recipe.title}`,
+          recipeIngredient: recipe.ingredients.map((ing) =>
+            `${ing.amount} ${ing.unit} ${ing.name}`.trim()
+          ),
+          recipeInstructions: recipe.instructions.map((instruction, index) => ({
+            '@type': 'HowToStep',
+            position: index + 1,
+            text: instruction,
+          })),
+          ...(recipe.url ? { url: recipe.url } : {}),
+        }
+      : undefined,
+  })
 
   if (!recipe) {
     return (
       <div className="min-h-screen flex items-center justify-center">
         <div className="text-center">
-          <h1 className="text-xl sm:text-2xl font-bold text-gray-800 mb-4 leading-tight">Recipe not found</h1>
+          <h1 className="text-xl sm:text-2xl font-bold text-gray-800 mb-4 leading-tight">
+            Recipe not found
+          </h1>
           <Link to={'/'} className="text-teal hover:text-teal-dark">
             ← Back to Recipes
           </Link>
@@ -54,20 +57,40 @@ export default function Recipe() {
   }
 
   const textAlign = recipe?.direction === 'rtl' ? 'right' : 'left'
-  const heroImage = FOOD_IMAGES.banner[recipe.title.length % FOOD_IMAGES.banner.length]
+  const heroImage = STORY_PHOTOS[recipe.title.length % STORY_PHOTOS.length]
 
   return (
     <div className="max-w-4xl mx-auto p-6" dir={recipe.direction} style={{ textAlign }}>
       <div className="mb-8 overflow-hidden rounded-lg border border-border-warm aspect-[21/9] max-h-48">
-        <img
-          src={heroImage.src}
-          alt={heroImage.alt}
-          className="w-full h-full object-cover"
-        />
+        <picture className="block h-full">
+          <source
+            type="image/avif"
+            srcSet={heroImage.avifSrcSet}
+            sizes="(min-width: 56rem) 48rem, calc(100vw - 3rem)"
+          />
+          <source
+            type="image/webp"
+            srcSet={heroImage.webpSrcSet}
+            sizes="(min-width: 56rem) 48rem, calc(100vw - 3rem)"
+          />
+          <img
+            src={heroImage.src}
+            alt={heroImage.alt}
+            width={heroImage.width}
+            height={heroImage.height}
+            sizes="(min-width: 56rem) 48rem, calc(100vw - 3rem)"
+            decoding="async"
+            className="w-full h-full object-cover"
+          />
+        </picture>
       </div>
       {/* Header */}
       <header className="mb-8">
-        <Link to={'/'} dir="ltr" className="inline-flex items-center text-teal hover:text-teal-dark mb-4">
+        <Link
+          to={'/'}
+          dir="ltr"
+          className="inline-flex items-center text-teal hover:text-teal-dark mb-4"
+        >
           <svg className="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path
               strokeLinecap="round"
@@ -79,7 +102,9 @@ export default function Recipe() {
           Back to Recipes
         </Link>
 
-        <h1 className="text-2xl sm:text-3xl md:text-4xl font-semibold text-ink mb-2 sm:mb-4 leading-tight break-words">{recipe.title}</h1>
+        <h1 className="text-2xl sm:text-3xl md:text-4xl font-semibold text-ink mb-2 sm:mb-4 leading-tight break-words">
+          {recipe.title}
+        </h1>
 
         {recipe.url && (
           <a
@@ -133,7 +158,9 @@ export default function Recipe() {
                   <span className="font-semibold text-gray-800">
                     {ingredient.amount} {ingredient.unit}
                   </span>
-                  <span className="ml-2 text-gray-600" itemProp="name">{ingredient.name}</span>
+                  <span className="ml-2 text-gray-600" itemProp="name">
+                    {ingredient.name}
+                  </span>
                 </div>
               </li>
             ))}
@@ -160,11 +187,22 @@ export default function Recipe() {
           </h2>
           <ol className="space-y-4" itemScope itemType="https://schema.org/HowToSection">
             {recipe.instructions.map((instruction, index) => (
-              <li key={index} className="flex items-start" itemProp="itemListElement" itemScope itemType="https://schema.org/HowToStep">
-                <span className="flex-shrink-0 w-8 h-8 bg-teal text-white rounded-full flex items-center justify-center text-sm font-semibold mr-4 mt-1" itemProp="position">
+              <li
+                key={index}
+                className="flex items-start"
+                itemProp="itemListElement"
+                itemScope
+                itemType="https://schema.org/HowToStep"
+              >
+                <span
+                  className="flex-shrink-0 w-8 h-8 bg-teal text-white rounded-full flex items-center justify-center text-sm font-semibold mr-4 mt-1"
+                  itemProp="position"
+                >
                   {index + 1}
                 </span>
-                <p className="text-gray-700 leading-relaxed" itemProp="text">{instruction}</p>
+                <p className="text-gray-700 leading-relaxed" itemProp="text">
+                  {instruction}
+                </p>
               </li>
             ))}
           </ol>

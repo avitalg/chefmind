@@ -1,9 +1,9 @@
-import { Link } from 'react-router-dom';
-import { FOOD_IMAGES } from '../../constants/foodImages';
+import { Link } from 'react-router-dom'
+import { type ResponsivePhoto, STORY_IMAGE_SIZES, STORY_PHOTOS } from '../../constants/foodImages'
 
 interface HomeFeatureGridProps {
-  onSignIn: () => void;
-  onImport: () => void;
+  onSignIn: () => void
+  onImport: () => void
 }
 
 const BROWSE = [
@@ -11,12 +11,13 @@ const BROWSE = [
   { label: 'From a photo', href: '#import-recipe' },
   { label: 'Create a recipe', href: '/create' },
   { label: 'Recipe ideas', href: '/recipe-ideas' },
-];
+]
 
 const FEATURES = [
   {
     title: 'Import from anywhere',
-    description: 'Paste a recipe URL or upload a photo of a card. We pull out the ingredients and steps.',
+    description:
+      'Paste a recipe URL or upload a photo of a card. We pull out the ingredients and steps.',
   },
   {
     title: 'Write your own',
@@ -24,33 +25,36 @@ const FEATURES = [
   },
   {
     title: 'Cook from one library',
-    description: 'Edit amounts, tweak steps, and find everything in one place — wherever you sign in.',
+    description:
+      'Edit amounts, tweak steps, and find everything in one place — wherever you sign in.',
   },
-];
+]
 
-const STORIES = [
+const STORIES: Array<{
+  photo: ResponsivePhoto
+  category: string
+  title: string
+  href: string
+}> = [
   {
-    src: FOOD_IMAGES.banner[0].src,
-    alt: FOOD_IMAGES.banner[0].alt,
+    photo: STORY_PHOTOS[0],
     category: 'Import',
     title: 'Save a recipe from any blog',
     href: '#import-recipe',
   },
   {
-    src: FOOD_IMAGES.banner[1].src,
-    alt: FOOD_IMAGES.banner[1].alt,
+    photo: STORY_PHOTOS[1],
     category: 'Create',
     title: 'Write the ones you already know',
     href: '/create',
   },
   {
-    src: FOOD_IMAGES.banner[2].src,
-    alt: FOOD_IMAGES.banner[2].alt,
+    photo: STORY_PHOTOS[2],
     category: 'Ideas',
     title: 'Cook from what’s in the fridge',
     href: '/recipe-ideas',
   },
-];
+]
 
 export default function HomeFeatureGrid({ onSignIn, onImport }: HomeFeatureGridProps) {
   return (
@@ -65,14 +69,10 @@ export default function HomeFeatureGrid({ onSignIn, onImport }: HomeFeatureGridP
                 {item.label}
               </button>
             ) : (
-              <Link
-                key={item.label}
-                to={item.href}
-                className="index-link"
-              >
+              <Link key={item.label} to={item.href} className="index-link">
                 {item.label}
               </Link>
-            ),
+            )
           )}
         </div>
       </div>
@@ -93,32 +93,55 @@ export default function HomeFeatureGrid({ onSignIn, onImport }: HomeFeatureGridP
             const inner = (
               <>
                 <div className="photo-tile overflow-hidden mb-4">
-                  <img src={story.src} alt={story.alt} />
+                  <picture className="block w-full">
+                    <source
+                      type="image/avif"
+                      srcSet={story.photo.avifSrcSet}
+                      sizes={STORY_IMAGE_SIZES}
+                    />
+                    <source
+                      type="image/webp"
+                      srcSet={story.photo.webpSrcSet}
+                      sizes={STORY_IMAGE_SIZES}
+                    />
+                    <img
+                      src={story.photo.src}
+                      alt={story.photo.alt}
+                      width={story.photo.width}
+                      height={story.photo.height}
+                      sizes={STORY_IMAGE_SIZES}
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  </picture>
                 </div>
-                <p className="text-xs tracking-[0.18em] uppercase text-teal mb-1">{story.category}</p>
+                <p className="text-xs tracking-[0.18em] uppercase text-teal mb-1">
+                  {story.category}
+                </p>
                 <h3 className="font-display text-2xl text-ink leading-snug group-hover:text-teal transition-colors">
                   {story.title}
                 </h3>
               </>
-            );
+            )
 
             if (story.href.startsWith('#')) {
               return (
-                <button key={story.title} type="button" onClick={onImport} className="group text-left">
+                <button
+                  key={story.title}
+                  type="button"
+                  onClick={onImport}
+                  className="group text-left"
+                >
                   {inner}
                 </button>
-              );
+              )
             }
 
             return (
-              <Link
-                key={story.title}
-                to={story.href}
-                className="group"
-              >
+              <Link key={story.title} to={story.href} className="group">
                 {inner}
               </Link>
-            );
+            )
           })}
         </div>
       </div>
@@ -130,5 +153,5 @@ export default function HomeFeatureGrid({ onSignIn, onImport }: HomeFeatureGridP
         </button>
       </div>
     </section>
-  );
+  )
 }
