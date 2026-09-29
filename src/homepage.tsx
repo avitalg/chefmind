@@ -4,6 +4,7 @@ import HomeFeatureGrid from './components/home/HomeFeatureGrid'
 import { HERO_BREAKFAST } from './constants/foodImages'
 import { useRecipes } from './contexts/RecipeContext'
 import { useSEO } from './hooks/useSEO'
+import { trackEvent } from './utils/cookieConsent'
 
 const HOME_STRUCTURED_DATA = {
   '@context': 'https://schema.org',
@@ -100,9 +101,11 @@ export default function HomePage({ user, onSignIn }: HomePageProps) {
         setImagePreview(null)
       }
 
+      trackEvent('import_recipe', { method: importMode, status: 'success' })
       navigate(`/edit/${recipe.id}`)
     } catch (err: unknown) {
       const message = err instanceof Error ? err.message : 'Failed to import recipe'
+      trackEvent('import_recipe', { method: importMode, status: 'error' })
       setImportError(message)
       clearError()
     } finally {

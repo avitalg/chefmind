@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useRecipes } from './contexts/RecipeContext'
 import { useSEO } from './hooks/useSEO'
+import { trackEvent } from './utils/cookieConsent'
 
 interface Ingredient {
   amount: number
@@ -47,9 +48,11 @@ export default function EditRecipe({ recipe: initialRecipe }: EditRecipeProps) {
 
     try {
       await updateRecipe(recipe)
+      trackEvent('save_recipe', { status: 'success' })
       navigate('/')
     } catch (err) {
       const message = err instanceof Error ? err.message : 'Failed to update recipe'
+      trackEvent('save_recipe', { status: 'error' })
       setError(message)
     }
   }

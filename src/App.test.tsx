@@ -38,11 +38,24 @@ vi.mock('./pages/recipe/recipe', () => ({
   default: () => <div data-testid="recipe-page">Recipe Page</div>,
 }))
 
+vi.mock('./components/CookieConsent', () => ({
+  default: () => null,
+}))
+
 const mockFetch = vi.mocked(fetch)
+
+function signInButtons() {
+  return screen.getAllByRole('button', { name: 'Sign in' })
+}
+
+function signOutButtons() {
+  return screen.getAllByRole('button', { name: 'Sign out' })
+}
 
 describe('App Component - Logout Functionality', () => {
   beforeEach(() => {
     vi.clearAllMocks()
+    localStorage.clear()
   })
 
   afterEach(() => {
@@ -60,10 +73,10 @@ describe('App Component - Logout Functionality', () => {
     render(<App />)
 
     await waitFor(() => {
-      expect(screen.getByText('Sign in with Google')).toBeInTheDocument()
+      expect(signInButtons().length).toBeGreaterThan(0)
     })
 
-    expect(screen.queryByText('Sign out')).not.toBeInTheDocument()
+    expect(screen.queryAllByRole('button', { name: 'Sign out' })).toHaveLength(0)
   })
 
   it('should show sign out button when user is authenticated', async () => {
@@ -82,10 +95,10 @@ describe('App Component - Logout Functionality', () => {
 
     await waitFor(() => {
       expect(screen.getByText('Test User')).toBeInTheDocument()
-      expect(screen.getByText('Sign out')).toBeInTheDocument()
+      expect(signOutButtons().length).toBeGreaterThan(0)
     })
 
-    expect(screen.queryByText('Sign in with Google')).not.toBeInTheDocument()
+    expect(screen.queryAllByRole('button', { name: 'Sign in' })).toHaveLength(0)
   })
 
   it('should handle successful logout', async () => {
@@ -103,7 +116,7 @@ describe('App Component - Logout Functionality', () => {
     render(<App />)
 
     await waitFor(() => {
-      expect(screen.getByText('Sign out')).toBeInTheDocument()
+      expect(signOutButtons().length).toBeGreaterThan(0)
     })
 
     // Mock logout endpoint to return success
@@ -120,15 +133,14 @@ describe('App Component - Logout Functionality', () => {
     } as Response)
 
     // Click sign out button
-    const signOutButton = screen.getByText('Sign out')
-    fireEvent.click(signOutButton)
+    fireEvent.click(signOutButtons()[0])
 
     // Wait for logout to complete
     await waitFor(() => {
-      expect(screen.getByText('Sign in with Google')).toBeInTheDocument()
+      expect(signInButtons().length).toBeGreaterThan(0)
     })
 
-    expect(screen.queryByText('Sign out')).not.toBeInTheDocument()
+    expect(screen.queryAllByRole('button', { name: 'Sign out' })).toHaveLength(0)
     expect(screen.queryByText('Test User')).not.toBeInTheDocument()
 
     // Verify logout API was called
@@ -165,22 +177,21 @@ describe('App Component - Logout Functionality', () => {
     render(<App />)
 
     await waitFor(() => {
-      expect(screen.getByText('Sign out')).toBeInTheDocument()
+      expect(signOutButtons().length).toBeGreaterThan(0)
     })
 
     // Mock logout endpoint to return failure
     mockFetch.mockRejectedValueOnce(new Error('Network error'))
 
     // Click sign out button
-    const signOutButton = screen.getByText('Sign out')
-    fireEvent.click(signOutButton)
+    fireEvent.click(signOutButtons()[0])
 
     // Should still clear user state even if API fails
     await waitFor(() => {
-      expect(screen.getByText('Sign in with Google')).toBeInTheDocument()
+      expect(signInButtons().length).toBeGreaterThan(0)
     })
 
-    expect(screen.queryByText('Sign out')).not.toBeInTheDocument()
+    expect(screen.queryAllByRole('button', { name: 'Sign out' })).toHaveLength(0)
   })
 
   it('should handle logout with non-ok response', async () => {
@@ -198,7 +209,7 @@ describe('App Component - Logout Functionality', () => {
     render(<App />)
 
     await waitFor(() => {
-      expect(screen.getByText('Sign out')).toBeInTheDocument()
+      expect(signOutButtons().length).toBeGreaterThan(0)
     })
 
     // Mock logout endpoint to return non-ok response
@@ -209,15 +220,14 @@ describe('App Component - Logout Functionality', () => {
     } as Response)
 
     // Click sign out button
-    const signOutButton = screen.getByText('Sign out')
-    fireEvent.click(signOutButton)
+    fireEvent.click(signOutButtons()[0])
 
     // Should still clear user state even if API returns error
     await waitFor(() => {
-      expect(screen.getByText('Sign in with Google')).toBeInTheDocument()
+      expect(signInButtons().length).toBeGreaterThan(0)
     })
 
-    expect(screen.queryByText('Sign out')).not.toBeInTheDocument()
+    expect(screen.queryAllByRole('button', { name: 'Sign out' })).toHaveLength(0)
   })
 
   it('should redirect to Google OAuth when sign in is clicked', () => {
@@ -230,8 +240,7 @@ describe('App Component - Logout Functionality', () => {
 
     render(<App />)
 
-    const signInButton = screen.getByText('Sign in with Google')
-    fireEvent.click(signInButton)
+    fireEvent.click(signInButtons()[0])
 
     // Should redirect to Google OAuth
     expect(window.location.href).toBe('http://localhost:3001/auth/google')

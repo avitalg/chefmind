@@ -9,6 +9,7 @@ import {
   useDeleteRecipeMutation,
   type Recipe
 } from '../hooks/useRecipes'
+import { trackEvent } from '../utils/cookieConsent'
 
 interface RecipeContextType {
   recipes: Recipe[]
@@ -104,6 +105,7 @@ export const RecipeProvider: React.FC<RecipeProviderProps> = ({ children, user }
   const deleteRecipe = async (id: string, place: number) => {
     try {
       await deleteRecipeMutation.mutateAsync({ id, place })
+      trackEvent('delete_recipe')
     } catch (err) {
       const message = err instanceof Error ? err.message : 'Failed to delete recipe'
       setError(message)

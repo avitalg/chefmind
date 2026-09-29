@@ -1,9 +1,10 @@
-import { useCallback } from 'react';
+import { useCallback, useEffect } from 'react';
 import {
   BrowserRouter as Router,
   Navigate,
   Route,
   Routes,
+  useLocation,
   useNavigate,
   useParams,
 } from 'react-router-dom';
@@ -29,7 +30,24 @@ import RecipeMemoryAndNostalgia from './pages/stories/RecipeMemoryAndNostalgia';
 import BuildingYourCulinaryLegacy from './pages/stories/BuildingYourCulinaryLegacy';
 import MyRecipes from './pages/MyRecipes';
 import CookieConsent from './components/CookieConsent';
+import { trackEvent, whenAnalyticsReady } from './utils/cookieConsent';
 import './App.css';
+
+function AnalyticsPageViews() {
+  const location = useLocation();
+
+  useEffect(() => {
+    const pagePath = `${location.pathname}${location.search}`;
+    return whenAnalyticsReady(() => {
+      trackEvent('page_view', {
+        page_path: pagePath,
+        page_title: document.title,
+      });
+    });
+  }, [location.pathname, location.search]);
+
+  return null;
+}
 
 function App() {
   const { user, signIn, signOut } = useAuth();
@@ -59,6 +77,7 @@ function App() {
               </Routes>
             </main>
             <CookieConsent />
+            <AnalyticsPageViews />
           </div>
         </Router>
         {import.meta.env.DEV && <ReactQueryDevTools />}

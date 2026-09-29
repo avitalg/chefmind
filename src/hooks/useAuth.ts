@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useState } from 'react';
+import { trackEvent } from '../utils/cookieConsent';
 
 const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:3001';
 
@@ -33,6 +34,7 @@ export function useAuth() {
   }, [checkAuthStatus])
 
   const signIn = useCallback(() => {
+    trackEvent('login', { method: 'google' });
     window.location.href = `${API_BASE_URL}/auth/google`;
   }, []);
 
@@ -43,6 +45,7 @@ export function useAuth() {
         credentials: 'include',
       })
       if (response.ok) {
+        trackEvent('sign_out');
         setUser(null);
         await checkAuthStatus();
       } else {

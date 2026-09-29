@@ -105,6 +105,11 @@ export async function isEuropeanVisitor(): Promise<boolean> {
   return inEurope;
 }
 
+type AnalyticsParam = string | number | boolean;
+
+let analyticsEnabled = false;
+const readyListeners = new Set<() => void>();
+
 /** Load Google Analytics only after the user accepts cookies (or outside Europe). */
 export function enableAnalytics() {
   if (typeof window === 'undefined') return;
@@ -117,11 +122,29 @@ export function enableAnalytics() {
     window.dataLayer.push(arguments);
   };
   window.gtag('js', new Date());
-  window.gtag('config', GA_ID);
+  window.gtag('config', GA_ID, { send_page_view: false });
 
   const script = document.createElement('script');
   script.id = 'gtag-js';
   script.async = true;
   script.src = `https://www.googletagmanager.com/gtag/js?id=${GA_ID}`;
   document.head.appendChild(script);
+
+  analyticsEnabled = true;
+  readyListeners.forEach((listener) => listener());
+}
+
+/** Send a GA4 event. No-ops when analytics was never enabled. */
+export function trackEvent(name: string, params?: Record<string, AnalyticsParam>) {
+  if (typeof window === 'undefined' || typeof window.gtag !== 'function') return;
+  window.gtag('event', name, params);
+}
+
+/** Run once analytics is enabled, including if it is already enabled. */
+export function whenAnalyticsReady(listener: () => void): () => void {
+  if (analyticsEnabled) listener();
+  readyListeners.add(listener);
+  return () => {
+    readyListeners.delete(listener);
+  };
 }

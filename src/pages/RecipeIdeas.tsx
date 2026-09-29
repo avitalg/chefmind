@@ -1,5 +1,6 @@
 import { useCallback, useState } from 'react';
 import { useSEO } from '../hooks/useSEO';
+import { trackEvent } from '../utils/cookieConsent';
 
 const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:3001';
 
@@ -73,7 +74,9 @@ export default function RecipeIdeas() {
     try {
       const result = await fetchRecipeIdeas(ingredients);
       setTitles(result);
+      trackEvent('generate_ideas', { status: 'success', ingredient_count: ingredients.length });
     } catch (err) {
+      trackEvent('generate_ideas', { status: 'error', ingredient_count: ingredients.length });
       setError(err instanceof Error ? err.message : 'Something went wrong.');
     } finally {
       setLoading(false);
